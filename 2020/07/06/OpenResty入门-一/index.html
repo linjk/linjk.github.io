@@ -142,7 +142,7 @@
     <div><a class="about  hasFriend  site_url"  href="/2020/07/05/AboutMe/">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="2">
-<input type="hidden" id="yelog_site_word_count" value="173">
+<input type="hidden" id="yelog_site_word_count" value="304">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -268,12 +268,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-06 00:49:23'>2020-07-06 00:01</time>
+            发布时间 : <time class="date" title='最后更新: 2020-07-07 23:17:58'>2020-07-06 00:01</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:173</span>
+        <span>字数:304</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -319,7 +319,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>OpenResty诞生于2007年，是一个兼具开发效率和性能的服务端开发平台，其核心是基于Nginx的一个C模块(lua-nginx-module)，该模块将LuaJIT嵌入到Nginx服务器中，并对外提供了一套完整的Lua API，透明地支持非阻塞I/O，提供了轻量级线程、定时器等高级抽象。主要用来实现微服务API网关。</p>
+        <p><a href="http://openresty.org/cn/download.html" target="_blank" rel="noopener">OpenResty</a>诞生于2007年，是一个兼具开发效率和性能的服务端开发平台，其核心是基于Nginx的一个C模块(lua-nginx-module)，该模块将LuaJIT嵌入到Nginx服务器中，并对外提供了一套完整的Lua API，透明地支持非阻塞I/O，提供了轻量级线程、定时器等高级抽象。主要用来实现微服务API网关。</p>
 <pre class="mermaid">graph LR;
     OpenResty三大特性-->详尽的文档和测试用例;
     OpenResty三大特性-->同步非阻塞;
@@ -328,6 +328,32 @@
 <blockquote>
 <p>对于 OpenResty 来说，绝大部分都是同步操作，只有 ngx.timer 这种后台定时器相关的 API，才是异步操作</p>
 </blockquote>
+<p>###安装OpenResty###</p>
+<p><code>brew tap openresty/brew &amp;&amp; brew install openresty</code></p>
+<blockquote>
+<p>小插曲：<br>brew命令卡在<strong>Updating Homebrew…</strong><br>可以<code>Ctrl+C</code>取消下就可以了<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200707222135.png" alt="brew慢问题懒人解决方式"></p>
+</blockquote>
+<p>OK, 安装成功：<br><code>which resty &amp;&amp; resty -e &quot;ngx.say(&#39;【OpenResty】&#39;)&quot;</code></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200707230630.png" alt="OpenResty安装成功"></p>
+<p>###雏形###</p>
+<p>上面直接通过命令行的-e参数运行nginx服务的，现在，正式一点，在文件夹下通过配置文件配置方式，更接近实际：</p>
+<ul>
+<li>准备目录结构</li>
+</ul>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200707231028.png" alt="目录"></p>
+<ul>
+<li>准备配置文件</li>
+</ul>
+<p><code>vim demo/conf/nginx.conf</code></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200707231257.png" alt="nginx.conf"></p>
+<ul>
+<li>启动OpenResty服务</li>
+</ul>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200707231410.png" alt="OpenResty服务"><br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200707231446.png" alt="访问测试"></p>
+<ul>
+<li>退出服务</li>
+</ul>
+<p><code>openresty -p</code>pwd<code>-c demo/conf/nginx.conf -s quit</code></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
