@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>OpenResty(二)-Nginx和Lua基础</title>
+      <link href="/2020/07/09/OpenResty(%E4%BA%8C)-Nginx%E5%92%8CLua%E5%9F%BA%E7%A1%80/"/>
+      <url>/2020/07/09/OpenResty(%E4%BA%8C)-Nginx%E5%92%8CLua%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> OpenResty </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OpenResty </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Docker安装MariaDB</title>
       <link href="/2020/07/08/Docker%E5%AE%89%E8%A3%85MariaDB/"/>
       <url>/2020/07/08/Docker%E5%AE%89%E8%A3%85MariaDB/</url>
