@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>ANTLR(一)</title>
+      <link href="/2020/07/15/ANTLR(%E4%B8%80)/"/>
+      <url>/2020/07/15/ANTLR(%E4%B8%80)/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://www.antlr.org" target="_blank" rel="noopener">ANTLR</a>是基于Java编写的，一款强大的语法分析器生成工具，可用于读取、处理、执行和翻译结构化文本或二进制文件。除了间接左递归，ANTLR 4几乎能处理任何语法。</p><h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>安装很简单，下载最新jar包即可，该jar包包含了运行ANTLR的工具和编译、执行ANTLR产生的识别程序所依赖的全部运行库，即ANTLR工具将语法文件转换成可以识别该语法文件所描述的语言的程序。</p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715220716.png" alt=""></p><p>下载好后，还需配置CLASSPATH使得Java程序能找到ANTLR工具和运行库:<code>export CLASSPATH=&quot;.:/Users/linjk/Documents/usr/services/antlr-4.8-complete.jar:$CLASSPATH&quot;</code></p><p>在shell的rc文件配置别名，方便启动：<code>alias antlr4=&#39;java -jar /Users/linjk/Documents/usr/services/antlr-4.8-complete.jar&#39;</code>，配置调试工具: <code>alias grun=&#39;java org.antlr.v4.gui.TestRig&#39;</code></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715220953.png" alt=""></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715221051.png" alt=""></p><h2 id="入门体验"><a href="#入门体验" class="headerlink" title="入门体验"></a>入门体验</h2><p>为了简单，定义一个能识别类似hello world或hello jim的词组的语法：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715221847.png" alt=""></p><p>接下来编译该语法文件：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715222023.png" alt=""><br>提示不匹配，语法名字和文件名字应一致，修改一致后：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715222204.png" alt=""></p><p>它生成了antlrHelloParser.java和antlrHelloLexer.java组成的、可以运行的语法识别程序。(这里还缺少一个main程序来触发语言识别过程)</p><p>然后编译生成class文件<code>javac -g *.java</code>，<code>grun antlrHello r -tokens</code>来运行：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715223921.png" alt=""><br>运行后，输入hello world，然后ctrl+d来输入文件结束符，因为使用了选项<code>-r tokens</code>，所以上面打印出来全部的词法符号的列表。还可以导出语法分析树：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715224424.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tools </category>
+          
+          <category> ANTLR </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ANTLR </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>OpenResty(二)-Nginx和Lua基础</title>
       <link href="/2020/07/09/OpenResty(%E4%BA%8C)-Nginx%E5%92%8CLua%E5%9F%BA%E7%A1%80/"/>
       <url>/2020/07/09/OpenResty(%E4%BA%8C)-Nginx%E5%92%8CLua%E5%9F%BA%E7%A1%80/</url>
