@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>TcxCurrencyEdit无法输入小数问题解决</title>
+      <link href="/2020/07/20/TcxCurrencyEdit%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E5%B0%8F%E6%95%B0%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/07/20/TcxCurrencyEdit%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E5%B0%8F%E6%95%B0%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>最近在使用TcxCurrencyEdit控件时，发现配置了指定输入小数位数，却无法输入小数的问题：</p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720231412.png" alt=""></p><p><strong>解决方法</strong>：</p><blockquote><p>“控制面板” - “时间和区域” - “区域” - “更改日期、时间或数字格式”<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720231506.png" alt=""><br>修改货币tab栏的小数位数为2或其他实际需要的位数即可:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720231526.png" alt=""></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Windows </category>
+          
+          <category> Delphi </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Delphi </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring源码环境搭建_idea</title>
       <link href="/2020/07/20/Spring%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-idea/"/>
       <url>/2020/07/20/Spring%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-idea/</url>
