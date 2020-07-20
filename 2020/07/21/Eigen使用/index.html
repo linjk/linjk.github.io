@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Spring源码环境搭建_idea | Jim</title>
-  <meta name="keywords" content=" Spring ">
-  <meta name="description" content="Spring源码环境搭建_idea | Jim">
+  <title>Eigen使用 | Jim</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Eigen使用 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="在执行Docker客户端命令时，因为涉及一些系统根目录的操作，因此，需要切换到root用户权限执行，但是这样权限管理就难处理了，可以配置非root用户也可以执行docker客户端命令，步骤如下：  创建docker组sudo groupadd docker  当前登录用户加入到新建的docker组sudo gpasswd -a ${USER} docker  重启docker服务sudo syst">
 <meta property="og:type" content="article">
@@ -451,9 +451,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Spring源码环境搭建-idea" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Eigen使用" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Spring源码环境搭建_idea</h1>
+        <h1 class="article-title">Eigen使用</h1>
     
     <div class="article-meta">
         
@@ -463,29 +463,20 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Java">Java</a> > 
-            
-            <a  data-rel="Java&lt;---&gt;Spring">Spring</a>
+            <a  data-rel="C++">C++</a>
             
         </span>
         
         
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color2">Spring</a>
-            
-        </span>
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-07-21 00:34:41'>2020-07-21 00:31</time>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-20 23:05:57'>2020-07-20 22:17</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:228</span>
+        <span>字数:281</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -515,7 +506,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#源码下载-git-clone-git-github-com-SpringSource-Spring-framework-git"><span class="toc-text">[源码下载](git clone git:&#x2F;&#x2F;github.com&#x2F;SpringSource&#x2F;Spring-framework.git)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入IDEA"><span class="toc-text">导入IDEA</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -531,32 +522,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>前提条件：安装Git和Gradle(也可以使用源码包里配置的版本，推荐使用自己安装的，方便执行命令)</p>
-</blockquote>
-<h2 id="源码下载-git-clone-git-github-com-SpringSource-Spring-framework-git"><a href="#源码下载-git-clone-git-github-com-SpringSource-Spring-framework-git" class="headerlink" title="[源码下载](git clone git://github.com/SpringSource/Spring-framework.git)"></a>[源码下载](git clone git://github.com/SpringSource/Spring-framework.git)</h2><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720221952.png" alt=""></p>
-<h2 id="导入IDEA"><a href="#导入IDEA" class="headerlink" title="导入IDEA"></a>导入IDEA</h2><p>查看开源代码，首先是看它的README.md文件，它会告诉我们很多东西，这里可以看到，如果要导入IDEA集成开发环境，需要去看哪个文件操作:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720222053.png" alt=""></p>
-<p>打开文件”import-into-idea.md”可以看到如下几步：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720222142.png" alt=""></p>
-<p>按照提示的步骤即可导入:</p>
-<ul>
-<li>执行命令<code>./gradlew :spring-oxm:compileTestJava</code>，结果如下：</li>
-</ul>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720223803.png" alt=""></p>
-<ul>
-<li>导入IntelliJ IDEA（File-&gt;New-&gt;Project from existing Sources-&gt;Navigate to directory-&gt;Select build.gradle）</li>
-</ul>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720223915.png" alt=""></p>
-<ul>
-<li>点击【Open】等待下载依赖导入:</li>
-</ul>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720224027.png" alt=""></p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720230250.png" alt=""></p>
-<ul>
-<li>测试构建模块Spring-aop:</li>
-</ul>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720230323.png" alt=""></p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720230508.png" alt=""></p>
-<p>好了，Spring源码环境搭建好了，有时间的话可以慢慢了解下Spring的关键技术如何实现了，努力做到知其所以然~</p>
+        <p><a href="http://eigen.tuxfamily.org/index.php?title=Main_Page#Overview" target="_blank" rel="noopener">Eigen</a>是一个不错的针对线性代数的C++库，它可以高效处理矩阵、向量、数值分析，在官网可以看到更详细的介绍:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721003204.png" alt=""></p>
+<p>用这个库，之前很多写的类似的代码都可以更精简、高效。</p>
+<p>这里下载稳定版本的3.3.3，下载后解压到一个目录下，如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721003230.png" alt=""></p>
+<p>下面开始测试调用它的头文件来使用下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721003256.png" alt=""></p>
+<p>这里创建了一个2*2的矩形，并输出它。</p>
+<p>编译：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721003317.png" alt=""></p>
+<p>注意，这里需要使用”-I”参数来指定头文件的查找目录，使用Eigen很简单，只需要下载tgz包，不需要编译安装任何东西，在目录下的”Eigen”子目录就是使用Eigen编译时所需要的文件，这些文件在所有系统平台都是一样的。</p>
+<p>编译完后，目录如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721003339.png" alt=""></p>
+<p>当前用户默认拥有执行权限，执行结果如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721003359.png" alt=""></p>
+<p>现在在C++使用矩形运行就不需要再编写很多代码了。更多的使用参考<a href="http://eigen.tuxfamily.org/dox/" target="_blank" rel="noopener">官方帮助</a>文档就可以做很多东西了。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
