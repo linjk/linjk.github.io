@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Jim</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Jim">
+  <title>C++编译OpenCV生成动态库问题解决 | Jim</title>
+  <meta name="keywords" content=" OpenCV ">
+  <meta name="description" content="C++编译OpenCV生成动态库问题解决 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="在拉取Docker镜像时，有时会很慢，这时，可以在其它电脑已下载好的导出，然后复制过来导入即可。 导出镜像： docker save -o &lt;image_name&gt;.tar &lt;image_name&gt;:&lt;tag&gt;  导入镜像： docker load --input &lt;image_name&gt;.tar    或    docker load &lt; &amp;">
 <meta property="og:type" content="article">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/head.jpg" />
@@ -443,12 +443,73 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-C++编译OpenCV生成动态库问题解决" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于"><span class="toc-text">关于</span></a></li></ol>
+        <h1 class="article-title">C++编译OpenCV生成动态库问题解决</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="C++">C++</a> > 
+            
+            <a  data-rel="C++&lt;---&gt;OpenCV">OpenCV</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">OpenCV</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-07-21 00:30:00'>2020-07-18 06:22</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:145</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -461,12 +522,27 @@
     }
 </style>
 </div>
-            <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><p>到目前为止已经写了<code class="article_number"></code>篇文章</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.包含&lt;opencv2/objdectect/objdetect.hpp&gt;, 声明了CascadeClassifier变量后，工程如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002411.png" alt=""></p>
+<p>执行make命令后发生如下错误：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002435.png" alt=""></p>
+<p>解决，增加Lib链接，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002503.png" alt=""><br>再次make，可以了。</p>
+<p>2.增加imread函数调用后，发生如下错误:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002555.png" alt=""></p>
+<p>makefile需要增加如下链接(-lopencv_imgcodes):<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002640.png" alt=""></p>
+<p>python调用人脸检测后，成功识别出两个人脸:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002703.png" alt=""></p>
+<p>3.上面是在mac上运行的，把so库拿到centos上运行时，报如下错误:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002746.png" alt=""></p>
+<p>在用户加目录的.bashrc增加如下这行(永久生效)或直接命令行执行(临时生效)，即可:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002805.png" alt=""></p>
 
-        </article>
-        
-        
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
+    </div>
+</article>
+
+
+
+
+
     <div id="comments"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
@@ -488,6 +564,13 @@
 </script>
 
 
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -496,11 +579,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

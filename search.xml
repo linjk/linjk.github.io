@@ -139,6 +139,33 @@
     
     
     <entry>
+      <title>C++编译OpenCV生成动态库问题解决</title>
+      <link href="/2020/07/18/C++%E7%BC%96%E8%AF%91OpenCV%E7%94%9F%E6%88%90%E5%8A%A8%E6%80%81%E5%BA%93%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/07/18/C++%E7%BC%96%E8%AF%91OpenCV%E7%94%9F%E6%88%90%E5%8A%A8%E6%80%81%E5%BA%93%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>1.包含&lt;opencv2/objdectect/objdetect.hpp&gt;, 声明了CascadeClassifier变量后，工程如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002411.png" alt=""></p><p>执行make命令后发生如下错误：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002435.png" alt=""></p><p>解决，增加Lib链接，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002503.png" alt=""><br>再次make，可以了。</p><p>2.增加imread函数调用后，发生如下错误:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002555.png" alt=""></p><p>makefile需要增加如下链接(-lopencv_imgcodes):<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002640.png" alt=""></p><p>python调用人脸检测后，成功识别出两个人脸:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002703.png" alt=""></p><p>3.上面是在mac上运行的，把so库拿到centos上运行时，报如下错误:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002746.png" alt=""></p><p>在用户加目录的.bashrc增加如下这行(永久生效)或直接命令行执行(临时生效)，即可:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002805.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+          <category> OpenCV </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OpenCV </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ANTLR(一)</title>
       <link href="/2020/07/15/ANTLR(%E4%B8%80)/"/>
       <url>/2020/07/15/ANTLR(%E4%B8%80)/</url>
