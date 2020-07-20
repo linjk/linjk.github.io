@@ -15,8 +15,16 @@
           
           <category> C++ </category>
           
+          <category> Eigen </category>
+          
       </categories>
       
+      
+        <tags>
+            
+            <tag> Eigen </tag>
+            
+        </tags>
       
     </entry>
     
