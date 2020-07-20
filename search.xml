@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Docker配置非root用户执行客户端命令</title>
+      <link href="/2020/07/21/Docker%E9%85%8D%E7%BD%AE%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%91%BD%E4%BB%A4/"/>
+      <url>/2020/07/21/Docker%E9%85%8D%E7%BD%AE%E9%9D%9Eroot%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<p>在执行Docker客户端命令时，因为涉及一些系统根目录的操作，因此，需要切换到root用户权限执行，但是这样权限管理就难处理了，可以配置非root用户也可以执行docker客户端命令，步骤如下：</p><ol><li><p>创建docker组<br><code>sudo groupadd docker</code></p></li><li><p>当前登录用户加入到新建的docker组<br><code>sudo gpasswd -a ${USER} docker</code></p></li><li><p>重启docker服务<br><code>sudo systemctl restart docker</code></p></li><li><p>当前用户<strong>重新登录</strong>即可执行docker ps等命令了。</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Docker镜像导出与导入</title>
       <link href="/2020/07/21/Docker%E9%95%9C%E5%83%8F%E5%AF%BC%E5%87%BA%E4%B8%8E%E5%AF%BC%E5%85%A5/"/>
       <url>/2020/07/21/Docker%E9%95%9C%E5%83%8F%E5%AF%BC%E5%87%BA%E4%B8%8E%E5%AF%BC%E5%85%A5/</url>
