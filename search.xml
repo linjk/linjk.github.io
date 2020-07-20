@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>TMS开发组件包-TAdvStringGrid表格控件</title>
+      <link href="/2020/07/20/TMS%E5%BC%80%E5%8F%91%E7%BB%84%E4%BB%B6%E5%8C%85-TAdvStringGrid%E8%A1%A8%E6%A0%BC%E6%8E%A7%E4%BB%B6/"/>
+      <url>/2020/07/20/TMS%E5%BC%80%E5%8F%91%E7%BB%84%E4%BB%B6%E5%8C%85-TAdvStringGrid%E8%A1%A8%E6%A0%BC%E6%8E%A7%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<p>最近项目涉及一些复杂表格显示的实现，尝试使用Dev Express的cxGrid控件多次还是没法实现想要的效果，后来发现，<a href="https://www.tmssoftware.com/site/products.asp?t=vclp" target="_blank" rel="noopener">TMS</a>开发组件包的TAdvStringGrid可以实现效果。这里举例来说明一下，例如，需要实现如下效果:</p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232036.png" alt=""></p><p>  如上所示是一个3行4列的表格，其中，第一行的1、2列合并，第2行的2、3列合并，下面使用TAdvStringGrid来实现，步骤如下：</p><ul><li><p>新建一个VCL窗口项目，布局界面</p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232123.png" alt=""></p><p>添加TAdvStringGrid控件，默认它是一个5列10行的空白表格，这里需要自定义数据，这里修改它的ColCount和RowCount属性为0，但是，默认还是一个1列1行的空白表格，这里可以不用理会。</p><p>按钮”显示数据”点击后，就显示如上效果的表格。</p></li><li><p>实现如上Excel表格展示效果</p><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm1</span>.<span class="title">btn1Click</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">        count: Integer;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  AdvStringGrid1.ColCount := <span class="number">0</span>;</span><br><span class="line">  AdvStringGrid1.RowCount := <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 初始化行列 (3行4列)</span></span><br><span class="line">  <span class="keyword">for</span> count := <span class="number">0</span> <span class="keyword">to</span> <span class="number">1</span> <span class="keyword">do</span>              <span class="comment">// 因为第一行是表格头，因此就2行，从0开始数，所以为2-1=1，行与列一样的道理。</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">      AdvStringGrid1.AddRow;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line">  <span class="keyword">for</span> count := <span class="number">0</span> <span class="keyword">to</span> <span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">      AdvStringGrid1.AddColumn;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.MergeCells(<span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">0</span>] := <span class="string">'1'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">2</span>, <span class="number">0</span>] := <span class="string">'2'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">0</span>] := <span class="string">'3'</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.MergeCells(<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">1</span>] := <span class="string">'4'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">1</span>, <span class="number">1</span>] := <span class="string">'5'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">1</span>] := <span class="string">'6'</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">2</span>] := <span class="string">'7'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">1</span>, <span class="number">2</span>] := <span class="string">'8'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">2</span>, <span class="number">2</span>] := <span class="string">'9'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">2</span>] := <span class="string">'10'</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure><p>运行如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232345.png" alt=""></p><p>效果实现，其他的TMS组件可以自己再尝试使用即可。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Windows </category>
+          
+          <category> Delphi </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Delphi </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>TcxCurrencyEdit无法输入小数问题解决</title>
       <link href="/2020/07/20/TcxCurrencyEdit%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E5%B0%8F%E6%95%B0%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
       <url>/2020/07/20/TcxCurrencyEdit%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E5%B0%8F%E6%95%B0%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
