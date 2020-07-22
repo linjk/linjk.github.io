@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>OpenJDK12源码编译</title>
+      <link href="/2020/07/23/OpenJDK12%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/"/>
+      <url>/2020/07/23/OpenJDK12%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/</url>
+      
+        <content type="html"><![CDATA[<p>使用Java不知不觉也有三年了，常听说会搞Jvm底层相关的才厉害，毕竟从C语言学起的娃，自然，还是想自己编译一个JDK试试……搞起来勒~</p><p>本次直接在Mac平台上开撸，首先，得安装些必要的依赖，当然，XCode工具套装，少不了的：<code>brew install autoconf &amp;&amp; brew install freetype &amp;&amp; brew install ccache</code></p><p>然后下载源码：<code>hg clone https://hg.openjdk.java.net/jdk/jdk12</code>，过程很漫长，互联网那么大，总有办法的，搞定后源码目录结构如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723000245.png" alt=""></p><p>chmod u+x configure增加执行权限后，生成配置：<br><code>./configure --with-debug-level=slowdebug --enable-dtrace --with-jvm-variants=server --with-target-bits=64 --enable-ccache --with-num-cores=8 --with-memory-size=8000  --disable-warnings-as-errors</code></p><blockquote><p>说明：建议带上<strong>–disable-warnings-as-errors</strong>这个参数，否则编译过程中的warning也会中断编译的进程，实际上这些warning并不影响编译后的目标JDK的运行</p></blockquote><p><em>错误一：</em><br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723000337.png" alt=""></p><p><em>解决：</em><br><code>sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer</code></p><p><em>错误二：</em><br>再次生成配置，提示必须先安装配置OpenJDK11，因为OpenJDK由多个部分(HotSpot、JDK类库、JAXWS、JAXP等)构成，其中一部分(HotSpot)代码使用C、C++编写，而更多代码使用Java来实现，因此，编译就需要另外一个基础的JDK：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723000514.png" alt=""></p><p><em>解决：</em><br>下载<a href="https://adoptopenjdk.net/archive.html?variant=openjdk11&jvmVariant=hotspot" target="_blank" rel="noopener">OpenJDK11</a>安装后，重新配置，成功：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723001614.png" alt=""></p><p>最后，执行<code>make clean &amp;&amp; make images</code>进行编译：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723002720.png" alt=""></p><p>嗯，喝杯咖啡☕️先咯，还是挺费CPU的……<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723003943.png" alt=""></p><p>大约15分钟，搞定，MBP还是挺给力的：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723004754.png" alt=""></p><p>看看构建生成了些啥玩意：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723004918.png" alt=""></p><ul><li>buildtools: 用于生成、存放编译过程中用到的工具</li><li>hotspot: HotSpot虚拟机编译的中间文件</li><li>images: 使用make *-image产生的镜像存放的地儿</li><li>jdk: 编译后的jdk在这<del>~</del></li><li>support: 存放编译时产生的中间文件</li></ul><p>真的可以了？试下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723005156.png" alt=""><br>嗯，还算顺利，第一个可调试版本的HotSpot虚拟机出来了<del>那如何在IDE进行HotSpot源码调试了？搞起</del></p><p>这里使用CLion 2020.1这款IDE:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723005344.png" alt=""></p><p>导入项目：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723005445.png" alt=""></p><p>选择源码根目录后打开：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723005536.png" alt=""><br>已经自动选好了需要导入的目录，直接点击”OK“即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723010210.png" alt=""></p><p>增加调试，选择自己编译出来的java命令，增加参数，如“-version”或其他某个.class文件，并移除Build Before Launch，即可下断点了：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723012346.png" alt=""></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723012537.png" alt=""></p><p>直接Resume Programme会如下输出：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723013331.png" alt=""></p><p>发现三次中断后才输出版本号，这是LLDB执行异常，可以在断点进入如上Java.c的源码时，切换到调试面板的LLDB执行如下命令：<br><code>process handle --pass true --stop false SIGSEGV</code>和<code>process handle --pass true --stop false SIGBUS</code>，再次调试就直接输出了：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723013720.png" alt=""></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723013755.png" alt=""></p><p>这种方式不能直接在IDE构建出jdk包，会提示很多文件找不到，需要修改CMakeLists.txt文件，目前还不知道怎么搞，后面知道到再补充了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+          <category> OpenJDK </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OpenJDK </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Eigen使用</title>
       <link href="/2020/07/21/Eigen%E4%BD%BF%E7%94%A8/"/>
       <url>/2020/07/21/Eigen%E4%BD%BF%E7%94%A8/</url>

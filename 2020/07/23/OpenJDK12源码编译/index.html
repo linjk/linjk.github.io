@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>TMS开发组件包-TAdvStringGrid表格控件 | Jim</title>
-  <meta name="keywords" content=" Delphi ">
-  <meta name="description" content="TMS开发组件包-TAdvStringGrid表格控件 | Jim">
+  <title>OpenJDK12源码编译 | Jim</title>
+  <meta name="keywords" content=" OpenJDK ">
+  <meta name="description" content="OpenJDK12源码编译 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="在拉取Docker镜像时，有时会很慢，这时，可以在其它电脑已下载好的导出，然后复制过来导入即可。 导出镜像： docker save -o &lt;image_name&gt;.tar &lt;image_name&gt;:&lt;tag&gt;  导入镜像： docker load --input &lt;image_name&gt;.tar    或    docker load &lt; &amp;">
 <meta property="og:type" content="article">
@@ -485,9 +485,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-TMS开发组件包-TAdvStringGrid表格控件" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-OpenJDK12源码编译" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">TMS开发组件包-TAdvStringGrid表格控件</h1>
+        <h1 class="article-title">OpenJDK12源码编译</h1>
     
     <div class="article-meta">
         
@@ -497,9 +497,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Windows">Windows</a> > 
+            <a  data-rel="Java">Java</a> > 
             
-            <a  data-rel="Windows&lt;---&gt;Delphi">Delphi</a>
+            <a  data-rel="Java&lt;---&gt;OpenJDK">OpenJDK</a>
             
         </span>
         
@@ -507,19 +507,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color2">Delphi</a>
+            <a class="color3">OpenJDK</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-20 23:24:57'>2020-07-20 23:19</time>
+            发布时间 : <time class="date" title='最后更新: 2020-07-23 01:39:57'>2020-07-23 00:01</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:389</span>
+        <span>字数:720</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -565,22 +565,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近项目涉及一些复杂表格显示的实现，尝试使用Dev Express的cxGrid控件多次还是没法实现想要的效果，后来发现，<a href="https://www.tmssoftware.com/site/products.asp?t=vclp" target="_blank" rel="noopener">TMS</a>开发组件包的TAdvStringGrid可以实现效果。这里举例来说明一下，例如，需要实现如下效果:</p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232036.png" alt=""></p>
-<p>  如上所示是一个3行4列的表格，其中，第一行的1、2列合并，第2行的2、3列合并，下面使用TAdvStringGrid来实现，步骤如下：</p>
+        <p>使用Java不知不觉也有三年了，常听说会搞Jvm底层相关的才厉害，毕竟从C语言学起的娃，自然，还是想自己编译一个JDK试试……搞起来勒~</p>
+<p>本次直接在Mac平台上开撸，首先，得安装些必要的依赖，当然，XCode工具套装，少不了的：<code>brew install autoconf &amp;&amp; brew install freetype &amp;&amp; brew install ccache</code></p>
+<p>然后下载源码：<code>hg clone https://hg.openjdk.java.net/jdk/jdk12</code>，过程很漫长，互联网那么大，总有办法的，搞定后源码目录结构如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723000245.png" alt=""></p>
+<p>chmod u+x configure增加执行权限后，生成配置：<br><code>./configure --with-debug-level=slowdebug --enable-dtrace --with-jvm-variants=server --with-target-bits=64 --enable-ccache --with-num-cores=8 --with-memory-size=8000  --disable-warnings-as-errors</code></p>
+<blockquote>
+<p>说明：建议带上<strong>–disable-warnings-as-errors</strong>这个参数，否则编译过程中的warning也会中断编译的进程，实际上这些warning并不影响编译后的目标JDK的运行</p>
+</blockquote>
+<p><em>错误一：</em><br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723000337.png" alt=""></p>
+<p><em>解决：</em><br><code>sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer</code></p>
+<p><em>错误二：</em><br>再次生成配置，提示必须先安装配置OpenJDK11，因为OpenJDK由多个部分(HotSpot、JDK类库、JAXWS、JAXP等)构成，其中一部分(HotSpot)代码使用C、C++编写，而更多代码使用Java来实现，因此，编译就需要另外一个基础的JDK：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723000514.png" alt=""></p>
+<p><em>解决：</em><br>下载<a href="https://adoptopenjdk.net/archive.html?variant=openjdk11&jvmVariant=hotspot" target="_blank" rel="noopener">OpenJDK11</a>安装后，重新配置，成功：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723001614.png" alt=""></p>
+<p>最后，执行<code>make clean &amp;&amp; make images</code>进行编译：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723002720.png" alt=""></p>
+<p>嗯，喝杯咖啡☕️先咯，还是挺费CPU的……<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723003943.png" alt=""></p>
+<p>大约15分钟，搞定，MBP还是挺给力的：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723004754.png" alt=""></p>
+<p>看看构建生成了些啥玩意：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723004918.png" alt=""></p>
 <ul>
-<li><p>新建一个VCL窗口项目，布局界面</p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232123.png" alt=""></p>
-<p>添加TAdvStringGrid控件，默认它是一个5列10行的空白表格，这里需要自定义数据，这里修改它的ColCount和RowCount属性为0，但是，默认还是一个1列1行的空白表格，这里可以不用理会。</p>
-<p>按钮”显示数据”点击后，就显示如上效果的表格。</p>
-</li>
-<li><p>实现如上Excel表格展示效果</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm1</span>.<span class="title">btn1Click</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">        count: Integer;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  AdvStringGrid1.ColCount := <span class="number">0</span>;</span><br><span class="line">  AdvStringGrid1.RowCount := <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 初始化行列 (3行4列)</span></span><br><span class="line">  <span class="keyword">for</span> count := <span class="number">0</span> <span class="keyword">to</span> <span class="number">1</span> <span class="keyword">do</span>              <span class="comment">// 因为第一行是表格头，因此就2行，从0开始数，所以为2-1=1，行与列一样的道理。</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">      AdvStringGrid1.AddRow;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line">  <span class="keyword">for</span> count := <span class="number">0</span> <span class="keyword">to</span> <span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">      AdvStringGrid1.AddColumn;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.MergeCells(<span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">0</span>] := <span class="string">'1'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">2</span>, <span class="number">0</span>] := <span class="string">'2'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">0</span>] := <span class="string">'3'</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.MergeCells(<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">1</span>] := <span class="string">'4'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">1</span>, <span class="number">1</span>] := <span class="string">'5'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">1</span>] := <span class="string">'6'</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">2</span>] := <span class="string">'7'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">1</span>, <span class="number">2</span>] := <span class="string">'8'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">2</span>, <span class="number">2</span>] := <span class="string">'9'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">2</span>] := <span class="string">'10'</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
-
-<p>运行如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232345.png" alt=""></p>
-<p>效果实现，其他的TMS组件可以自己再尝试使用即可。</p>
-</li>
+<li>buildtools: 用于生成、存放编译过程中用到的工具</li>
+<li>hotspot: HotSpot虚拟机编译的中间文件</li>
+<li>images: 使用make *-image产生的镜像存放的地儿</li>
+<li>jdk: 编译后的jdk在这<del>~</del></li>
+<li>support: 存放编译时产生的中间文件</li>
 </ul>
+<p>真的可以了？试下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723005156.png" alt=""><br>嗯，还算顺利，第一个可调试版本的HotSpot虚拟机出来了<del>那如何在IDE进行HotSpot源码调试了？搞起</del></p>
+<p>这里使用CLion 2020.1这款IDE:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723005344.png" alt=""></p>
+<p>导入项目：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723005445.png" alt=""></p>
+<p>选择源码根目录后打开：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723005536.png" alt=""><br>已经自动选好了需要导入的目录，直接点击”OK“即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723010210.png" alt=""></p>
+<p>增加调试，选择自己编译出来的java命令，增加参数，如“-version”或其他某个.class文件，并移除Build Before Launch，即可下断点了：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723012346.png" alt=""></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723012537.png" alt=""></p>
+<p>直接Resume Programme会如下输出：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723013331.png" alt=""></p>
+<p>发现三次中断后才输出版本号，这是LLDB执行异常，可以在断点进入如上Java.c的源码时，切换到调试面板的LLDB执行如下命令：<br><code>process handle --pass true --stop false SIGSEGV</code>和<code>process handle --pass true --stop false SIGBUS</code>，再次调试就直接输出了：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723013720.png" alt=""></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200723013755.png" alt=""></p>
+<p>这种方式不能直接在IDE构建出jdk包，会提示很多文件找不到，需要修改CMakeLists.txt文件，目前还不知道怎么搞，后面知道到再补充了。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
