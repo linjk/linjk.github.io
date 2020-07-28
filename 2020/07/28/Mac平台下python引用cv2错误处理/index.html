@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Docker安装MariaDB | Jim</title>
-  <meta name="keywords" content=" MariaDB ">
-  <meta name="description" content="Docker安装MariaDB | Jim">
+  <title>Mac平台下python引用cv2错误处理 | Jim</title>
+  <meta name="keywords" content=" OpenCV ">
+  <meta name="description" content="Mac平台下python引用cv2错误处理 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="在使用brew install opencv3后，进入python，引用cv2模块(试了几个都不行)出现如下错误: 看了一下&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python2.7&#x2F;site-packages路径下，有这样一个软链接： 说明cv2已经正确链接了，应该就是环境变量的配置了，修改”.bash_profile”配置文件： 现在可以了：">
 <meta property="og:type" content="article">
@@ -568,9 +568,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Docker安装MariaDB" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Mac平台下python引用cv2错误处理" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Docker安装MariaDB</h1>
+        <h1 class="article-title">Mac平台下python引用cv2错误处理</h1>
     
     <div class="article-meta">
         
@@ -580,9 +580,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="DB">DB</a> > 
+            <a  data-rel="Python">Python</a> > 
             
-            <a  data-rel="DB&lt;---&gt;MariaDB">MariaDB</a>
+            <a  data-rel="Python&lt;---&gt;OpenCV">OpenCV</a>
             
         </span>
         
@@ -590,19 +590,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">MariaDB</a>
+            <a class="color2">OpenCV</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-09 00:44:08'>2020-07-08 01:04</time>
+            发布时间 : <time class="date" title='最后更新: 2020-07-28 23:44:57'>2020-07-28 23:43</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:285</span>
+        <span>字数:84</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -648,42 +648,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>MariaDb在官网的Mac系统的pkg包居然是10.2版本的，最新都10.5.4了，只能在docker仓库里查找一下是否有官方包了:<code>docker search mariadb</code>，有，很好，下载最新版本: <code>docker pull mariadb:10.5.4</code></p>
-<p>查看本地已有的所有镜像确认一下：<code>docker images</code>:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200709003233.png" alt=""></p>
-<p>运行数据库前，首先创建数据目录:<br><code>mkdir -p /Users/linjk/Documents/docker/mariadb/data</code> </p>
-<p>启动数据库服务: <code>docker run --name mariadb -p 3298:3306 -e MYSQL_ROOT_PASSWORD={root用户密码} -v /Users/linjk/Documents/docker/mariadb/data:/var/lib/mysql -d mariadb:10.5.4</code>，参数说明</p>
-<table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>参数说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–name</td>
-<td>运行的容器的名称</td>
-</tr>
-<tr>
-<td>-p</td>
-<td>主机端口：容器端口的映射关系</td>
-</tr>
-<tr>
-<td>-e</td>
-<td>设置数据库root用户的密码</td>
-</tr>
-<tr>
-<td>-v</td>
-<td>数据卷映射</td>
-</tr>
-<tr>
-<td>-d</td>
-<td>后台运行容器的模式</td>
-</tr>
-</tbody></table>
-<p>查看容器是否运行<code>docker ps -a</code>:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200709003808.png" alt=""></p>
-<blockquote>
-<p>如果需要容器在运行docker服务后自启动，可以配置：<code>docker container update --restart=always {容器id}</code><br>如果需要进入容器查看数据库更多信息，可以配置：<code>docker exec -it {容器Id} bash</code>，然后执行命令<code>mysql -uroot -proot密码</code>即可在容器内登录数据库。</p>
-</blockquote>
+        <p>在使用brew install opencv3后，进入python，引用cv2模块(试了几个都不行)出现如下错误:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234353.png" alt=""></p>
+<p>看了一下/usr/local/lib/python2.7/site-packages路径下，有这样一个软链接：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234415.png" alt=""></p>
+<p>说明cv2已经正确链接了，应该就是环境变量的配置了，修改”.bash_profile”配置文件：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234436.png" alt=""></p>
+<p>现在可以了：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234454.png" alt=""></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>

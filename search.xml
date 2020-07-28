@@ -4,6 +4,87 @@
   
     
     <entry>
+      <title>SpringBoot切换内置Web容器</title>
+      <link href="/2020/07/28/SpringBoot%E5%88%87%E6%8D%A2%E5%86%85%E7%BD%AEWeb%E5%AE%B9%E5%99%A8/"/>
+      <url>/2020/07/28/SpringBoot%E5%88%87%E6%8D%A2%E5%86%85%E7%BD%AEWeb%E5%AE%B9%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<p>Spring Boot默认的web容器为Tomcat，通过starter-web引入的，下面介绍如何替换默认的web容器：</p><ol><li><p>修改start-web排除tomcat的引入<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234733.png" alt=""></p></li><li><p>引入Jetty<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234744.png" alt=""></p></li></ol><p>正常启动如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234808.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+          <category> Springboot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Springboot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mac平台下python引用cv2错误处理</title>
+      <link href="/2020/07/28/Mac%E5%B9%B3%E5%8F%B0%E4%B8%8Bpython%E5%BC%95%E7%94%A8cv2%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/"/>
+      <url>/2020/07/28/Mac%E5%B9%B3%E5%8F%B0%E4%B8%8Bpython%E5%BC%95%E7%94%A8cv2%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<p>在使用brew install opencv3后，进入python，引用cv2模块(试了几个都不行)出现如下错误:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234353.png" alt=""></p><p>看了一下/usr/local/lib/python2.7/site-packages路径下，有这样一个软链接：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234415.png" alt=""></p><p>说明cv2已经正确链接了，应该就是环境变量的配置了，修改”.bash_profile”配置文件：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234436.png" alt=""></p><p>现在可以了：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234454.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+          <category> OpenCV </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OpenCV </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mac下一个不错的Gif图片生成软件--GIPHY</title>
+      <link href="/2020/07/28/Mac%E4%B8%8B%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%94%99%E7%9A%84Gif%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E8%BD%AF%E4%BB%B6-GIPHY/"/>
+      <url>/2020/07/28/Mac%E4%B8%8B%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%94%99%E7%9A%84Gif%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E8%BD%AF%E4%BB%B6-GIPHY/</url>
+      
+        <content type="html"><![CDATA[<ol><li><p>APP Store搜索下载：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728233904.png" alt=""></p></li><li><p>下载完安装后打开界面如下，它会显示一个取景框，我们可以把它移动到需要生成Gif区域并调整大小匹配区域，然后点击底部的红色即可开始录制：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728233936.png" alt=""></p></li><li><p>这里录制一个片段后，程序界面如下，左下角就是录制的片段：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234002.png" alt=""></p></li><li><p>点击录制好的片段，弹出如下窗口:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234022.png" alt=""></p></li><li><p>点击”SAVE AS…”，格式选择”Gif”，然后自定义名字和选择保存路径即可</p></li><li><p>上传Gif并显示如下【额……这里显示不了~】:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234044.png" alt=""></p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Mac </category>
+          
+          <category> Tools </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Tools </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>OpenJDK12源码编译</title>
       <link href="/2020/07/23/OpenJDK12%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/"/>
       <url>/2020/07/23/OpenJDK12%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/</url>
