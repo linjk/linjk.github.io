@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Vue+Webpack发布微信公众号在iOS打开加载慢或返回时会出现空白界面需要刷新进入问题解决</title>
+      <link href="/2020/07/28/Vue+Webpack%E5%8F%91%E5%B8%83%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%9C%A8iOS%E6%89%93%E5%BC%80%E5%8A%A0%E8%BD%BD%E6%85%A2%E6%88%96%E8%BF%94%E5%9B%9E%E6%97%B6%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%A9%BA%E7%99%BD%E7%95%8C%E9%9D%A2%E9%9C%80%E8%A6%81%E5%88%B7%E6%96%B0%E8%BF%9B%E5%85%A5%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/07/28/Vue+Webpack%E5%8F%91%E5%B8%83%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%9C%A8iOS%E6%89%93%E5%BC%80%E5%8A%A0%E8%BD%BD%E6%85%A2%E6%88%96%E8%BF%94%E5%9B%9E%E6%97%B6%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%A9%BA%E7%99%BD%E7%95%8C%E9%9D%A2%E9%9C%80%E8%A6%81%E5%88%B7%E6%96%B0%E8%BF%9B%E5%85%A5%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>使用Vue+Webpack开发微信公众号页面发布时，Android端打开就快很多，iOS端打开就很慢，登录进入主页后页面间切换偶尔会出现白屏，需要刷新才可以重新显示。调试会发现错误: can’t find variable: webpackjsonp，原来，Webpack在打包时用到的插件CommonsChunkPlugin会将相关文件分别打包成manifest、vendor和app三个js文件。</p><p>出现白屏估计是在iOS端的Webview加载时三个文件顺序不一样导致，而打开页面慢是因为manifest和vendor文件比app文件先加载。可注释解决，如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728235439.png" alt=""></p><p>对比了js目录下，有这个区别：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728235458.png" alt=""></p><p>在利用构建工具进行打包时，因为第三方引用模块代码通常很大，通常会将业务代码和第三方引用模块代码分开打包，从而利用浏览器的缓存区提高应用程序的首屏加载速度。</p><p>上面的CommonsChunkPlugin插件就是去抽取这些第三方的部分作为vendor.js独立打包，比较过打包后文件大小，未使用CommonsChunkPlugin的js目录大小会大两倍，文章标题出现的问题应该就是配置不对的问题，再好好了解下背后原理再试试先。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Frontend </category>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringBoot切换内置Web容器</title>
       <link href="/2020/07/28/SpringBoot%E5%88%87%E6%8D%A2%E5%86%85%E7%BD%AEWeb%E5%AE%B9%E5%99%A8/"/>
       <url>/2020/07/28/SpringBoot%E5%88%87%E6%8D%A2%E5%86%85%E7%BD%AEWeb%E5%AE%B9%E5%99%A8/</url>
