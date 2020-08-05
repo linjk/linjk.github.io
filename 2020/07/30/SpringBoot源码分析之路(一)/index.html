@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Mac下一个不错的Gif图片生成软件--GIPHY | Jim</title>
-  <meta name="keywords" content=" Tools ">
-  <meta name="description" content="Mac下一个不错的Gif图片生成软件--GIPHY | Jim">
+  <title>SpringBoot源码分析之路(一) | Jim</title>
+  <meta name="keywords" content=" Springboot ">
+  <meta name="description" content="SpringBoot源码分析之路(一) | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Steps:  Download Groovy Configure Enviroment【GROOVY_HOME】  groovysh类似node.js交互式功能界面，执行groovysh进入：输入?可以查看帮助。 groovyConsole命令行工具groovy: Sublime Text构建新建groovy构建方式输入如下命令并保存：然后”Tool”-“Build System”就有groov">
 <meta property="og:type" content="article">
@@ -630,9 +630,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Mac下一个不错的Gif图片生成软件-GIPHY" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-SpringBoot源码分析之路(一)" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Mac下一个不错的Gif图片生成软件--GIPHY</h1>
+        <h1 class="article-title">SpringBoot源码分析之路(一)</h1>
     
     <div class="article-meta">
         
@@ -642,9 +642,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Mac">Mac</a> > 
+            <a  data-rel="Java">Java</a> > 
             
-            <a  data-rel="Mac&lt;---&gt;Tools">Tools</a>
+            <a  data-rel="Java&lt;---&gt;Springboot">Springboot</a>
             
         </span>
         
@@ -652,19 +652,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">Tools</a>
+            <a class="color1">Springboot</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-28 23:41:40'>2020-07-28 23:37</time>
+            发布时间 : <time class="date" title='最后更新: 2020-07-30 22:31:56'>2020-07-30 21:17</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:146</span>
+        <span>字数:41</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -694,7 +694,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#源码下载与初步构建"><span class="toc-text">源码下载与初步构建</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -710,20 +710,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li><p>APP Store搜索下载：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728233904.png" alt=""></p>
-</li>
-<li><p>下载完安装后打开界面如下，它会显示一个取景框，我们可以把它移动到需要生成Gif区域并调整大小匹配区域，然后点击底部的红色即可开始录制：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728233936.png" alt=""></p>
-</li>
-<li><p>这里录制一个片段后，程序界面如下，左下角就是录制的片段：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234002.png" alt=""></p>
-</li>
-<li><p>点击录制好的片段，弹出如下窗口:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234022.png" alt=""></p>
-</li>
-<li><p>点击”SAVE AS…”，格式选择”Gif”，然后自定义名字和选择保存路径即可</p>
-</li>
-<li><p>上传Gif并显示如下【额……这里显示不了~】:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234044.png" alt=""></p>
-</li>
-</ol>
+        <h2 id="源码下载与初步构建"><a href="#源码下载与初步构建" class="headerlink" title="源码下载与初步构建"></a>源码下载与初步构建</h2><p><a href="https://github.com/spring-projects/spring-boot" target="_blank" rel="noopener">Springboot</a></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200730212258.png" alt=""></p>
+<p>下载完成后切换至v2.2.1.RELEASE的标签版本：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200730222108.png" alt=""></p>
+<p>然后构建打包：</p>
+<p><code>mvn clean package -Dmaven.test.skip=true -Pfast</code></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200730222500.png" alt=""></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
