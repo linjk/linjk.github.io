@@ -11,12 +11,12 @@
         <content type="html"><![CDATA[<p>windows平台下的文本文件拷贝到centos7下打开乱码，可以通过enca工具修改为utf-8格式</p><ol><li><p>下载enca<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232358.png" alt=""></p></li><li><p>转换即可<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232419.png" alt=""></p></li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
       
-        <tags>
-            
-            <tag> Linux </tag>
-            
-        </tags>
       
     </entry>
     
