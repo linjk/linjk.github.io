@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Docker镜像导出与导入 | Jim</title>
-  <meta name="keywords" content=" Docker ">
-  <meta name="description" content="Docker镜像导出与导入 | Jim">
+  <title>CENTOS7读取NTFS格式的移动硬盘和exFAT格式的U盘 | Jim</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="CENTOS7读取NTFS格式的移动硬盘和exFAT格式的U盘 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Boost，一个功能强大、跨平台、开源而且免费的C++程序库，可以在其官网了解更多。C++标准经过不断的升级完善，现在已经功能越来越吸引人了，Boost开发过程中也吸引了很多C++11新特性，从而更兼容C++的标准库了，这样，有什么理由不用它呢？虽然很多东西我们可以自己写，但是，借助功能稳定的库，可以提高生产力，节约程序员的时间，何乐不为？当然，并非让我们只是调用函数，传参数，完成任务就行了，如果">
 <meta property="og:type" content="article">
@@ -686,9 +686,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Docker镜像导出与导入" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CENTOS7读取NTFS格式的移动硬盘和exFAT格式的U盘" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Docker镜像导出与导入</h1>
+        <h1 class="article-title">CENTOS7读取NTFS格式的移动硬盘和exFAT格式的U盘</h1>
     
     <div class="article-meta">
         
@@ -698,29 +698,20 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Linux">Linux</a> > 
-            
-            <a  data-rel="Linux&lt;---&gt;Docker">Docker</a>
+            <a  data-rel="Linux">Linux</a>
             
         </span>
         
         
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color2">Docker</a>
-            
-        </span>
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-08-06 23:30:17'>2020-08-06 23:28</time>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-21 00:06:53'>2020-07-21 00:05</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:74</span>
+        <span>字数:49</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -750,7 +741,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NTFS"><span class="toc-text">NTFS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新阿里的yum源"><span class="toc-text">更新阿里的yum源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载ntfs依赖"><span class="toc-text">下载ntfs依赖</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exFat"><span class="toc-text">exFat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装nux仓库"><span class="toc-text">安装nux仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装exfat依赖"><span class="toc-text">安装exfat依赖</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -766,12 +757,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在拉取Docker镜像时，有时会很慢，这时，可以在其它电脑已下载好的导出，然后复制过来导入即可。</p>
-<p>导出镜像：</p>
-<p><code>docker save -o &lt;image_name&gt;.tar &lt;image_name&gt;:&lt;tag&gt;</code></p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721000619.png" alt=""></p>
-<p>导入镜像：</p>
-<p><code>docker load --input &lt;image_name&gt;.tar    或    docker load &lt; &lt;docker_name&gt;.tar</code></p>
+        <h2 id="NTFS"><a href="#NTFS" class="headerlink" title="NTFS"></a>NTFS</h2><h3 id="更新阿里的yum源"><a href="#更新阿里的yum源" class="headerlink" title="更新阿里的yum源"></a>更新阿里的yum源</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232909.png" alt=""></p>
+<h3 id="下载ntfs依赖"><a href="#下载ntfs依赖" class="headerlink" title="下载ntfs依赖"></a>下载ntfs依赖</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232923.png" alt=""></p>
+<h2 id="exFat"><a href="#exFat" class="headerlink" title="exFat"></a>exFat</h2><h3 id="安装nux仓库"><a href="#安装nux仓库" class="headerlink" title="安装nux仓库"></a>安装nux仓库</h3><p><code>sudo yum install -y http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm</code></p>
+<h3 id="安装exfat依赖"><a href="#安装exfat依赖" class="headerlink" title="安装exfat依赖"></a>安装exfat依赖</h3><p><code>sudo yum install exfat-utils fuse-exfat</code></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
