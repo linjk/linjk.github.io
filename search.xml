@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>CENTOS7转文本文件为UTF-8格式</title>
+      <link href="/2020/08/06/CENTOS7%E8%BD%AC%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E4%B8%BAUTF-8%E6%A0%BC%E5%BC%8F/"/>
+      <url>/2020/08/06/CENTOS7%E8%BD%AC%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E4%B8%BAUTF-8%E6%A0%BC%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p>windows平台下的文本文件拷贝到centos7下打开乱码，可以通过enca工具修改为utf-8格式</p><ol><li><p>下载enca<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232358.png" alt=""></p></li><li><p>转换即可<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232419.png" alt=""></p></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mac下Boost环境搭建</title>
       <link href="/2020/08/06/Mac%E4%B8%8BBoost%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
       <url>/2020/08/06/Mac%E4%B8%8BBoost%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>

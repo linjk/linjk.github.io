@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>TMS开发组件包-TAdvStringGrid表格控件 | Jim</title>
-  <meta name="keywords" content=" Delphi ">
-  <meta name="description" content="TMS开发组件包-TAdvStringGrid表格控件 | Jim">
+  <title>CENTOS7转文本文件为UTF-8格式 | Jim</title>
+  <meta name="keywords" content=" Linux ">
+  <meta name="description" content="CENTOS7转文本文件为UTF-8格式 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Boost，一个功能强大、跨平台、开源而且免费的C++程序库，可以在其官网了解更多。C++标准经过不断的升级完善，现在已经功能越来越吸引人了，Boost开发过程中也吸引了很多C++11新特性，从而更兼容C++的标准库了，这样，有什么理由不用它呢？虽然很多东西我们可以自己写，但是，借助功能稳定的库，可以提高生产力，节约程序员的时间，何乐不为？当然，并非让我们只是调用函数，传参数，完成任务就行了，如果">
 <meta property="og:type" content="article">
@@ -682,41 +682,31 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-TMS开发组件包-TAdvStringGrid表格控件" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CENTOS7转文本文件为UTF-8格式" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">TMS开发组件包-TAdvStringGrid表格控件</h1>
+        <h1 class="article-title">CENTOS7转文本文件为UTF-8格式</h1>
     
     <div class="article-meta">
         
         
-        
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="Windows">Windows</a> > 
-            
-            <a  data-rel="Windows&lt;---&gt;Delphi">Delphi</a>
-            
-        </span>
         
         
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color2">Delphi</a>
+            <a class="color1">Linux</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-20 23:24:57'>2020-07-20 23:19</time>
+            发布时间 : <time class="date" title='最后更新: 2020-08-06 23:24:26'>2020-08-06 23:23</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:389</span>
+        <span>字数:37</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -762,22 +752,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近项目涉及一些复杂表格显示的实现，尝试使用Dev Express的cxGrid控件多次还是没法实现想要的效果，后来发现，<a href="https://www.tmssoftware.com/site/products.asp?t=vclp" target="_blank" rel="noopener">TMS</a>开发组件包的TAdvStringGrid可以实现效果。这里举例来说明一下，例如，需要实现如下效果:</p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232036.png" alt=""></p>
-<p>  如上所示是一个3行4列的表格，其中，第一行的1、2列合并，第2行的2、3列合并，下面使用TAdvStringGrid来实现，步骤如下：</p>
-<ul>
-<li><p>新建一个VCL窗口项目，布局界面</p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232123.png" alt=""></p>
-<p>添加TAdvStringGrid控件，默认它是一个5列10行的空白表格，这里需要自定义数据，这里修改它的ColCount和RowCount属性为0，但是，默认还是一个1列1行的空白表格，这里可以不用理会。</p>
-<p>按钮”显示数据”点击后，就显示如上效果的表格。</p>
+        <p>windows平台下的文本文件拷贝到centos7下打开乱码，可以通过enca工具修改为utf-8格式</p>
+<ol>
+<li><p>下载enca<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232358.png" alt=""></p>
 </li>
-<li><p>实现如上Excel表格展示效果</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm1</span>.<span class="title">btn1Click</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">        count: Integer;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  AdvStringGrid1.ColCount := <span class="number">0</span>;</span><br><span class="line">  AdvStringGrid1.RowCount := <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 初始化行列 (3行4列)</span></span><br><span class="line">  <span class="keyword">for</span> count := <span class="number">0</span> <span class="keyword">to</span> <span class="number">1</span> <span class="keyword">do</span>              <span class="comment">// 因为第一行是表格头，因此就2行，从0开始数，所以为2-1=1，行与列一样的道理。</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">      AdvStringGrid1.AddRow;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line">  <span class="keyword">for</span> count := <span class="number">0</span> <span class="keyword">to</span> <span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">      AdvStringGrid1.AddColumn;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.MergeCells(<span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">0</span>] := <span class="string">'1'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">2</span>, <span class="number">0</span>] := <span class="string">'2'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">0</span>] := <span class="string">'3'</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.MergeCells(<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">1</span>] := <span class="string">'4'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">1</span>, <span class="number">1</span>] := <span class="string">'5'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">1</span>] := <span class="string">'6'</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">2</span>] := <span class="string">'7'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">1</span>, <span class="number">2</span>] := <span class="string">'8'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">2</span>, <span class="number">2</span>] := <span class="string">'9'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">2</span>] := <span class="string">'10'</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
-
-<p>运行如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232345.png" alt=""></p>
-<p>效果实现，其他的TMS组件可以自己再尝试使用即可。</p>
+<li><p>转换即可<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232419.png" alt=""></p>
 </li>
-</ul>
+</ol>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
