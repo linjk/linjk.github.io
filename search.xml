@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Mac下Boost环境搭建</title>
+      <link href="/2020/08/06/Mac%E4%B8%8BBoost%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+      <url>/2020/08/06/Mac%E4%B8%8BBoost%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+      
+        <content type="html"><![CDATA[<p>Boost，一个功能强大、跨平台、开源而且免费的C++程序库，可以在其<a href="http://www.boost.org" target="_blank" rel="noopener">官网</a>了解更多。C++标准经过不断的升级完善，现在已经功能越来越吸引人了，Boost开发过程中也吸引了很多C++11新特性，从而更兼容C++的标准库了，这样，有什么理由不用它呢？虽然很多东西我们可以自己写，但是，借助功能稳定的库，可以提高生产力，节约程序员的时间，何乐不为？当然，并非让我们只是调用函数，传参数，完成任务就行了，如果不去了解下背后原理，那只能称之为码农，而不是程序员了。<br>由于开发环境基于Mac，那就基于它来搭建一个开发平台，来体验boost库的设计美妙和功能强大吧~：</p><ol><li><p>首先，需要下载boost的源码包，这里使用这个版本：boost_1_60_0.tar.bz2</p></li><li><p>解压，目录结构如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806231652.png" alt=""><br>boos子目录下就是其源码了，它们按照功能划分，很清晰。</p></li><li><p>编译。编译器至少应支持C++98标准，这里使用gcc编译器，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806231726.png" alt=""></p></li><li><p>安装：<br>执行解压目录下文件进行配置：<code>./bootstrap.sh</code><br>执行<code>sudo ./b2 --buildtype=complete install</code>进行boost所有库的安装，在mac下安装后头文件路径为:/usr/local/include/boost，库路径为/usr/local/lib</p></li><li><p>构建工具安装<br>构建工具可以使用make、cmake等，这里使用boost自带的b2，它使用jamroot来配置、管理代码，然后每个模块子目录下都有jamfile。</p></li></ol><ul><li>cd tools/build</li><li>./booststrap.sh</li><li>sudo ./b2 install</li></ul><p>6.测试代码：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806231928.png" alt=""></p><p>7.编译运行：<br>目录结构如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806231952.png" alt=""><br>jamroot和jamfile文件内容分别如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232022.png" alt=""><br>jamroot说明了整个目录结构的编译规则，jamfile说明了文件的执行输出，如exe，unit-test等，现在需要测试main.cpp，进入te目录下执行b2命令即可，输出，执行后目录结构如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232053.png" alt=""><br>可以看到，在jamfile声明了unit-test，在执行b2命令时也进行了单元测试，这里默认生成debug版本的输出文件，如果要发布，执行”b2 release”即可。这里看到输出boost版本为106000，现在可以使用boost来进行开发了。<br>(也可以执行”g++ -o main.out main.cpp”，注意，在ubuntu下需要加上-Istdc++，即：g++ -o main.out main.cpp -Istdc++)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+          <category> Boost </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Boost </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Windows安装配置ftp服务器</title>
       <link href="/2020/08/06/Windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEftp%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
       <url>/2020/08/06/Windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEftp%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
