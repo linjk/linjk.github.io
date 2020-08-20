@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Mac下Boost环境搭建 | Jim</title>
-  <meta name="keywords" content=" Boost ">
-  <meta name="description" content="Mac下Boost环境搭建 | Jim">
+  <title>CUDA入门(一)环境安装 | Jim</title>
+  <meta name="keywords" content=" CUDA ">
+  <meta name="description" content="CUDA入门(一)环境安装 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="NTFS更新阿里的yum源 下载ntfs依赖 exFat安装nux仓库sudo yum install -y http:&#x2F;&#x2F;li.nux.ro&#x2F;download&#x2F;nux&#x2F;dextop&#x2F;el7&#x2F;x86_64&#x2F;nux-dextop-release-0-5.el7.nux.noarch.rpm 安装exfat依赖sudo yum install exfat-utils fuse-exfat">
 <meta property="og:type" content="article">
@@ -709,9 +709,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Mac下Boost环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CUDA入门-一-环境安装" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Mac下Boost环境搭建</h1>
+        <h1 class="article-title">CUDA入门(一)环境安装</h1>
     
     <div class="article-meta">
         
@@ -723,7 +723,7 @@
             
             <a  data-rel="C++">C++</a> > 
             
-            <a  data-rel="C++&lt;---&gt;Boost">Boost</a>
+            <a  data-rel="C++&lt;---&gt;CUDA">CUDA</a>
             
         </span>
         
@@ -731,19 +731,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">Boost</a>
+            <a class="color5">CUDA</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-08-06 23:21:20'>2020-08-06 23:14</time>
+            发布时间 : <time class="date" title='最后更新: 2020-08-20 21:42:11'>2020-08-20 21:33</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:601</span>
+        <span>字数:625</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -789,26 +789,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Boost，一个功能强大、跨平台、开源而且免费的C++程序库，可以在其<a href="http://www.boost.org" target="_blank" rel="noopener">官网</a>了解更多。C++标准经过不断的升级完善，现在已经功能越来越吸引人了，Boost开发过程中也吸引了很多C++11新特性，从而更兼容C++的标准库了，这样，有什么理由不用它呢？虽然很多东西我们可以自己写，但是，借助功能稳定的库，可以提高生产力，节约程序员的时间，何乐不为？当然，并非让我们只是调用函数，传参数，完成任务就行了，如果不去了解下背后原理，那只能称之为码农，而不是程序员了。<br>由于开发环境基于Mac，那就基于它来搭建一个开发平台，来体验boost库的设计美妙和功能强大吧~：</p>
-<ol>
-<li><p>首先，需要下载boost的源码包，这里使用这个版本：boost_1_60_0.tar.bz2</p>
-</li>
-<li><p>解压，目录结构如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806231652.png" alt=""><br>boos子目录下就是其源码了，它们按照功能划分，很清晰。</p>
-</li>
-<li><p>编译。编译器至少应支持C++98标准，这里使用gcc编译器，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806231726.png" alt=""></p>
-</li>
-<li><p>安装：<br>执行解压目录下文件进行配置：<code>./bootstrap.sh</code><br>执行<code>sudo ./b2 --buildtype=complete install</code>进行boost所有库的安装，在mac下安装后头文件路径为:/usr/local/include/boost，库路径为/usr/local/lib</p>
-</li>
-<li><p>构建工具安装<br>构建工具可以使用make、cmake等，这里使用boost自带的b2，它使用jamroot来配置、管理代码，然后每个模块子目录下都有jamfile。</p>
-</li>
-</ol>
-<ul>
-<li>cd tools/build</li>
-<li>./booststrap.sh</li>
-<li>sudo ./b2 install</li>
-</ul>
-<p>6.测试代码：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806231928.png" alt=""></p>
-<p>7.编译运行：<br>目录结构如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806231952.png" alt=""><br>jamroot和jamfile文件内容分别如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232022.png" alt=""><br>jamroot说明了整个目录结构的编译规则，jamfile说明了文件的执行输出，如exe，unit-test等，现在需要测试main.cpp，进入te目录下执行b2命令即可，输出，执行后目录结构如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232053.png" alt=""><br>可以看到，在jamfile声明了unit-test，在执行b2命令时也进行了单元测试，这里默认生成debug版本的输出文件，如果要发布，执行”b2 release”即可。这里看到输出boost版本为106000，现在可以使用boost来进行开发了。<br>(也可以执行”g++ -o main.out main.cpp”，注意，在ubuntu下需要加上-Istdc++，即：g++ -o main.out main.cpp -Istdc++)</p>
+        <p>最近进行一些项目，发现单纯用CPU来处理，感觉好慢……后来听说了CUDA这玩意挺好，就摆弄下，之前小小用过一下MPI，但是因为忙，没怎么系统去使用，所以思维还没完全转变过来，对比了一下，CUDA对于更好使用与理解并行编程很不错，就先从CUDA好好入门吧。</p>
+<p>台式机原来是核显，网上看了看，最终入手了<strong>GT730K</strong>这款显卡，买来后，安装到主板上即可，注意，视频线要接新的显卡输出信号口，第一次开机，系统还没检测到显卡，开机使用了一会，系统就自己安装好驱动了，我还没使用提供的驱动盘安装，驱动安装好后，显示如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213438.png" alt=""></p>
+<p>查看显卡支持的CUDA版本，首先打开NVIDIA的控制面板，然后点击“帮助”–“系统信息”，在弹出窗口选择“组件”，可以看到，当前显卡支持CUDA Tool kit的版本:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213522.png" alt=""></p>
+<p>然后去<a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">NVIDIA</a>下载对应版本的开发工具包，下载后如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213601.png" alt=""><br>双击运行，提示解压保存路径，选一个路径即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213649.png" alt=""></p>
+<p>解压后出现如下界面：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213716.png" alt=""></p>
+<p>在这一步会检测你的显卡是否支持CUDA，如果不支持，就不能下一步了，按照提示一步步操作，即可，中间提示是否安装Visual Studio插件，为了方便开发，都安装了，但是，目前NVIDIA开发包最高只支持到2015，最新的Visual Studio 2017暂时还不支持。安装完成：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213753.png" alt=""></p>
+<p>安装后，有一些官方提供的例子：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213822.png" alt=""></p>
+<p>打开Samples_vs2015.sln来看看，好多例程：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213848.png" alt=""></p>
+<p>运行SimpleTexture3D看看如何：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213917.png" alt=""></p>
+<p>运行如下，图是动的，这里只截取静态的:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213940.png" alt=""></p>
+<p>另外，再看看deviceQuery运行结果。它输出了这个显卡的信息：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214012.png" alt=""></p>
+<p>算一下计算能力：384 x 0.96=364.8GFLOPS(FLOPS是Floating-point Operations Per Second每秒所执行的浮点运算次数的缩写，它是一个衡量计算能力的量，GFLOPS就是Giga Floating-point Operations Per Second，即每秒10亿次的浮点运算数)，再看看我电脑原来CPU的计算能力:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214106.png" alt=""></p>
+<p>2.7 x 4=10.8, GPU的运算能力差不多是CPU的(364.8/10.8=33.7777777…..)34倍了！！！</p>
+<p>再看看新建项目时，可以看到，有NVIDIA的模板了:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214140.png" alt=""></p>
+<p>上面都运行可以，说明环境已经配置成功，后面就可以进入实际开发使用阶段。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>

@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>CUDA入门(一)环境安装</title>
+      <link href="/2020/08/20/CUDA%E5%85%A5%E9%97%A8-%E4%B8%80-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"/>
+      <url>/2020/08/20/CUDA%E5%85%A5%E9%97%A8-%E4%B8%80-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/</url>
+      
+        <content type="html"><![CDATA[<p>最近进行一些项目，发现单纯用CPU来处理，感觉好慢……后来听说了CUDA这玩意挺好，就摆弄下，之前小小用过一下MPI，但是因为忙，没怎么系统去使用，所以思维还没完全转变过来，对比了一下，CUDA对于更好使用与理解并行编程很不错，就先从CUDA好好入门吧。</p><p>台式机原来是核显，网上看了看，最终入手了<strong>GT730K</strong>这款显卡，买来后，安装到主板上即可，注意，视频线要接新的显卡输出信号口，第一次开机，系统还没检测到显卡，开机使用了一会，系统就自己安装好驱动了，我还没使用提供的驱动盘安装，驱动安装好后，显示如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213438.png" alt=""></p><p>查看显卡支持的CUDA版本，首先打开NVIDIA的控制面板，然后点击“帮助”–“系统信息”，在弹出窗口选择“组件”，可以看到，当前显卡支持CUDA Tool kit的版本:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213522.png" alt=""></p><p>然后去<a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">NVIDIA</a>下载对应版本的开发工具包，下载后如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213601.png" alt=""><br>双击运行，提示解压保存路径，选一个路径即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213649.png" alt=""></p><p>解压后出现如下界面：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213716.png" alt=""></p><p>在这一步会检测你的显卡是否支持CUDA，如果不支持，就不能下一步了，按照提示一步步操作，即可，中间提示是否安装Visual Studio插件，为了方便开发，都安装了，但是，目前NVIDIA开发包最高只支持到2015，最新的Visual Studio 2017暂时还不支持。安装完成：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213753.png" alt=""></p><p>安装后，有一些官方提供的例子：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213822.png" alt=""></p><p>打开Samples_vs2015.sln来看看，好多例程：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213848.png" alt=""></p><p>运行SimpleTexture3D看看如何：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213917.png" alt=""></p><p>运行如下，图是动的，这里只截取静态的:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213940.png" alt=""></p><p>另外，再看看deviceQuery运行结果。它输出了这个显卡的信息：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214012.png" alt=""></p><p>算一下计算能力：384 x 0.96=364.8GFLOPS(FLOPS是Floating-point Operations Per Second每秒所执行的浮点运算次数的缩写，它是一个衡量计算能力的量，GFLOPS就是Giga Floating-point Operations Per Second，即每秒10亿次的浮点运算数)，再看看我电脑原来CPU的计算能力:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214106.png" alt=""></p><p>2.7 x 4=10.8, GPU的运算能力差不多是CPU的(364.8/10.8=33.7777777…..)34倍了！！！</p><p>再看看新建项目时，可以看到，有NVIDIA的模板了:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214140.png" alt=""></p><p>上面都运行可以，说明环境已经配置成功，后面就可以进入实际开发使用阶段。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+          <category> CUDA </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CUDA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CentOS7正确配置了samba服务，Windows能登陆当提示没权限问题解决</title>
       <link href="/2020/08/06/CentOS7%E6%AD%A3%E7%A1%AE%E9%85%8D%E7%BD%AE%E4%BA%86samba%E6%9C%8D%E5%8A%A1%EF%BC%8CWindows%E8%83%BD%E7%99%BB%E9%99%86%E5%BD%93%E6%8F%90%E7%A4%BA%E6%B2%A1%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
       <url>/2020/08/06/CentOS7%E6%AD%A3%E7%A1%AE%E9%85%8D%E7%BD%AE%E4%BA%86samba%E6%9C%8D%E5%8A%A1%EF%BC%8CWindows%E8%83%BD%E7%99%BB%E9%99%86%E5%BD%93%E6%8F%90%E7%A4%BA%E6%B2%A1%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
