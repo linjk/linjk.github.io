@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>ANTLR(一) | Jim</title>
-  <meta name="keywords" content=" ANTLR ">
-  <meta name="description" content="ANTLR(一) | Jim">
+  <title>Linux下截屏软件SnapShot | Jim</title>
+  <meta name="keywords" content=" tools ">
+  <meta name="description" content="Linux下截屏软件SnapShot | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Dlib是一个C++编写的工具包，它包含了机器学习算法以及一些用来解决现实复杂问题的工具，可以广泛应用于机器人、嵌入式设备、手机，甚至高性能计算中，可以在其官网了解更多。这里下载它来试用一下，下载后解压，目录结构如下: 在examples目录下是C++的一些例子，我们可以参考来学习下怎么使用： 下面基于这个库来检测一下人脸的特征数据，使用Eclipse For CPP IDE新建一个空的C++的M">
 <meta property="og:type" content="article">
@@ -761,9 +761,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-ANTLR(一)" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Linux下截屏软件SnapShot" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">ANTLR(一)</h1>
+        <h1 class="article-title">Linux下截屏软件SnapShot</h1>
     
     <div class="article-meta">
         
@@ -773,9 +773,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Tools">Tools</a> > 
+            <a  data-rel="Linux">Linux</a> > 
             
-            <a  data-rel="Tools&lt;---&gt;ANTLR">ANTLR</a>
+            <a  data-rel="Linux&lt;---&gt;tools">tools</a>
             
         </span>
         
@@ -783,19 +783,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">ANTLR</a>
+            <a class="color1">tools</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-15 22:45:53'>2020-07-15 21:43</time>
+            发布时间 : <time class="date" title='最后更新: 2020-08-20 21:52:53'>2020-08-20 21:52</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:398</span>
+        <span>字数:38</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -825,7 +825,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载安装"><span class="toc-text">下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门体验"><span class="toc-text">入门体验</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -841,17 +841,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://www.antlr.org" target="_blank" rel="noopener">ANTLR</a>是基于Java编写的，一款强大的语法分析器生成工具，可用于读取、处理、执行和翻译结构化文本或二进制文件。除了间接左递归，ANTLR 4几乎能处理任何语法。</p>
-<h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>安装很简单，下载最新jar包即可，该jar包包含了运行ANTLR的工具和编译、执行ANTLR产生的识别程序所依赖的全部运行库，即ANTLR工具将语法文件转换成可以识别该语法文件所描述的语言的程序。</p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715220716.png" alt=""></p>
-<p>下载好后，还需配置CLASSPATH使得Java程序能找到ANTLR工具和运行库:<code>export CLASSPATH=&quot;.:/Users/linjk/Documents/usr/services/antlr-4.8-complete.jar:$CLASSPATH&quot;</code></p>
-<p>在shell的rc文件配置别名，方便启动：<code>alias antlr4=&#39;java -jar /Users/linjk/Documents/usr/services/antlr-4.8-complete.jar&#39;</code>，配置调试工具: <code>alias grun=&#39;java org.antlr.v4.gui.TestRig&#39;</code></p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715220953.png" alt=""></p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715221051.png" alt=""></p>
-<h2 id="入门体验"><a href="#入门体验" class="headerlink" title="入门体验"></a>入门体验</h2><p>为了简单，定义一个能识别类似hello world或hello jim的词组的语法：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715221847.png" alt=""></p>
-<p>接下来编译该语法文件：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715222023.png" alt=""><br>提示不匹配，语法名字和文件名字应一致，修改一致后：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715222204.png" alt=""></p>
-<p>它生成了antlrHelloParser.java和antlrHelloLexer.java组成的、可以运行的语法识别程序。(这里还缺少一个main程序来触发语言识别过程)</p>
-<p>然后编译生成class文件<code>javac -g *.java</code>，<code>grun antlrHello r -tokens</code>来运行：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715223921.png" alt=""><br>运行后，输入hello world，然后ctrl+d来输入文件结束符，因为使用了选项<code>-r tokens</code>，所以上面打印出来全部的词法符号的列表。还可以导出语法分析树：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200715224424.png" alt=""></p>
+        <p>Linux下一款不错的截屏软件： Snap Shot</p>
+<p>执行<code>sudo yum install snapshot</code>进行安装，下载完成后可以在应用程序里打开。 </p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>

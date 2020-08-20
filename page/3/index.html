@@ -6,32 +6,24 @@
   <meta name="keywords" content="">
   <meta name="description" content="Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="最近进行一些项目，发现单纯用CPU来处理，感觉好慢……后来听说了CUDA这玩意挺好，就摆弄下，之前小小用过一下MPI，但是因为忙，没怎么系统去使用，所以思维还没完全转变过来，对比了一下，CUDA对于更好使用与理解并行编程很不错，就先从CUDA好好入门吧。 台式机原来是核显，网上看了看，最终入手了GT730K这款显卡，买来后，安装到主板上即可，注意，视频线要接新的显卡输出信号口，第一次开机，系统还没">
+<meta name="description" content="Dlib是一个C++编写的工具包，它包含了机器学习算法以及一些用来解决现实复杂问题的工具，可以广泛应用于机器人、嵌入式设备、手机，甚至高性能计算中，可以在其官网了解更多。这里下载它来试用一下，下载后解压，目录结构如下: 在examples目录下是C++的一些例子，我们可以参考来学习下怎么使用： 下面基于这个库来检测一下人脸的特征数据，使用Eclipse For CPP IDE新建一个空的C++的M">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CUDA入门(一)环境安装">
-<meta property="og:url" content="http://yoursite.com/2020/08/20/CUDA%E5%85%A5%E9%97%A8-%E4%B8%80-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:title" content="人脸特征检测--基于DLIB库">
+<meta property="og:url" content="http://yoursite.com/2020/08/20/%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B-%E5%9F%BA%E4%BA%8EDLIB%E5%BA%93/index.html">
 <meta property="og:site_name" content="Jim">
-<meta property="og:description" content="最近进行一些项目，发现单纯用CPU来处理，感觉好慢……后来听说了CUDA这玩意挺好，就摆弄下，之前小小用过一下MPI，但是因为忙，没怎么系统去使用，所以思维还没完全转变过来，对比了一下，CUDA对于更好使用与理解并行编程很不错，就先从CUDA好好入门吧。 台式机原来是核显，网上看了看，最终入手了GT730K这款显卡，买来后，安装到主板上即可，注意，视频线要接新的显卡输出信号口，第一次开机，系统还没">
+<meta property="og:description" content="Dlib是一个C++编写的工具包，它包含了机器学习算法以及一些用来解决现实复杂问题的工具，可以广泛应用于机器人、嵌入式设备、手机，甚至高性能计算中，可以在其官网了解更多。这里下载它来试用一下，下载后解压，目录结构如下: 在examples目录下是C++的一些例子，我们可以参考来学习下怎么使用： 下面基于这个库来检测一下人脸的特征数据，使用Eclipse For CPP IDE新建一个空的C++的M">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213438.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213522.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213601.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213649.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213716.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213753.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213822.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213848.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213917.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213940.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214012.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214106.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214140.png">
-<meta property="article:published_time" content="2020-08-20T13:33:04.000Z">
-<meta property="article:modified_time" content="2020-08-20T13:42:11.733Z">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214502.png">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214527.png">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214603.png">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214649.png">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214832.png">
+<meta property="article:published_time" content="2020-08-20T13:43:53.000Z">
+<meta property="article:modified_time" content="2020-08-20T13:49:07.417Z">
 <meta property="article:author" content="Lin Jingke">
-<meta property="article:tag" content="CUDA">
+<meta property="article:tag" content="dlib">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213438.png">
+<meta name="twitter:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214502.png">
 
 
 <link rel="icon" href="/img/head.jpg">
@@ -115,7 +107,7 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(26)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(28)</small></div></li>
     
         
             
@@ -155,7 +147,7 @@
     
         
             
-            <li><div data-rel="Linux"><i class="fold iconfont icon-right"></i>Linux<small>(7)</small></div>
+            <li><div data-rel="Linux"><i class="fold iconfont icon-right"></i>Linux<small>(8)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -164,6 +156,10 @@
                         </li>
                             
                         <li><div data-rel="Linux<--->OpenResty">OpenResty<small>(2)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Linux<--->tools">tools<small>(1)</small></div>
                             
                         </li>
                             
@@ -287,11 +283,11 @@
     
         
             
-            <li><div data-rel="Frontend"><i class="fold iconfont icon-right"></i>Frontend<small>(1)</small></div>
+            <li><div data-rel="Frontend"><i class="fold iconfont icon-right"></i>Frontend<small>(2)</small></div>
                 
                     <ul class="sub hide">
                         
-                        <li><div data-rel="Frontend<--->Vue">Vue<small>(1)</small></div>
+                        <li><div data-rel="Frontend<--->Vue">Vue<small>(2)</small></div>
                             
                         </li>
                             
@@ -377,6 +373,10 @@
             
         
     
+        
+            
+        
+    
 </ul>
 <div class="left-bottom">
     <div class="menus">
@@ -387,8 +387,8 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/2020/07/05/AboutMe/">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="26">
-<input type="hidden" id="yelog_site_word_count" value="6.7k">
+<input type="hidden" id="yelog_site_posts_number" value="28">
+<input type="hidden" id="yelog_site_word_count" value="6.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -498,6 +498,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tools</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Tools</a>
             </li>
         
@@ -515,6 +519,22 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        <a  class="全部文章 Frontend Vue "
+           href="/2020/08/20/Vue-ElementUI%E9%87%8D%E7%BD%AE%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%E8%87%B3%E5%88%9D%E5%A7%8B%E5%80%BC/"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="Vue+ElementUI重置表单数据至初始值">Vue+ElementUI重置表单数据至初始值</span>
+            <span class="post-date" title="2020-08-20 21:54:52">2020/08/20</span>
+        </a>
+        
+        <a  class="全部文章 Linux tools "
+           href="/2020/08/20/Linux%E4%B8%8B%E6%88%AA%E5%B1%8F%E8%BD%AF%E4%BB%B6SnapShot/"
+           data-tag="tools"
+           data-author="" >
+            <span class="post-title" title="Linux下截屏软件SnapShot">Linux下截屏软件SnapShot</span>
+            <span class="post-date" title="2020-08-20 21:52:02">2020/08/20</span>
+        </a>
         
         <a  class="全部文章 C++ dlib "
            href="/2020/08/20/%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B-%E5%9F%BA%E4%BA%8EDLIB%E5%BA%93/"
