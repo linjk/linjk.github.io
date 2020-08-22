@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Docker镜像导出与导入 | Jim</title>
-  <meta name="keywords" content=" Docker ">
-  <meta name="description" content="Docker镜像导出与导入 | Jim">
+  <title>Java序列化使用jackson时首字母变成小写问题解决 | Jim</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Java序列化使用jackson时首字母变成小写问题解决 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="最近进行一些项目，发现单纯用CPU来处理，感觉好慢……后来听说了CUDA这玩意挺好，就摆弄下，之前小小用过一下MPI，但是因为忙，没怎么系统去使用，所以思维还没完全转变过来，对比了一下，CUDA对于更好使用与理解并行编程很不错，就先从CUDA好好入门吧。 台式机原来是核显，网上看了看，最终入手了GT730K这款显卡，买来后，安装到主板上即可，注意，视频线要接新的显卡输出信号口，第一次开机，系统还没">
 <meta property="og:type" content="article">
@@ -777,9 +777,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Docker镜像导出与导入" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Java序列化使用jackson时首字母变成小写问题解决" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Docker镜像导出与导入</h1>
+        <h1 class="article-title">Java序列化使用jackson时首字母变成小写问题解决</h1>
     
     <div class="article-meta">
         
@@ -789,29 +789,20 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Linux">Linux</a> > 
-            
-            <a  data-rel="Linux&lt;---&gt;Docker">Docker</a>
+            <a  data-rel="Java">Java</a>
             
         </span>
         
         
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color2">Docker</a>
-            
-        </span>
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-08-23 00:18:01'>2020-08-23 00:16</time>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-21 00:06:53'>2020-07-21 00:05</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:74</span>
+        <span>字数:52</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -857,12 +848,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在拉取Docker镜像时，有时会很慢，这时，可以在其它电脑已下载好的导出，然后复制过来导入即可。</p>
-<p>导出镜像：</p>
-<p><code>docker save -o &lt;image_name&gt;.tar &lt;image_name&gt;:&lt;tag&gt;</code></p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721000619.png" alt=""></p>
-<p>导入镜像：</p>
-<p><code>docker load --input &lt;image_name&gt;.tar    或    docker load &lt; &lt;docker_name&gt;.tar</code></p>
+        <p>在使用jackson反序列化json字符串到对象时，发现，属性的首字母会变成小写，从而造成找不到属性的异常：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200823001737.png" alt=""></p>
+<p>可以在属性加如下注解解决：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200823001756.png" alt=""></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>

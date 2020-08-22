@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Java序列化使用jackson时首字母变成小写问题解决</title>
+      <link href="/2020/08/23/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%BD%BF%E7%94%A8jackson%E6%97%B6%E9%A6%96%E5%AD%97%E6%AF%8D%E5%8F%98%E6%88%90%E5%B0%8F%E5%86%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/08/23/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%BD%BF%E7%94%A8jackson%E6%97%B6%E9%A6%96%E5%AD%97%E6%AF%8D%E5%8F%98%E6%88%90%E5%B0%8F%E5%86%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>在使用jackson反序列化json字符串到对象时，发现，属性的首字母会变成小写，从而造成找不到属性的异常：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200823001737.png" alt=""></p><p>可以在属性加如下注解解决：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200823001756.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue+ElementUI重置表单数据至初始值</title>
       <link href="/2020/08/20/Vue-ElementUI%E9%87%8D%E7%BD%AE%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%E8%87%B3%E5%88%9D%E5%A7%8B%E5%80%BC/"/>
       <url>/2020/08/20/Vue-ElementUI%E9%87%8D%E7%BD%AE%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%E8%87%B3%E5%88%9D%E5%A7%8B%E5%80%BC/</url>
