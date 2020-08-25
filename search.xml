@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Neural Networks - 感知器</title>
+      <link href="/2020/08/26/Neural-Networks-%E6%84%9F%E7%9F%A5%E5%99%A8/"/>
+      <url>/2020/08/26/Neural-Networks-%E6%84%9F%E7%9F%A5%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<p>感知器(perception)是生物神经细胞的简单抽象，在百度上查一下“神经细胞”，得到如下图:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826002837.png" alt=""></p><p>其中，树突用于获取外界信息刺激，细胞核用于对信息进行处理，轴突连接其他神经元，进行信息输出的传递(传递方向为<em>单向传递</em>)，基于这个概念，抽象出感知器来模拟神经细胞的这个活动。</p><p>单层感知器是一种最简单的单层前向人工神经网络，所谓单层，即除输入层和输出层之外，仅包含一层权值可变的神经元节点，主要用于处理<em>线性可分的二分类问题</em>（两类模式线性可分，算法一定收敛），其基本结构如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826002935.png" alt=""></p><p>x1, x2, x3代表输入层(也叫感知层)，为3个神经元节点，负责引入外部信息，然后中间圆圈代表处理层，其具有信息处理能力，类似细胞核，工作过程就是一个感知器接收x1、x2、x3这三个二进制输入，并产生一个二进制输出。</p><p>考虑如下观点，五一快到了，你想去上海旅游，有3个考虑因素：</p><ol><li>上海天气怎么样？</li><li>住宿地方是否出行便捷？</li><li>约好的朋友是否有空陪同去？</li></ol><p>这三个因素对应x1, x2, x3，去上海对应output，是否要去取一个阈值5吧，然后把3个因素分别分配一个权重(权重表示相应输入对于输出重要性的实数)：3, 4, 3，也就是说，住宿的地方是否出行便捷对于最终是否去上海影响更大，然后每个因素乘以对应权重(假设天气不好：0，出行便捷:1，不陪同0)，得到结果为: <code>0*3 + 1*4 * 0*3 = 4 &lt; 5</code>，结果就是不去，类似可调整数值，而阈值代表了你想要去上海旅游的欲望，_值越小代表越愿意去_，因此，单层感知器可如下描述：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826003122.png" alt=""></p><p>看到这个表达式，是不是感觉类似符号函数？其实，可以将感知器看作依据权重来做出决定的设备。</p><p>令输出为y, 阈值为b(-threshold)，输入对应x，权重对应w，则：<br><code>y = w1*x1 + w2*x2 + w3*x3 + b</code></p><p>这就是一条直线了，对于二维平面，感知器就对应一条直线，这样在平面上的数据就被这条直线分类了，大部分情况，是收敛的，特殊情况下，数据集会存在不收敛，这样就要调整数据集了。</p><p>下面用MatLab新建一个感知器来测试一下：</p><h3 id="A-样本数据准备："><a href="#A-样本数据准备：" class="headerlink" title="A. 样本数据准备："></a>A. 样本数据准备：</h3><p>（天气好1，不好0；  出行便捷1，不便捷0；   陪同1，不陪同0;  出行1，不出行0； 天气权重3， 便捷权重4， 陪同3，阈值5）<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826003701.png" alt="">                 </p><p>这些输入表示为一个有3个元素的输入向量，输入元素的取值范围为[0 1]:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826003730.png" alt=""></p><h3 id="B-创建感知器-设计为单层，单神经元的神经网络-："><a href="#B-创建感知器-设计为单层，单神经元的神经网络-：" class="headerlink" title="B. 创建感知器(设计为单层，单神经元的神经网络)："></a>B. 创建感知器(设计为单层，单神经元的神经网络)：</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826003812.png" alt=""></p><p>newp函数用于生成一个感知器神经网络</p><h3 id="C-定义输入9-3样本向量"><a href="#C-定义输入9-3样本向量" class="headerlink" title="C. 定义输入9*3样本向量:"></a>C. 定义输入9*3样本向量:</h3><p>把上面样本数据定义为一个向量：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826003843.png" alt=""></p><h3 id="D-定义目标向量："><a href="#D-定义目标向量：" class="headerlink" title="D. 定义目标向量："></a>D. 定义目标向量：</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826003927.png" alt=""></p><h3 id="E-训练单层感知器神经网络"><a href="#E-训练单层感知器神经网络" class="headerlink" title="E. 训练单层感知器神经网络"></a>E. 训练单层感知器神经网络</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826003943.png" alt=""></p><p>train函数用于训练创建好的感知器网络</p><p>输入训练后，弹出结果如右边窗口所示，看到感知器经过4次训练，使输出达到目标值，点击”Performance”，可以查看训练误差曲线：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826004011.png" alt=""></p><h3 id="F-测试我们的感知器："><a href="#F-测试我们的感知器：" class="headerlink" title="F.测试我们的感知器："></a>F.测试我们的感知器：</h3><p>准备数据，分别对应上面样本数据的去与不去, 然后开始测试仿真：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826004040.png" alt=""></p><p>可以得到结果就是1-&gt;去， 0-&gt;不去，可见设计的感知器达到目标需求。</p><p>小结一下，单层感知器的几个缺陷：</p><ol><li>感知器的激活函数使用阈值函数，使得输出只能取两个值(1/-1或0/1)，这限制了在分类种类上的扩展</li><li>感知器网络只对线性可分的问题收敛，如果问题不可分，感知器无法解决</li><li>感知器的学习算法只对单层有效，多层时无法直接套用规则</li><li>当输入样本存在奇异样本(样本数据部分值突然增大)，感知器网络运算需要花费很长时间</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> ML </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>R语言环境安装与基本使用(一)</title>
       <link href="/2020/08/26/R%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-%E4%B8%80/"/>
       <url>/2020/08/26/R%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-%E4%B8%80/</url>
