@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>R语言环境安装与基本使用(一)</title>
+      <link href="/2020/08/26/R%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-%E4%B8%80/"/>
+      <url>/2020/08/26/R%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-%E4%B8%80/</url>
+      
+        <content type="html"><![CDATA[<p>R语言安装包可以从这个<a href="https://cran.r-project.org/mirrors.html" target="_blank" rel="noopener">地址</a>选择合适的URL去下载，这里使用<a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/" target="_blank" rel="noopener">这个</a>，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826001731.png" alt=""></p><p>下载对应平台的安装包即可，这里我下载Mac OS X的，目前版本是3.3.2。</p><blockquote><p>注意：<br>　　在下载文件描述可以看到，需要X11环境的支持，不过安装包已经包含这些&gt;必须的包在里面了！<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826001817.png" alt=""></p></blockquote><p>安装完后，可以在应用程序看到图标“R”：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826001852.png" alt=""></p><p>点击打开后界面如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826001911.png" alt=""></p><p>当然，也有图形界面编辑器：<a href="https://www.rstudio.com/products/rstudio/" target="_blank" rel="noopener">RStudio</a>, RStudio还有一种更方便的安装，使用Anaconda，在软件界面有R图标，提示”Install”，点击安装等待安装即可:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826002014.png" alt=""></p><p>输入“library()”可以查看已经安装的包：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826002205.png" alt=""></p><p>要查看帮助函数，输入”help(xxx)”或”? xxx”即可，或”help.start()”打开帮助文档首页：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826002233.png" alt=""></p><p>要知道sin函数怎么用，输入”example(“sin”)”即可；</p><p>需要获取或改变工作目录，输入”getwd()”或”setwd(“&lt;目录路径&gt;”)”</p><p>要安装扩展包，输入“install.packages(“&lt;包名&gt;”)”，按提示选择安装源和需要安装的包即可，在RStudio安装更简单，点击右下角”Install”标记，弹出下载包对话框，输入包名，等待安装完即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200826002336.png" alt=""></p><p>在交互终端输入”q()”可退出R。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> R </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java序列化使用jackson时首字母变成小写问题解决</title>
       <link href="/2020/08/23/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%BD%BF%E7%94%A8jackson%E6%97%B6%E9%A6%96%E5%AD%97%E6%AF%8D%E5%8F%98%E6%88%90%E5%B0%8F%E5%86%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
       <url>/2020/08/23/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%BD%BF%E7%94%A8jackson%E6%97%B6%E9%A6%96%E5%AD%97%E6%AF%8D%E5%8F%98%E6%88%90%E5%B0%8F%E5%86%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
