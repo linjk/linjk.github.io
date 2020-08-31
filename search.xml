@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Matlab图像界面编程</title>
+      <link href="/2020/08/31/Matlab%E5%9B%BE%E5%83%8F%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/"/>
+      <url>/2020/08/31/Matlab%E5%9B%BE%E5%83%8F%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<p>1.在Command Window输入”guide”, 弹出如下窗口：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831231631.png" alt=""></p><p>选择默认的”Blank GUI(Default)”，显示界面编辑窗口:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831231737.png" alt=""></p><p>2.在界面放置一个Axes和Push Button控件，如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232212.png" alt=""></p><p>双击按钮，可以打开按钮样式设置弹窗：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232334.png" alt=""></p><p>3.点击保存后，会生成对于的m文件，可以看到，按钮”打开图片”的回调函数也有了:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232550.png" alt=""></p><p>4.运行后，发现坐标轴显示，可以打开”Property Insptector”，把XTick和YTick里的数值全部delete就可以了，如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232657.png" alt=""></p><p>修改后：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831233015.png" alt=""></p><p>5.编写打开图片和显示图片的代码:(axes控件可以显示多张图片的，这里先做显示一张的处理):<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234442.png" alt=""></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234026.png" alt=""></p><p>运行结果：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234046.png" alt=""></p><p>6.生成独立执行的EXE可执行文件【Mac版】<br>Matlab命令行窗口输入<code>deploytool</code>，弹出窗口:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234634.png" alt=""></p><p>输入、选择基本信息，打包：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234937.png" alt=""><br>正在构建：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235016.png" alt=""></p><p>完成，在Matlab主文件夹输出打包工程文件：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235518.png" alt=""></p><p>打开发布包，居然600多兆：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235715.png" alt=""></p><p>安装时，需要安装运行时：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235815.png" alt=""></p><p>安装完成：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235942.png" alt=""></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200901000022.png" alt=""></p><p>正常启动:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200901000428.png" alt=""></p><p>7.生成独立执行的EXE可执行文件【Windows版】<br>Matlab命令行窗口输入: deploytool，弹出窗口:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235202.png" alt=""></p><p>输入工程名字后，在界面右边出现新的一栏，选择Console Application:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235220.png" alt=""></p><p>添加m文件:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235234.png" alt=""></p><p>要生成没有安装Matlab的电脑都可以运行的EXE文件，需要添加MCR运行时环境，在”Package”里点击”Add MCR”，选择”Embeed the MCR in the Package”，然后点击”打包按钮”:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235253.png" alt=""></p><p>弹出如下窗口,点击确定即可开始:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235308.png" alt=""></p><p>然后开始build，可以发现，原来它是基于ant来构建的：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235327.png" alt=""></p><p>稍等片刻完成后，目录结构增加了若干文件夹，圈出来的就是打包后的文件，发给别人发这个就可以了:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235345.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Neural Networks - 感知器</title>
       <link href="/2020/08/26/Neural-Networks-%E6%84%9F%E7%9F%A5%E5%99%A8/"/>
       <url>/2020/08/26/Neural-Networks-%E6%84%9F%E7%9F%A5%E5%99%A8/</url>

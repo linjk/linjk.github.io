@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Jim</title>
+  <title>Matlab图像界面编程 | Jim</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Jim">
+  <meta name="description" content="Matlab图像界面编程 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="1.在Command Window输入”guide”, 弹出如下窗口： 选择默认的”Blank GUI(Default)”，显示界面编辑窗口: 2.在界面放置一个Axes和Push Button控件，如下: 双击按钮，可以打开按钮样式设置弹窗： 3.点击保存后，会生成对于的m文件，可以看到，按钮”打开图片”的回调函数也有了: 4.运行后，发现坐标轴显示，可以打开”Property Insptect">
 <meta property="og:type" content="article">
@@ -80,7 +80,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/head.jpg" />
@@ -827,12 +827,64 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Matlab图像界面编程" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于"><span class="toc-text">关于</span></a></li></ol>
+        <h1 class="article-title">Matlab图像界面编程</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Misc">Misc</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-09-01 00:10:41'>2020-08-31 23:15</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:440</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -845,12 +897,44 @@
     }
 </style>
 </div>
-            <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><p>到目前为止已经写了<code class="article_number"></code>篇文章</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.在Command Window输入”guide”, 弹出如下窗口：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831231631.png" alt=""></p>
+<p>选择默认的”Blank GUI(Default)”，显示界面编辑窗口:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831231737.png" alt=""></p>
+<p>2.在界面放置一个Axes和Push Button控件，如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232212.png" alt=""></p>
+<p>双击按钮，可以打开按钮样式设置弹窗：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232334.png" alt=""></p>
+<p>3.点击保存后，会生成对于的m文件，可以看到，按钮”打开图片”的回调函数也有了:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232550.png" alt=""></p>
+<p>4.运行后，发现坐标轴显示，可以打开”Property Insptector”，把XTick和YTick里的数值全部delete就可以了，如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232657.png" alt=""></p>
+<p>修改后：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831233015.png" alt=""></p>
+<p>5.编写打开图片和显示图片的代码:(axes控件可以显示多张图片的，这里先做显示一张的处理):<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234442.png" alt=""></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234026.png" alt=""></p>
+<p>运行结果：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234046.png" alt=""></p>
+<p>6.生成独立执行的EXE可执行文件【Mac版】<br>Matlab命令行窗口输入<code>deploytool</code>，弹出窗口:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234634.png" alt=""></p>
+<p>输入、选择基本信息，打包：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234937.png" alt=""><br>正在构建：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235016.png" alt=""></p>
+<p>完成，在Matlab主文件夹输出打包工程文件：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235518.png" alt=""></p>
+<p>打开发布包，居然600多兆：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235715.png" alt=""></p>
+<p>安装时，需要安装运行时：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235815.png" alt=""></p>
+<p>安装完成：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235942.png" alt=""></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200901000022.png" alt=""></p>
+<p>正常启动:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200901000428.png" alt=""></p>
+<p>7.生成独立执行的EXE可执行文件【Windows版】<br>Matlab命令行窗口输入: deploytool，弹出窗口:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235202.png" alt=""></p>
+<p>输入工程名字后，在界面右边出现新的一栏，选择Console Application:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235220.png" alt=""></p>
+<p>添加m文件:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235234.png" alt=""></p>
+<p>要生成没有安装Matlab的电脑都可以运行的EXE文件，需要添加MCR运行时环境，在”Package”里点击”Add MCR”，选择”Embeed the MCR in the Package”，然后点击”打包按钮”:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235253.png" alt=""></p>
+<p>弹出如下窗口,点击确定即可开始:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235308.png" alt=""></p>
+<p>然后开始build，可以发现，原来它是基于ant来构建的：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235327.png" alt=""></p>
+<p>稍等片刻完成后，目录结构增加了若干文件夹，圈出来的就是打包后的文件，发给别人发这个就可以了:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235345.png" alt=""></p>
 
-        </article>
-        
-        
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
+    </div>
+</article>
+
+
+
+
+
     <div id="comments"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
@@ -872,6 +956,13 @@
 </script>
 
 
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -880,11 +971,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>
