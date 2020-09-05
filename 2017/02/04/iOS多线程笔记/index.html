@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>CentOS7正确配置了samba服务，Windows能登陆当提示没权限问题解决 | Jim</title>
+  <title>iOS多线程笔记 | Jim</title>
   <meta name="keywords" content="">
-  <meta name="description" content="CentOS7正确配置了samba服务，Windows能登陆当提示没权限问题解决 | Jim">
+  <meta name="description" content="iOS多线程笔记 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="bmon是一个Linux平台下不错的网络带宽监视工具，现在在Ubuntu上安装使用它，这里使用源码编译安装的方式。 首先安装依赖库：  sudo apt-get install -y build-essential make libconfuse-dev libnl-3-dev libnl-route-3-dev libncurses-dev pkg-config dh-autoreconf">
 <meta property="og:type" content="article">
@@ -839,9 +839,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CentOS7正确配置了samba服务，Windows能登陆当提示没权限问题解决" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-iOS多线程笔记" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">CentOS7正确配置了samba服务，Windows能登陆当提示没权限问题解决</h1>
+        <h1 class="article-title">iOS多线程笔记</h1>
     
     <div class="article-meta">
         
@@ -851,7 +851,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Linux">Linux</a>
+            <a  data-rel="iOS">iOS</a>
             
         </span>
         
@@ -859,12 +859,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-08-06 23:32:49'>2020-08-06 23:31</time>
+            发布时间 : <time class="date" title='最后更新: 2020-09-05 11:36:53'>2017-02-04 09:30</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:13</span>
+        <span>字数:758</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -894,7 +894,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#临时关闭"><span class="toc-text">临时关闭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#永久关闭"><span class="toc-text">永久关闭</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NSThread"><span class="toc-text">NSThread</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NSOperation和NSOperationQueue"><span class="toc-text">NSOperation和NSOperationQueue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GCD"><span class="toc-text">GCD</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -910,9 +910,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关闭SELinux即可。</p>
-<h3 id="临时关闭"><a href="#临时关闭" class="headerlink" title="临时关闭"></a>临时关闭</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806233231.png" alt=""></p>
-<h3 id="永久关闭"><a href="#永久关闭" class="headerlink" title="永久关闭"></a>永久关闭</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806233244.png" alt=""></p>
+        <p>在iOS开发中，有三种多线程处理方式：</p>
+<ol>
+<li>利用NSThread</li>
+<li>NSOperation和NSOperationQueue</li>
+<li>利用GCD(Grand Central Dispatch)</li>
+</ol>
+<p>使用上，从1到3是越来越简单，但是，对于1和2还是需要了解一下，了解本质有利于在出现一些bug时思考得更深入一些。</p>
+<h2 id="NSThread"><a href="#NSThread" class="headerlink" title="NSThread"></a>NSThread</h2><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905113151.png" alt=""></p>
+<p>iOS和Android一样，只能在UI线程更新UI界面，如果在子线程需要更新UI控件，需要执行[self performSelctrorOnMainThread: withObject: waitUntilDone:]来进行更新操作。</p>
+<p>第一次运行输出如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905113228.png" alt=""></p>
+<p>第二次运行输出如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905113241.png" alt=""></p>
+<p>可以看到，虽然启动了线程，但是不是一启动就进入执行状态，CPU会在线程之间切换执行，线程就会在运行、就绪状态间切换，如需调用start函数后(此时线程处于就绪态)马上切换到运行态，可在主线程调用此函数: [NSThread sleepForTimeInterval:0.001]让线程休眠一下，进入阻塞状态，然后等待CPU调度，如果想让线程有更多的运行机会，可以调整优先级，默认优先级为0.5:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905113307.png" alt=""></p>
+<p>结果如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905113328.png" alt=""></p>
+<p>在子线程出现如下情况会自行终止：</p>
+<ol>
+<li>线程逻辑函数处理完成</li>
+<li>线程执行中发生异常</li>
+<li>调用了[NSThread exit]</li>
+</ol>
+<p>注意：主线程结束后，由主线程启动的子线程不会跟随终止，可以如下在UI线程终止子线程，利用发生cancle信号:</p>
+<p>程序和运行结果如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905113414.png" alt=""></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905113427.png" alt=""></p>
+<p>这里设定500毫秒后发送终止子线程信号，子线程判断收到cancel信号后终止自己。</p>
+<h2 id="NSOperation和NSOperationQueue"><a href="#NSOperation和NSOperationQueue" class="headerlink" title="NSOperation和NSOperationQueue"></a>NSOperation和NSOperationQueue</h2><p>NSOperationQueue是一个<strong>FIFO队列</strong>，负责管理系统提交的多个NSOperation。</p>
+<p>NSOperation类型Java里的Runnable接口，代表一个多线程任务，它有NSInvocationOperation和NSBlockOperation两个子类(用于封装需要异步执行的任务)，这两个子类可以直接使用，或者开发者可以自己继承NSOperation来实现自己的子类。</p>
+<p>开发步骤：</p>
+<ol>
+<li>创建NSOperationQueue队列，设置其属性</li>
+<li>创建NSOperation子类的对象，然后将对象提交到NSOperationQueue队列，队列将按顺序依次启动每个NSOperaion。</li>
+</ol>
+<p>示例：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905113533.png" alt=""></p>
+<p>可以看到，这里开启了两个线程来处理任务。</p>
+<h2 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h2><p>核心概念：</p>
+<ol>
+<li>队列：在底层维护一个线程池，使用FIFO方式管理开发者提交的任务，有串行队列和并发队列</li>
+<li>任务：开发者提交给队列的工作单元，这些任务会交由队列底层的线程池内执行</li>
+</ol>
+<p>开发步骤：</p>
+<ol>
+<li>创建队列</li>
+<li>将任务提交给队列</li>
+</ol>
+<p>示例：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905113625.png" alt=""></p>
+<p>这里创建了一个串行队列和一个并发队列并且都以异步方式提交任务。在输出中可以发现，在串行队列中，会先后执行代码块，而在并发队列中，会并发执行代码块。</p>
+<p>另外，还有dispatch_once可以让代码只运行一次，通常用于单例模式，dispatch_apply可以让代码重复运行多次，这里就不进行测试了。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
