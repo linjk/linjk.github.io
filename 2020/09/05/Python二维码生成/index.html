@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>SpringBoot源码分析之路(一) | Jim</title>
-  <meta name="keywords" content=" Springboot ">
-  <meta name="description" content="SpringBoot源码分析之路(一) | Jim">
+  <title>Python二维码生成 | Jim</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Python二维码生成 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="bmon是一个Linux平台下不错的网络带宽监视工具，现在在Ubuntu上安装使用它，这里使用源码编译安装的方式。 首先安装依赖库：  sudo apt-get install -y build-essential make libconfuse-dev libnl-3-dev libnl-route-3-dev libncurses-dev pkg-config dh-autoreconf">
 <meta property="og:type" content="article">
@@ -847,9 +847,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-SpringBoot源码分析之路(一)" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Python二维码生成" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">SpringBoot源码分析之路(一)</h1>
+        <h1 class="article-title">Python二维码生成</h1>
     
     <div class="article-meta">
         
@@ -859,29 +859,20 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Java">Java</a> > 
-            
-            <a  data-rel="Java&lt;---&gt;Springboot">Springboot</a>
+            <a  data-rel="Python">Python</a>
             
         </span>
         
         
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color1">Springboot</a>
-            
-        </span>
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-09-05 11:41:37'>2020-09-05 11:39</time>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-30 22:31:56'>2020-07-30 21:17</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:41</span>
+        <span>字数:90</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -911,7 +902,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#源码下载与初步构建"><span class="toc-text">源码下载与初步构建</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -927,12 +918,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="源码下载与初步构建"><a href="#源码下载与初步构建" class="headerlink" title="源码下载与初步构建"></a>源码下载与初步构建</h2><p><a href="https://github.com/spring-projects/spring-boot" target="_blank" rel="noopener">Springboot</a></p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200730212258.png" alt=""></p>
-<p>下载完成后切换至v2.2.1.RELEASE的标签版本：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200730222108.png" alt=""></p>
-<p>然后构建打包：</p>
-<p><code>mvn clean package -Dmaven.test.skip=true -Pfast</code></p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200730222500.png" alt=""></p>
+        <p>依赖包生成：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905114027.png" alt=""></p>
+<p>PyMySQL安装(Python3.x不支持MySQLdb了)<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905114049.png" alt=""></p>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"><span class="keyword">import</span> qrcode</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'qrcode'</span>):</span><br><span class="line">    os.mkdir(<span class="string">'qrcode'</span>)</span><br><span class="line">    </span><br><span class="line">os.chdir(os.getcwd() + <span class="string">'/qrcode'</span>)</span><br><span class="line"> </span><br><span class="line">db = pymysql.connect(host=<span class="string">"xxxx"</span>, port=xxxx,</span><br><span class="line">                     user=<span class="string">"xxxx"</span>, passwd=<span class="string">"xxxx"</span>, </span><br><span class="line">                     db=<span class="string">"xxxx"</span>)</span><br><span class="line"> </span><br><span class="line">cursor = db.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">"SELECT * FROM xxx"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    results = cursor.fetchall()</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> results:</span><br><span class="line">        result = row[<span class="number">3</span>]</span><br><span class="line">        img = qrcode.make(result)</span><br><span class="line">        img.save(<span class="string">'%s.png'</span> % (result))</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"Error: unable to fetch data"</span>)</span><br><span class="line"> </span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905114131.png" alt=""></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>

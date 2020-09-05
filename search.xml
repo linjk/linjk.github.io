@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Python二维码生成</title>
+      <link href="/2020/09/05/Python%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%94%9F%E6%88%90/"/>
+      <url>/2020/09/05/Python%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%94%9F%E6%88%90/</url>
+      
+        <content type="html"><![CDATA[<p>依赖包生成：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905114027.png" alt=""></p><p>PyMySQL安装(Python3.x不支持MySQLdb了)<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905114049.png" alt=""></p><p>代码：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"><span class="keyword">import</span> qrcode</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'qrcode'</span>):</span><br><span class="line">    os.mkdir(<span class="string">'qrcode'</span>)</span><br><span class="line">    </span><br><span class="line">os.chdir(os.getcwd() + <span class="string">'/qrcode'</span>)</span><br><span class="line"> </span><br><span class="line">db = pymysql.connect(host=<span class="string">"xxxx"</span>, port=xxxx,</span><br><span class="line">                     user=<span class="string">"xxxx"</span>, passwd=<span class="string">"xxxx"</span>, </span><br><span class="line">                     db=<span class="string">"xxxx"</span>)</span><br><span class="line"> </span><br><span class="line">cursor = db.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">"SELECT * FROM xxx"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    results = cursor.fetchall()</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> results:</span><br><span class="line">        result = row[<span class="number">3</span>]</span><br><span class="line">        img = qrcode.make(result)</span><br><span class="line">        img.save(<span class="string">'%s.png'</span> % (result))</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"Error: unable to fetch data"</span>)</span><br><span class="line"> </span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905114131.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux下的网络监视工具-bmon</title>
       <link href="/2020/09/05/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E7%9B%91%E8%A7%86%E5%B7%A5%E5%85%B7-bmon/"/>
       <url>/2020/09/05/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E7%9B%91%E8%A7%86%E5%B7%A5%E5%85%B7-bmon/</url>
