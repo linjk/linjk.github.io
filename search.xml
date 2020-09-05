@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>Linux下的网络监视工具-bmon</title>
+      <link href="/2020/09/05/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E7%9B%91%E8%A7%86%E5%B7%A5%E5%85%B7-bmon/"/>
+      <url>/2020/09/05/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E7%9B%91%E8%A7%86%E5%B7%A5%E5%85%B7-bmon/</url>
+      
+        <content type="html"><![CDATA[<p>bmon是一个Linux平台下不错的网络带宽监视工具，现在在Ubuntu上安装使用它，这里使用源码编译安装的方式。</p><p>首先安装依赖库：</p><blockquote><p>sudo apt-get install -y build-essential make libconfuse-dev libnl-3-dev libnl-route-3-dev libncurses-dev pkg-config dh-autoreconf</p></blockquote><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112648.png" alt=""></p><p>接着，获取bmon的源码：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112705.png" alt=""></p><p>下载完成后，进入bmon根目录，按如下操作:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112725.png" alt=""></p><p>安装完成后，执行命令”bmon”即可进入bmon界面：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112739.png" alt=""></p><p>上面列处理两个网卡的网络信息”lo”与”eth0”，可以上下箭头查看信息，输入问号”?”可以显示相关按键帮助信息。bmon的相关帮助加入”–help”参数即可查看”bmon –help”。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ubuntu下QT编译错误-Cann-t-find-lGl的解决</title>
+      <link href="/2020/09/05/Ubuntu%E4%B8%8BQT%E7%BC%96%E8%AF%91%E9%94%99%E8%AF%AF-Cann-t-find-lGl%E7%9A%84%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/09/05/Ubuntu%E4%B8%8BQT%E7%BC%96%E8%AF%91%E9%94%99%E8%AF%AF-Cann-t-find-lGl%E7%9A%84%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>安装QT后，编译出现如下错误：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112437.png" alt=""></p><p>安装依赖包libglu1-mesa-dev即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112456.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Matlab图像界面编程</title>
       <link href="/2020/08/31/Matlab%E5%9B%BE%E5%83%8F%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/"/>
       <url>/2020/08/31/Matlab%E5%9B%BE%E5%83%8F%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/</url>

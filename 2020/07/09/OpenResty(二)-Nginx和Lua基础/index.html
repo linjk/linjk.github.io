@@ -6,44 +6,22 @@
   <meta name="keywords" content=" OpenResty ">
   <meta name="description" content="OpenResty(二)-Nginx和Lua基础 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1.在Command Window输入”guide”, 弹出如下窗口： 选择默认的”Blank GUI(Default)”，显示界面编辑窗口: 2.在界面放置一个Axes和Push Button控件，如下: 双击按钮，可以打开按钮样式设置弹窗： 3.点击保存后，会生成对于的m文件，可以看到，按钮”打开图片”的回调函数也有了: 4.运行后，发现坐标轴显示，可以打开”Property Insptect">
+<meta name="description" content="bmon是一个Linux平台下不错的网络带宽监视工具，现在在Ubuntu上安装使用它，这里使用源码编译安装的方式。 首先安装依赖库：  sudo apt-get install -y build-essential make libconfuse-dev libnl-3-dev libnl-route-3-dev libncurses-dev pkg-config dh-autoreconf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Matlab图像界面编程">
-<meta property="og:url" content="http://yoursite.com/2020/08/31/Matlab%E5%9B%BE%E5%83%8F%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:title" content="Linux下的网络监视工具-bmon">
+<meta property="og:url" content="http://yoursite.com/2020/09/05/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E7%9B%91%E8%A7%86%E5%B7%A5%E5%85%B7-bmon/index.html">
 <meta property="og:site_name" content="Jim">
-<meta property="og:description" content="1.在Command Window输入”guide”, 弹出如下窗口： 选择默认的”Blank GUI(Default)”，显示界面编辑窗口: 2.在界面放置一个Axes和Push Button控件，如下: 双击按钮，可以打开按钮样式设置弹窗： 3.点击保存后，会生成对于的m文件，可以看到，按钮”打开图片”的回调函数也有了: 4.运行后，发现坐标轴显示，可以打开”Property Insptect">
+<meta property="og:description" content="bmon是一个Linux平台下不错的网络带宽监视工具，现在在Ubuntu上安装使用它，这里使用源码编译安装的方式。 首先安装依赖库：  sudo apt-get install -y build-essential make libconfuse-dev libnl-3-dev libnl-route-3-dev libncurses-dev pkg-config dh-autoreconf">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831231631.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831231737.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232212.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232334.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232550.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831232657.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831233015.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234442.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234026.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234046.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234634.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831234937.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235016.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235518.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235715.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235815.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235942.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200901000022.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200901000428.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235202.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235220.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235234.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235253.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235308.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235327.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831235345.png">
-<meta property="article:published_time" content="2020-08-31T15:15:00.000Z">
-<meta property="article:modified_time" content="2020-08-31T16:10:41.336Z">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112648.png">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112705.png">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112725.png">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112739.png">
+<meta property="article:published_time" content="2020-09-05T03:25:49.000Z">
+<meta property="article:modified_time" content="2020-09-05T03:27:58.147Z">
 <meta property="article:author" content="Lin Jingke">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200831231631.png">
+<meta name="twitter:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112648.png">
 
 
 <link rel="icon" href="/img/head.jpg">
@@ -127,7 +105,7 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(32)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(34)</small></div></li>
     
         
             
@@ -167,7 +145,7 @@
     
         
             
-            <li><div data-rel="Linux"><i class="fold iconfont icon-right"></i>Linux<small>(8)</small></div>
+            <li><div data-rel="Linux"><i class="fold iconfont icon-right"></i>Linux<small>(10)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -423,8 +401,8 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/2020/07/05/AboutMe/">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="32">
-<input type="hidden" id="yelog_site_word_count" value="8.8k">
+<input type="hidden" id="yelog_site_posts_number" value="34">
+<input type="hidden" id="yelog_site_word_count" value="9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -555,6 +533,22 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        <a  class="全部文章 Linux "
+           href="/2020/09/05/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E7%9B%91%E8%A7%86%E5%B7%A5%E5%85%B7-bmon/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux下的网络监视工具-bmon">Linux下的网络监视工具-bmon</span>
+            <span class="post-date" title="2020-09-05 11:25:49">2020/09/05</span>
+        </a>
+        
+        <a  class="全部文章 Linux "
+           href="/2020/09/05/Ubuntu%E4%B8%8BQT%E7%BC%96%E8%AF%91%E9%94%99%E8%AF%AF-Cann-t-find-lGl%E7%9A%84%E8%A7%A3%E5%86%B3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ubuntu下QT编译错误-Cann-t-find-lGl的解决">Ubuntu下QT编译错误-Cann-t-find-lGl的解决</span>
+            <span class="post-date" title="2020-09-05 11:23:58">2020/09/05</span>
+        </a>
         
         <a  class="全部文章 Misc "
            href="/2020/08/31/Matlab%E5%9B%BE%E5%83%8F%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/"
