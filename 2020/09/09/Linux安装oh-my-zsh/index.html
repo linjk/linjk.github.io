@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>C++编译OpenCV生成动态库问题解决 | Jim</title>
-  <meta name="keywords" content=" OpenCV ">
-  <meta name="description" content="C++编译OpenCV生成动态库问题解决 | Jim">
+  <title>Linux安装oh-my-zsh | Jim</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Linux安装oh-my-zsh | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="在SpringBoot开发时，通常都会对URI资源进行访问保护，就会引入如下starter模块： 这里暂时还没在yml文件配置auth服务的参数，因为这个oauth2的pom.xml文件里面也包含了spring security，所以可以直接使用： 如果不用Spring cloud，只用Spring boot，也可以直接引用，上面最终也是引用下面的依赖的： spring boot的security">
 <meta property="og:type" content="article">
@@ -929,9 +929,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-C++编译OpenCV生成动态库问题解决" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Linux安装oh-my-zsh" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">C++编译OpenCV生成动态库问题解决</h1>
+        <h1 class="article-title">Linux安装oh-my-zsh</h1>
     
     <div class="article-meta">
         
@@ -941,29 +941,20 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="C++">C++</a> > 
-            
-            <a  data-rel="C++&lt;---&gt;OpenCV">OpenCV</a>
+            <a  data-rel="Linux">Linux</a>
             
         </span>
         
         
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color2">OpenCV</a>
-            
-        </span>
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-09-09 22:18:17'>2020-09-09 22:15</time>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-21 00:30:00'>2020-07-18 06:22</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:145</span>
+        <span>字数:137</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1009,14 +1000,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.包含&lt;opencv2/objdectect/objdetect.hpp&gt;, 声明了CascadeClassifier变量后，工程如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002411.png" alt=""></p>
-<p>执行make命令后发生如下错误：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002435.png" alt=""></p>
-<p>解决，增加Lib链接，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002503.png" alt=""><br>再次make，可以了。</p>
-<p>2.增加imread函数调用后，发生如下错误:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002555.png" alt=""></p>
-<p>makefile需要增加如下链接(-lopencv_imgcodes):<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002640.png" alt=""></p>
-<p>python调用人脸检测后，成功识别出两个人脸:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002703.png" alt=""></p>
-<p>3.上面是在mac上运行的，把so库拿到centos上运行时，报如下错误:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002746.png" alt=""></p>
-<p>在用户加目录的.bashrc增加如下这行(永久生效)或直接命令行执行(临时生效)，即可:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002805.png" alt=""></p>
+        <p>Linux下默认的shell是bash，之前在Mac系统习惯了oh-my-zsh，功能更加强大，现在在centos7服务器安装下：</p>
+<ol>
+<li><p>查看当前系统已安装的shell:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221547.png" alt=""></p>
+</li>
+<li><p>没有安装到zsh，现在来进行安装：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221607.png" alt=""></p>
+</li>
+<li><p>切换当前默认shell为zsh:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221631.png" alt=""><br>切换后需要重新登录。</p>
+</li>
+<li><p>重新登录会提示配置一下zsh，按提示做即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221655.png" alt=""></p>
+</li>
+<li><p>通过git安装oh-my-zsh</p>
+<blockquote>
+<p>wget <a href="https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh" target="_blank" rel="noopener">https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh</a> -O - | sh</p>
+</blockquote>
+</li>
+</ol>
+<p>如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221727.png" alt=""></p>
+<p>6.安装成功：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221747.png" alt=""></p>
+<p>后面进行自己的自定义配置即可。 </p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>

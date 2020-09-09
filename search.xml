@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Linux安装oh-my-zsh</title>
+      <link href="/2020/09/09/Linux%E5%AE%89%E8%A3%85oh-my-zsh/"/>
+      <url>/2020/09/09/Linux%E5%AE%89%E8%A3%85oh-my-zsh/</url>
+      
+        <content type="html"><![CDATA[<p>Linux下默认的shell是bash，之前在Mac系统习惯了oh-my-zsh，功能更加强大，现在在centos7服务器安装下：</p><ol><li><p>查看当前系统已安装的shell:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221547.png" alt=""></p></li><li><p>没有安装到zsh，现在来进行安装：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221607.png" alt=""></p></li><li><p>切换当前默认shell为zsh:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221631.png" alt=""><br>切换后需要重新登录。</p></li><li><p>重新登录会提示配置一下zsh，按提示做即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221655.png" alt=""></p></li><li><p>通过git安装oh-my-zsh</p><blockquote><p>wget <a href="https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh" target="_blank" rel="noopener">https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh</a> -O - | sh</p></blockquote></li></ol><p>如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221727.png" alt=""></p><p>6.安装成功：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221747.png" alt=""></p><p>后面进行自己的自定义配置即可。 </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring Security基本原理(Spring Boot1.x版本适用，2.x部分配置参数会变)</title>
       <link href="/2020/09/09/Spring-Security%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-Spring-Boot1-x%E7%89%88%E6%9C%AC%E9%80%82%E7%94%A8%EF%BC%8C2-x%E9%83%A8%E5%88%86%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E4%BC%9A%E5%8F%98/"/>
       <url>/2020/09/09/Spring-Security%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-Spring-Boot1-x%E7%89%88%E6%9C%AC%E9%80%82%E7%94%A8%EF%BC%8C2-x%E9%83%A8%E5%88%86%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E4%BC%9A%E5%8F%98/</url>
