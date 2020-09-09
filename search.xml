@@ -4,6 +4,120 @@
   
     
     <entry>
+      <title>Spring Security基本原理(Spring Boot1.x版本适用，2.x部分配置参数会变)</title>
+      <link href="/2020/09/09/Spring-Security%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-Spring-Boot1-x%E7%89%88%E6%9C%AC%E9%80%82%E7%94%A8%EF%BC%8C2-x%E9%83%A8%E5%88%86%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E4%BC%9A%E5%8F%98/"/>
+      <url>/2020/09/09/Spring-Security%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-Spring-Boot1-x%E7%89%88%E6%9C%AC%E9%80%82%E7%94%A8%EF%BC%8C2-x%E9%83%A8%E5%88%86%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E4%BC%9A%E5%8F%98/</url>
+      
+        <content type="html"><![CDATA[<p>在SpringBoot开发时，通常都会对URI资源进行访问保护，就会引入如下starter模块：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211649.png" alt=""></p><p>这里暂时还没在yml文件配置auth服务的参数，因为这个oauth2的pom.xml文件里面也包含了spring security，所以可以直接使用：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211710.png" alt=""></p><p>如果不用Spring cloud，只用Spring boot，也可以直接引用，上面最终也是引用下面的依赖的：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211732.png" alt=""></p><p>spring boot的security-starter模块在引入后，没做任何配置的话，会对所有接口进行保护，因此，在访问的时候，会弹出登录框：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211759.png" alt=""></p><p>在spring启动时在日志中会输出一个默认的用户user的密码：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211822.png" alt=""></p><p>输入Username(默认: user)和Password即可正常登录访问。</p><p>我们可以在application.yml配置自己的用户名和密码:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211921.png" alt=""></p><p>默认的安全机制肯定不普遍适用，可以继承WebSecurityConfigurerAdapter来配置，然后重写configure方法来自定义验证处理逻辑：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212125.png" alt=""></p><p>前面的跳出登录窗口的处理其实默认的实现就是configure(HttpSecurity)，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212200.png" alt=""></p><p>下面来自定义实现一下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212519.png" alt=""></p><p>这样，在访问”/test”或”/login”接口就不需要验证直接访问，其他就需要登录了。我们还可以指定自己的登录页面，登录成功的处理器或登录失败的处理器等，如继承该类可以实现自己的登录成功处理逻辑<code>AbstractAuthenticationFilterConfigurer.java</code>：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212644.png" alt=""></p><p>如果需要配合自己业务系统的用户的用户进行验证，实现这个接口<code>org.springframework.security.core.userdetails.UserDetailsService</code>即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212734.png" alt=""></p><p>更多函数可以参考源码，进行测试调用即可。</p><p>大致使用了Spring Security后，不难理解，Spring Security其实就是很完善的过滤器链，在spring boot启动时初始化所有过滤器，然后用户的请求的服务的响应都会经过过滤器，类似我们在路由里面实现的ZuulFilter:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212812.png" alt=""></p><p>每个过滤器按照优先级进行逐级过滤，spring security的过滤器有用户名和密码验证<code>org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.java</code>、第三方登录验证等过滤器，默认是基于用户名和密码的，在过滤器里，当收到用户请求后，就会判断请求是否有过滤器需要的验证信息，有就用对应的过滤器进行验证。所有的过滤器都是继承于抽象基类GenericFilterBean的，可以看到目前有如下几种过滤器的实现：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213042.png" alt=""></p><p>经过层层过滤器的验证后，最后会来到<code>org.springframework.security.web.access.intercept.FilterSecurityInterceptor.java</code>这个过滤器，这个类会检查经过前面验证过滤器的请求是否能访问后面的接口，可以则放行，否则，抛出无权限异常，会被<code>org.springframework.security.web.access.ExceptionTranslationFilter</code>类捕获：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213138.png" alt=""></p><p>整个过滤器链流程如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213206.png" alt=""></p><p>这个过程可以自己在相应类下断点调试看看流程是否真的这样执行。有了前面的几个过滤器，那么，整个认证过程流程，大致涉及如下几个核心类串起来的：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213239.png" alt=""></p><p>应用启动后，不是所有过滤器都会生效的，spring boot会根据我们的配置，如我们前面配置了formLogin()这个过滤器，那么这个过滤器就生效而其他过滤器不生效，但是，在上面过滤器链中，绿色的才是可配置是否生效的，其他颜色的，一定会在过滤器链中。</p><p>前面我们配置了用户名密码登录，在登录界面点击了”登录”按钮后，我们首先会进入这个<code>org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.java</code>过滤器：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213313.png" alt=""></p><p>获取了用户信息后，开始进行校验处理<code>org.springframework.security.authentication.ProviderManager.java</code>：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213353.png" alt=""></p><p>这里用for循环去执行验证器，这里用户名和密码的验证器为如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213412.png" alt=""></p><p>认证成功后，会在<code>org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter</code>类的successfulAuthentication方法把当前登录用户信息写到session里：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213444.png" alt=""></p><p>因为一次请求和响应在一个线程中处理，所以，把当前请求的认证信息放到SecurityContextHolder里，它是ThreadLocal的，因此，所以可以在任何地方获取到当前登录用户的信息。<br>请求进来，会先进入到这个过滤器：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213506.png" alt=""><br>它会进行请求和响应信息的session处理，这样，用户登录后，在进行其他请求时，都能获得登录用户的信息。<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213529.png" alt=""></p><p>今天踩坑了，不得不好好了解下Spring Security，大致流程就这样，后面有时间再补充缺少的理解吧。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>IDEA启动Spring Boot项目报错Command line is too long解决</title>
+      <link href="/2020/09/08/IDEA%E5%90%AF%E5%8A%A8Spring-Boot%E9%A1%B9%E7%9B%AE%E6%8A%A5%E9%94%99Command-line-is-too-long%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/09/08/IDEA%E5%90%AF%E5%8A%A8Spring-Boot%E9%A1%B9%E7%9B%AE%E6%8A%A5%E9%94%99Command-line-is-too-long%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>修改项目根目录下文件夹”.idea”的工作空间配置文件：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908233437.png" alt=""></p><p>在如下节点增加配置即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908233451.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>WindowsServer2008打开IIS页面报错“错误号：3706 错误描述：未找到提供程序。该程序可能未正确安装”解决</title>
+      <link href="/2020/09/08/WindowsServer2008%E6%89%93%E5%BC%80IIS%E9%A1%B5%E9%9D%A2%E6%8A%A5%E9%94%99%E2%80%9C%E9%94%99%E8%AF%AF%E5%8F%B7%EF%BC%9A3706-%E9%94%99%E8%AF%AF%E6%8F%8F%E8%BF%B0%EF%BC%9A%E6%9C%AA%E6%89%BE%E5%88%B0%E6%8F%90%E4%BE%9B%E7%A8%8B%E5%BA%8F%E3%80%82%E8%AF%A5%E7%A8%8B%E5%BA%8F%E5%8F%AF%E8%83%BD%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85%E2%80%9D%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/09/08/WindowsServer2008%E6%89%93%E5%BC%80IIS%E9%A1%B5%E9%9D%A2%E6%8A%A5%E9%94%99%E2%80%9C%E9%94%99%E8%AF%AF%E5%8F%B7%EF%BC%9A3706-%E9%94%99%E8%AF%AF%E6%8F%8F%E8%BF%B0%EF%BC%9A%E6%9C%AA%E6%89%BE%E5%88%B0%E6%8F%90%E4%BE%9B%E7%A8%8B%E5%BA%8F%E3%80%82%E8%AF%A5%E7%A8%8B%E5%BA%8F%E5%8F%AF%E8%83%BD%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85%E2%80%9D%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>在windows server 2008部署asp网站后打开页面时报如下错误：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908232937.png" alt=""></p><p>这是因为在64位系统中，iis7的应用程序池默认没有启用32位程序。因此，修改默认应用程序池的配置，启用32位应用程序重启网站即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908232956.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Windows </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>WindowsServer2008打开IIS子页面提示不能使用&#39;..&#39;作为父目录问题解决</title>
+      <link href="/2020/09/08/WindowsServer2008%E6%89%93%E5%BC%80IIS%E5%AD%90%E9%A1%B5%E9%9D%A2%E6%8F%90%E7%A4%BA%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8-%E4%BD%9C%E4%B8%BA%E7%88%B6%E7%9B%AE%E5%BD%95%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/09/08/WindowsServer2008%E6%89%93%E5%BC%80IIS%E5%AD%90%E9%A1%B5%E9%9D%A2%E6%8F%90%E7%A4%BA%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8-%E4%BD%9C%E4%B8%BA%E7%88%B6%E7%9B%AE%E5%BD%95%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>在iis7上打开子目录的主页时提示如下错误：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908232815.png" alt=""></p><p>需要在网站启用父目录：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908232830.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Windows </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Kettle导数据到MySQL时空字符串转null值处理</title>
+      <link href="/2020/09/08/Kettle%E5%AF%BC%E6%95%B0%E6%8D%AE%E5%88%B0MySQL%E6%97%B6%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%ACnull%E5%80%BC%E5%A4%84%E7%90%86/"/>
+      <url>/2020/09/08/Kettle%E5%AF%BC%E6%95%B0%E6%8D%AE%E5%88%B0MySQL%E6%97%B6%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%ACnull%E5%80%BC%E5%A4%84%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<p>在用Kettle对mysql导入数据插入空值(‘’)时，发现对空值的处理会自动转转换为null值，此时需要在kettle.properties文件中添加如下参数即可。</p><p>kettle.properties文件的位置:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908232611.png" alt=""></p><p>添加的参数如下：<br><code>KETTLE_EMPTY_STRING_DIFFERS_FROM_NULL=Y</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Windows </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Lists的坑点记录</title>
+      <link href="/2020/09/08/Lists%E7%9A%84%E5%9D%91%E7%82%B9%E8%AE%B0%E5%BD%95/"/>
+      <url>/2020/09/08/Lists%E7%9A%84%E5%9D%91%E7%82%B9%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Arrays-asList，把数据转为List"><a href="#Arrays-asList，把数据转为List" class="headerlink" title="Arrays.asList，把数据转为List"></a>Arrays.asList，把数据转为List</h1><p>看如下代码结果：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908210648.png" alt=""></p><p>运行：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908210706.png" alt=""></p><p>原因分析：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908210745.png" alt=""></p><p>查看源码可知，该函数的参数是一个泛型T可变参数，上面的int[]数组整体作为了参数。如果要实现想要的效果，需要如下处理，即把int数组转为Integer数组：<br><code>Arrays.stream(a).boxed().collect(Collectors.toList()).size()</code></p><h1 id="操作Arrays-asList返回的List"><a href="#操作Arrays-asList返回的List" class="headerlink" title="操作Arrays.asList返回的List"></a>操作Arrays.asList返回的List</h1><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908211612.png" alt=""></p><p>查看源码可以知道，Arrays.asList返回的List不是java.util.List，而是其内部类ArrayList，其对增删接口未实现，因此对返回的List添加元素会报异常。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Windows系统安装fdfs-client错误解决</title>
       <link href="/2020/09/05/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85fdfs-client%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/"/>
       <url>/2020/09/05/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85fdfs-client%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</url>
