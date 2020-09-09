@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>CUDA入门(一)环境安装 | Jim</title>
-  <meta name="keywords" content=" CUDA ">
-  <meta name="description" content="CUDA入门(一)环境安装 | Jim">
+  <title>浏览器Vue-devtools工具安装 | Jim</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="浏览器Vue-devtools工具安装 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="在SpringBoot开发时，通常都会对URI资源进行访问保护，就会引入如下starter模块： 这里暂时还没在yml文件配置auth服务的参数，因为这个oauth2的pom.xml文件里面也包含了spring security，所以可以直接使用： 如果不用Spring cloud，只用Spring boot，也可以直接引用，上面最终也是引用下面的依赖的： spring boot的security">
 <meta property="og:type" content="article">
@@ -945,9 +945,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CUDA入门-一-环境安装" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-浏览器Vue-devtools工具安装" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">CUDA入门(一)环境安装</h1>
+        <h1 class="article-title">浏览器Vue-devtools工具安装</h1>
     
     <div class="article-meta">
         
@@ -957,29 +957,20 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="C++">C++</a> > 
-            
-            <a  data-rel="C++&lt;---&gt;CUDA">CUDA</a>
+            <a  data-rel="Frontend">Frontend</a>
             
         </span>
         
         
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color5">CUDA</a>
-            
-        </span>
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-09-09 22:25:35'>2020-09-09 22:21</time>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-08-20 21:42:11'>2020-08-20 21:33</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:625</span>
+        <span>字数:195</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1025,21 +1016,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近进行一些项目，发现单纯用CPU来处理，感觉好慢……后来听说了CUDA这玩意挺好，就摆弄下，之前小小用过一下MPI，但是因为忙，没怎么系统去使用，所以思维还没完全转变过来，对比了一下，CUDA对于更好使用与理解并行编程很不错，就先从CUDA好好入门吧。</p>
-<p>台式机原来是核显，网上看了看，最终入手了<strong>GT730K</strong>这款显卡，买来后，安装到主板上即可，注意，视频线要接新的显卡输出信号口，第一次开机，系统还没检测到显卡，开机使用了一会，系统就自己安装好驱动了，我还没使用提供的驱动盘安装，驱动安装好后，显示如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213438.png" alt=""></p>
-<p>查看显卡支持的CUDA版本，首先打开NVIDIA的控制面板，然后点击“帮助”–“系统信息”，在弹出窗口选择“组件”，可以看到，当前显卡支持CUDA Tool kit的版本:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213522.png" alt=""></p>
-<p>然后去<a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">NVIDIA</a>下载对应版本的开发工具包，下载后如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213601.png" alt=""><br>双击运行，提示解压保存路径，选一个路径即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213649.png" alt=""></p>
-<p>解压后出现如下界面：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213716.png" alt=""></p>
-<p>在这一步会检测你的显卡是否支持CUDA，如果不支持，就不能下一步了，按照提示一步步操作，即可，中间提示是否安装Visual Studio插件，为了方便开发，都安装了，但是，目前NVIDIA开发包最高只支持到2015，最新的Visual Studio 2017暂时还不支持。安装完成：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213753.png" alt=""></p>
-<p>安装后，有一些官方提供的例子：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213822.png" alt=""></p>
-<p>打开Samples_vs2015.sln来看看，好多例程：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213848.png" alt=""></p>
-<p>运行SimpleTexture3D看看如何：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213917.png" alt=""></p>
-<p>运行如下，图是动的，这里只截取静态的:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820213940.png" alt=""></p>
-<p>另外，再看看deviceQuery运行结果。它输出了这个显卡的信息：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214012.png" alt=""></p>
-<p>算一下计算能力：384 x 0.96=364.8GFLOPS(FLOPS是Floating-point Operations Per Second每秒所执行的浮点运算次数的缩写，它是一个衡量计算能力的量，GFLOPS就是Giga Floating-point Operations Per Second，即每秒10亿次的浮点运算数)，再看看我电脑原来CPU的计算能力:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214106.png" alt=""></p>
-<p>2.7 x 4=10.8, GPU的运算能力差不多是CPU的(364.8/10.8=33.7777777…..)34倍了！！！</p>
-<p>再看看新建项目时，可以看到，有NVIDIA的模板了:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820214140.png" alt=""></p>
-<p>上面都运行可以，说明环境已经配置成功，后面就可以进入实际开发使用阶段。</p>
+        <p>在浏览器F12查看vue项目的控制台，看到如下信息：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222216.png" alt=""></p>
+<p>默认安装需要打开goole网站，需要跳墙，这里下载它的代码来安装吧……</p>
+<blockquote>
+<p>git clone <a href="https://github.com/vuejs/vue-devtools.git" target="_blank" rel="noopener">https://github.com/vuejs/vue-devtools.git</a></p>
+</blockquote>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222243.png" alt=""></p>
+<p>clone完成后，进入vue-devtools目录，首先执行命令<code>npm install</code>安装依赖：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222308.png" alt=""></p>
+<p>报如下错误，在windows平台可以忽略…………：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222327.png" alt=""></p>
+<p>然后编译<code>npm run build</code>生成插件:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222346.png" alt=""></p>
+<p>打开Chrome浏览器的扩展程序：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222404.png" alt=""></p>
+<p>勾选开发者模式，才会显示箭头指向的两个按钮:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222420.png" alt=""></p>
+<p>点击“加载已解压的扩展程序”，选择刚刚编译生成的目录：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222438.png" alt=""></p>
+<p>重启chrome浏览器，再次F12打开控制台，可以看到Vue项目，它有vue原本的标签，而不是只是生成的html标签：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222456.png" alt=""></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>

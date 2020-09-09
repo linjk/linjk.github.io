@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>浏览器Vue-devtools工具安装</title>
+      <link href="/2020/09/09/%E6%B5%8F%E8%A7%88%E5%99%A8Vue-devtools%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/"/>
+      <url>/2020/09/09/%E6%B5%8F%E8%A7%88%E5%99%A8Vue-devtools%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/</url>
+      
+        <content type="html"><![CDATA[<p>在浏览器F12查看vue项目的控制台，看到如下信息：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222216.png" alt=""></p><p>默认安装需要打开goole网站，需要跳墙，这里下载它的代码来安装吧……</p><blockquote><p>git clone <a href="https://github.com/vuejs/vue-devtools.git" target="_blank" rel="noopener">https://github.com/vuejs/vue-devtools.git</a></p></blockquote><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222243.png" alt=""></p><p>clone完成后，进入vue-devtools目录，首先执行命令<code>npm install</code>安装依赖：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222308.png" alt=""></p><p>报如下错误，在windows平台可以忽略…………：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222327.png" alt=""></p><p>然后编译<code>npm run build</code>生成插件:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222346.png" alt=""></p><p>打开Chrome浏览器的扩展程序：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222404.png" alt=""></p><p>勾选开发者模式，才会显示箭头指向的两个按钮:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222420.png" alt=""></p><p>点击“加载已解压的扩展程序”，选择刚刚编译生成的目录：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222438.png" alt=""></p><p>重启chrome浏览器，再次F12打开控制台，可以看到Vue项目，它有vue原本的标签，而不是只是生成的html标签：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222456.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Frontend </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>XAMPP启动提示43端口被占用问题解决</title>
+      <link href="/2020/09/09/XAMPP%E5%90%AF%E5%8A%A8%E6%8F%90%E7%A4%BA43%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/09/09/XAMPP%E5%90%AF%E5%8A%A8%E6%8F%90%E7%A4%BA43%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>使用XAMPP部署服务启动Apache时提示443端口被占用，看看啥原因：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221950.png" alt=""></p><p>看看6656是哪个进程：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222008.png" alt=""></p><p>原来是装了VMWare，其实也可以修改httpd-ssl.conf配置文件使用其他SSL端口，但是不想这样改，这个进程VMWare Workstation Server（vmware-hostd.exe）主要与远程管理VMWare有关，一般很少用到，那就停用它吧，这里把启动方式改为手动吧：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222030.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Windows </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux安装oh-my-zsh</title>
       <link href="/2020/09/09/Linux%E5%AE%89%E8%A3%85oh-my-zsh/"/>
       <url>/2020/09/09/Linux%E5%AE%89%E8%A3%85oh-my-zsh/</url>
