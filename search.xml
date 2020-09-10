@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>小试基于vux开发跨平台app</title>
+      <link href="/2020/09/10/%E5%B0%8F%E8%AF%95%E5%9F%BA%E4%BA%8Evux%E5%BC%80%E5%8F%91%E8%B7%A8%E5%B9%B3%E5%8F%B0app/"/>
+      <url>/2020/09/10/%E5%B0%8F%E8%AF%95%E5%9F%BA%E4%BA%8Evux%E5%BC%80%E5%8F%91%E8%B7%A8%E5%B9%B3%E5%8F%B0app/</url>
+      
+        <content type="html"><![CDATA[<p>最近项目需要基于<a href="https://doc.vux.li/zh-CN/" target="_blank" rel="noopener">vux</a>开发跨平台的app，从零开始的小白，摸索了一天多，大概知道了流程，现在记录下：</p><p>1.新建项目，这里我不使用ESLint.<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220012.png" alt=""></p><p>初始化完成后如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220039.png" alt=""></p><p>2.安装依赖<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220058.png" alt=""></p><p>3.测试运行<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220118.png" alt=""></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220129.png" alt=""></p><p>4.部署到真机<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220147.png" alt=""></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220157.png" alt=""></p><p>打开HBuilder，新建移动APP项目:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220213.png" alt=""></p><p>把上面生成的index.html和static文件夹拷贝到这个项目，覆盖原有文件即可:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220233.png" alt=""></p><p>运行。可以选择模拟器或真机运行，这里我选择真机：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220247.png" alt=""></p><p>HBuilder同步完文件后如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220301.png" alt=""></p><p>在手机桌面点击”HBuilder”时弹出如下窗口：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220316.png" alt=""></p><p>我们需要手动信任该企业证书：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220328.png" alt=""></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220341.png" alt=""></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220359.png" alt=""></p><p>点击”Trust”即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220417.png" alt=""></p><p>打开后发现页面空白，什么都没，和上面的开发运行的页面不一样的……<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220431.png" alt=""></p><p>修改config/index.js文件，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220443.png" alt=""></p><p>5.流程就是这样子，后面的组件还有页面开发啥的，就和前端开发差不多的了，这里就不多写了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Frontend </category>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring Boot项目application.yml文件数据库配置密码加密</title>
       <link href="/2020/09/10/Spring-Boot%E9%A1%B9%E7%9B%AEapplication-yml%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86/"/>
       <url>/2020/09/10/Spring-Boot%E9%A1%B9%E7%9B%AEapplication-yml%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86/</url>

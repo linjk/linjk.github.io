@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Python二维码生成 | Jim</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Python二维码生成 | Jim">
+  <title>小试基于vux开发跨平台app | Jim</title>
+  <meta name="keywords" content=" Vue ">
+  <meta name="description" content="小试基于vux开发跨平台app | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="在Spring boot开发中，需要在application.yml文件里配置数据库的连接信息，或者在启动时传入数据库密码，如果不加密，传明文，数据库就直接暴露了，相当于”裸奔”了，因此需要进行加密处理才行。 如果使用@SpringBootApplication注解启动的项目，只需增加maven依赖，其他方式请参考GitHub地址的README信息: 我们对信息加解密是使用这个jar包的： 编写加">
 <meta property="og:type" content="article">
@@ -953,9 +953,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Python二维码生成" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-小试基于vux开发跨平台app" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Python二维码生成</h1>
+        <h1 class="article-title">小试基于vux开发跨平台app</h1>
     
     <div class="article-meta">
         
@@ -965,20 +965,29 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Python">Python</a>
+            <a  data-rel="Frontend">Frontend</a> > 
+            
+            <a  data-rel="Frontend&lt;---&gt;Vue">Vue</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">Vue</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-09-05 11:41:37'>2020-09-05 11:39</time>
+            发布时间 : <time class="date" title='最后更新: 2020-09-10 22:05:22'>2020-09-10 21:58</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:90</span>
+        <span>字数:252</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1024,12 +1033,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>依赖包生成：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905114027.png" alt=""></p>
-<p>PyMySQL安装(Python3.x不支持MySQLdb了)<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905114049.png" alt=""></p>
-<p>代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"><span class="keyword">import</span> qrcode</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'qrcode'</span>):</span><br><span class="line">    os.mkdir(<span class="string">'qrcode'</span>)</span><br><span class="line">    </span><br><span class="line">os.chdir(os.getcwd() + <span class="string">'/qrcode'</span>)</span><br><span class="line"> </span><br><span class="line">db = pymysql.connect(host=<span class="string">"xxxx"</span>, port=xxxx,</span><br><span class="line">                     user=<span class="string">"xxxx"</span>, passwd=<span class="string">"xxxx"</span>, </span><br><span class="line">                     db=<span class="string">"xxxx"</span>)</span><br><span class="line"> </span><br><span class="line">cursor = db.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">"SELECT * FROM xxx"</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    results = cursor.fetchall()</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> results:</span><br><span class="line">        result = row[<span class="number">3</span>]</span><br><span class="line">        img = qrcode.make(result)</span><br><span class="line">        img.save(<span class="string">'%s.png'</span> % (result))</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"Error: unable to fetch data"</span>)</span><br><span class="line"> </span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905114131.png" alt=""></p>
+        <p>最近项目需要基于<a href="https://doc.vux.li/zh-CN/" target="_blank" rel="noopener">vux</a>开发跨平台的app，从零开始的小白，摸索了一天多，大概知道了流程，现在记录下：</p>
+<p>1.新建项目，这里我不使用ESLint.<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220012.png" alt=""></p>
+<p>初始化完成后如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220039.png" alt=""></p>
+<p>2.安装依赖<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220058.png" alt=""></p>
+<p>3.测试运行<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220118.png" alt=""></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220129.png" alt=""></p>
+<p>4.部署到真机<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220147.png" alt=""></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220157.png" alt=""></p>
+<p>打开HBuilder，新建移动APP项目:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220213.png" alt=""></p>
+<p>把上面生成的index.html和static文件夹拷贝到这个项目，覆盖原有文件即可:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220233.png" alt=""></p>
+<p>运行。可以选择模拟器或真机运行，这里我选择真机：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220247.png" alt=""></p>
+<p>HBuilder同步完文件后如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220301.png" alt=""></p>
+<p>在手机桌面点击”HBuilder”时弹出如下窗口：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220316.png" alt=""></p>
+<p>我们需要手动信任该企业证书：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220328.png" alt=""></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220341.png" alt=""></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220359.png" alt=""></p>
+<p>点击”Trust”即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220417.png" alt=""></p>
+<p>打开后发现页面空白，什么都没，和上面的开发运行的页面不一样的……<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220431.png" alt=""></p>
+<p>修改config/index.js文件，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220443.png" alt=""></p>
+<p>5.流程就是这样子，后面的组件还有页面开发啥的，就和前端开发差不多的了，这里就不多写了。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
