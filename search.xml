@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>Spring Boot项目application.yml文件数据库配置密码加密</title>
+      <link href="/2020/09/10/Spring-Boot%E9%A1%B9%E7%9B%AEapplication-yml%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86/"/>
+      <url>/2020/09/10/Spring-Boot%E9%A1%B9%E7%9B%AEapplication-yml%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86/</url>
+      
+        <content type="html"><![CDATA[<p>在Spring boot开发中，需要在application.yml文件里配置数据库的连接信息，或者在启动时传入数据库密码，如果不加密，传明文，数据库就直接暴露了，相当于”裸奔”了，因此需要进行加密处理才行。</p><p>如果使用@SpringBootApplication注解启动的项目，只需增加maven依赖，其他方式请参考<a href="https://github.com/ulisesbocchio/jasypt-spring-boot" target="_blank" rel="noopener">GitHub地址</a>的README信息:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215328.png" alt=""></p><p>我们对信息加解密是使用这个jar包的：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215344.png" alt=""></p><p>编写加解密测试类:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215445.png" alt=""></p><p>首先运行testEncrypt()，明文是<code>linjingke</code>，加密密钥是<code>ljk</code>，密钥可以自己定，运行输出如下为：</p><blockquote><p>aHsFtlQjatrOP2s8bfLGkUG55z53KLNi</p></blockquote><p>然后运行testDe()，加密后的串为aHsFtlQjatrOP2s8bfLGkUG55z53KLNi，输出的明文为linjingke。</p><p>加解密可以。</p><p>另外，也可以通过命令行方式处理：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215540.png" alt=""></p><p>可以发现，同样的明文和加密密钥，加密后的串却不一样。</p><p>加密串拿到了，现在来修改application.yml的配置：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215611.png" alt=""></p><p>我们把加密串放在ENC({加密串})即可。</p><p>还要加这个密钥的配置：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215634.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+          <category> Springboot </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring Boot应用启动流程初探</title>
       <link href="/2020/09/10/Spring-Boot%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%9D%E6%8E%A2/"/>
       <url>/2020/09/10/Spring-Boot%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%9D%E6%8E%A2/</url>

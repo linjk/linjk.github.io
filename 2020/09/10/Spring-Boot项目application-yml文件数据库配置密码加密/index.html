@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>CENTOS7读取NTFS格式的移动硬盘和exFAT格式的U盘 | Jim</title>
+  <title>Spring Boot项目application.yml文件数据库配置密码加密 | Jim</title>
   <meta name="keywords" content="">
-  <meta name="description" content="CENTOS7读取NTFS格式的移动硬盘和exFAT格式的U盘 | Jim">
+  <meta name="description" content="Spring Boot项目application.yml文件数据库配置密码加密 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="用了一段时间Spring Boot进行开发，它的确省了开发人员很多配置的时间，那么，它背后是怎么启动的，今天来探究一下……  话说，这篇文章标题开始写于2018年9月某日，今天(2019年11月某日)才在草稿箱捡起来重新补完，囧大发…………  以下示例采用SpringBoot2.0.5进行开发测试，其Spring FrameWork版本为5.0，要求JDK1.8。在使用maven下载镜像时，为了加">
 <meta property="og:type" content="article">
@@ -951,9 +951,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CENTOS7读取NTFS格式的移动硬盘和exFAT格式的U盘" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Spring-Boot项目application-yml文件数据库配置密码加密" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">CENTOS7读取NTFS格式的移动硬盘和exFAT格式的U盘</h1>
+        <h1 class="article-title">Spring Boot项目application.yml文件数据库配置密码加密</h1>
     
     <div class="article-meta">
         
@@ -963,7 +963,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Linux">Linux</a>
+            <a  data-rel="Java">Java</a> > 
+            
+            <a  data-rel="Java&lt;---&gt;Springboot">Springboot</a>
             
         </span>
         
@@ -971,12 +973,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-08-06 23:30:17'>2020-08-06 23:28</time>
+            发布时间 : <time class="date" title='最后更新: 2020-09-10 21:56:44'>2020-09-10 21:52</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:49</span>
+        <span>字数:259</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1006,7 +1008,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NTFS"><span class="toc-text">NTFS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新阿里的yum源"><span class="toc-text">更新阿里的yum源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载ntfs依赖"><span class="toc-text">下载ntfs依赖</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exFat"><span class="toc-text">exFat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装nux仓库"><span class="toc-text">安装nux仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装exfat依赖"><span class="toc-text">安装exfat依赖</span></a></li></ol></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -1022,10 +1024,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="NTFS"><a href="#NTFS" class="headerlink" title="NTFS"></a>NTFS</h2><h3 id="更新阿里的yum源"><a href="#更新阿里的yum源" class="headerlink" title="更新阿里的yum源"></a>更新阿里的yum源</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232909.png" alt=""></p>
-<h3 id="下载ntfs依赖"><a href="#下载ntfs依赖" class="headerlink" title="下载ntfs依赖"></a>下载ntfs依赖</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232923.png" alt=""></p>
-<h2 id="exFat"><a href="#exFat" class="headerlink" title="exFat"></a>exFat</h2><h3 id="安装nux仓库"><a href="#安装nux仓库" class="headerlink" title="安装nux仓库"></a>安装nux仓库</h3><p><code>sudo yum install -y http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm</code></p>
-<h3 id="安装exfat依赖"><a href="#安装exfat依赖" class="headerlink" title="安装exfat依赖"></a>安装exfat依赖</h3><p><code>sudo yum install exfat-utils fuse-exfat</code></p>
+        <p>在Spring boot开发中，需要在application.yml文件里配置数据库的连接信息，或者在启动时传入数据库密码，如果不加密，传明文，数据库就直接暴露了，相当于”裸奔”了，因此需要进行加密处理才行。</p>
+<p>如果使用@SpringBootApplication注解启动的项目，只需增加maven依赖，其他方式请参考<a href="https://github.com/ulisesbocchio/jasypt-spring-boot" target="_blank" rel="noopener">GitHub地址</a>的README信息:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215328.png" alt=""></p>
+<p>我们对信息加解密是使用这个jar包的：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215344.png" alt=""></p>
+<p>编写加解密测试类:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215445.png" alt=""></p>
+<p>首先运行testEncrypt()，明文是<code>linjingke</code>，加密密钥是<code>ljk</code>，密钥可以自己定，运行输出如下为：</p>
+<blockquote>
+<p>aHsFtlQjatrOP2s8bfLGkUG55z53KLNi</p>
+</blockquote>
+<p>然后运行testDe()，加密后的串为aHsFtlQjatrOP2s8bfLGkUG55z53KLNi，输出的明文为linjingke。</p>
+<p>加解密可以。</p>
+<p>另外，也可以通过命令行方式处理：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215540.png" alt=""></p>
+<p>可以发现，同样的明文和加密密钥，加密后的串却不一样。</p>
+<p>加密串拿到了，现在来修改application.yml的配置：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215611.png" alt=""></p>
+<p>我们把加密串放在ENC({加密串})即可。</p>
+<p>还要加这个密钥的配置：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910215634.png" alt=""></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
