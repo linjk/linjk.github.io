@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>Spring Boot应用启动流程初探</title>
+      <link href="/2020/09/10/Spring-Boot%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%9D%E6%8E%A2/"/>
+      <url>/2020/09/10/Spring-Boot%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%9D%E6%8E%A2/</url>
+      
+        <content type="html"><![CDATA[<p>用了一段时间Spring Boot进行开发，它的确省了开发人员很多配置的时间，那么，它背后是怎么启动的，今天来探究一下……</p><blockquote><p>话说，这篇文章标题开始写于2018年9月某日，今天(2019年11月某日)才在草稿箱捡起来重新补完，囧大发…………</p></blockquote><p>以下示例采用SpringBoot2.0.5进行开发测试，其Spring FrameWork版本为5.0，要求JDK1.8。在使用maven下载镜像时，为了加快下载速度，这里使用阿里云的镜像地址：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214434.png" alt=""></p><p>首先，创建一个最简单的只有一个starter-web的模块依赖的spring boot项目，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214453.png" alt=""></p><p>这里注意到，这里有一个父POM直接指向了spring boot的pom，如果需要依赖其他自定义的父POM就不行了，这里稍作修改如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214523.png" alt=""></p><p>执行mvn package打包后，目录结构如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214541.png" alt=""></p><p>这两个jar包，15MB左右的可以java -jar启动，它包含了很多以来库，如tomcat等，而.original后缀的文件仅包含该项目应用的本地资源，如编译后的classes目录下的资源文件，它并未引入第三方依赖资源，所以占用空间较小。我们解压第一个jar包看看：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214600.png" alt=""></p><p>BOOT-INF/classes目录存放的是应用编译后的class文件；</p><ul><li>BOOT-INF/lib存放的是应用依赖的JAR包；</li><li>META-INF目录存放的是应用相关的元信息，如MANIFEST.MF文件(根据JAR文件规定，该文件一定存放于META-INF目录下)；</li><li>org目录存放Spring BOOT相关的class文件。</li></ul><p>接下来，看看MANIFEST.MF文件，它描述了关于jar包的很多信息：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214643.png" alt=""></p><p>发现一个特点，有Main-Class和Start-Class，回忆一下刚学Java时，只有一个类文件，如Hello.class，我们是通过java Hello命令去执行的，既然现在知道Main-Class了，我们试下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214710.png" alt=""></p><p>应用正常启动，说明我们自己的Start-Class是被这个启动类来进行加载并初始化的，而JarLauncher会在BOOT-INF/lib目录下找到需要类库依赖去启动，如下源码所示，这里就有一个main函数：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214735.png" alt=""></p><p>下面是我们代码中的启动类:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214750.png" alt=""></p><p>可以发现，Spring boot项目核心有两个组件：</p><ol><li>SpringApplication负责Spring应用程序的启动</li><li>@SpringBootApplication注解来简化应用的配置</li></ol><p>整个应用的启动类为<code>org.springframework.boot.loader.JarLauncher</code>，其继承关系如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214854.png" alt=""></p><p>为了方便看到Launcher源码，这里加一个其依赖：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214909.png" alt=""></p><p>然后打开下载JarLauncher的源码。</p><p>在其源码可以看到，指定了启动时去classes路径BOOT-INF/classes/下和库路径BOOT-INF/lib/下查询archive资源文件然后用默认或自定义的classloader进行加载。真正的启动代码在这里：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910214937.png" alt=""></p><p>囧，跟了下代码，里面涉及不少java的东西我还不怎么了解，如Archive、URLStreamHandler等，有点晕，先此结笔，后面再补充完善了……</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+          <category> Springboot </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>浏览器Vue-devtools工具安装</title>
       <link href="/2020/09/09/%E6%B5%8F%E8%A7%88%E5%99%A8Vue-devtools%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/"/>
       <url>/2020/09/09/%E6%B5%8F%E8%A7%88%E5%99%A8Vue-devtools%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/</url>
