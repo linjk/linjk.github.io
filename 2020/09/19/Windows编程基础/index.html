@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Mac下一个不错的Gif图片生成软件--GIPHY | Jim</title>
-  <meta name="keywords" content=" Tools ">
-  <meta name="description" content="Mac下一个不错的Gif图片生成软件--GIPHY | Jim">
+  <title>Windows编程基础 | Jim</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Windows编程基础 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="最近项目需要基于vux开发跨平台的app，从零开始的小白，摸索了一天多，大概知道了流程，现在记录下： 1.新建项目，这里我不使用ESLint. 初始化完成后如下： 2.安装依赖 3.测试运行  4.部署到真机  打开HBuilder，新建移动APP项目: 把上面生成的index.html和static文件夹拷贝到这个项目，覆盖原有文件即可: 运行。可以选择模拟器或真机运行，这里我选择真机： HBu">
 <meta property="og:type" content="article">
@@ -974,9 +974,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Mac下一个不错的Gif图片生成软件-GIPHY" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Windows编程基础" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Mac下一个不错的Gif图片生成软件--GIPHY</h1>
+        <h1 class="article-title">Windows编程基础</h1>
     
     <div class="article-meta">
         
@@ -986,29 +986,20 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Mac">Mac</a> > 
-            
-            <a  data-rel="Mac&lt;---&gt;Tools">Tools</a>
+            <a  data-rel="Windows">Windows</a>
             
         </span>
         
         
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color1">Tools</a>
-            
-        </span>
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-09-19 10:58:57'>2020-09-19 10:54</time>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-28 23:41:40'>2020-07-28 23:37</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:146</span>
+        <span>字数:582</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1054,18 +1045,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li><p>APP Store搜索下载：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728233904.png" alt=""></p>
+        <p>虽然现在有不少Windows平台的快捷开发语言和工具，如C#、Delphi、MFC等，但是，作为一个C语言出身的我，几年了，还是想偶尔回去看看底层原理，那就从Windows基础编程开始吧。</p>
+<p>Windows编程，有一个很重要的理念就是：事件驱动，即实现以消息驱动为基础的应用程序，这个很重要，使用如上所述的几种语言，其实就是在写回调函数去实现自己的业务系统，以前学过，现在就纯粹记个笔记吧。</p>
+<p>回过头来，一个Windows打开窗口的基本过程，想一下其实也不难，有如下几步：</p>
+<ol>
+<li>创建窗口</li>
+<li>显示窗口</li>
+<li>鼠标、键盘消息处理</li>
+</ol>
+<p>先来看一个基本的程序例子，创建一个win32的项目工程：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200919105510.png" alt=""></p>
+<p>如果不勾选”Empty Project”而选择”Windows Application”，就会生成模板代码，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200919105534.png" alt=""></p>
+<p>main函数如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200919105704.png" alt=""></p>
+<p>TranslateMessage函数是为了将键盘消息转化，DispatchMessage函数会将消息传给窗口函数去处理，注意到，DispatchMessage并没有指定窗口指针，它怎么知道传给哪个窗口？这是因为，消息发生时，操作系统已根据当时状态给这个消息指明了所属窗口，而窗口在创建时指定了回调函数的指针，因此，消息会有消费的地方，这一环节，会依赖于user.lib模块。</p>
+<p>代码可以自己用ide生成，从代码来总结出Windows程序的生命周期如下：</p>
+<ol>
+<li><p>程序初始化过程中调用CreateWindow创建窗口，创建后会发出消息WM_CREATE给窗口函数，可以在响应这个消息的部分进行一些初始化操作；</p>
 </li>
-<li><p>下载完安装后打开界面如下，它会显示一个取景框，我们可以把它移动到需要生成Gif区域并调整大小匹配区域，然后点击底部的红色即可开始录制：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728233936.png" alt=""></p>
+<li><p>窗口程序打开运行时，在while循环不断处理消息，如果收到消息WM_QUIT，GetMessage会返回0从而结束循环，然后退出程序；</p>
 </li>
-<li><p>这里录制一个片段后，程序界面如下，左下角就是录制的片段：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234002.png" alt=""></p>
-</li>
-<li><p>点击录制好的片段，弹出如下窗口:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234022.png" alt=""></p>
-</li>
-<li><p>点击”SAVE AS…”，格式选择”Gif”，然后自定义名字和选择保存路径即可</p>
-</li>
-<li><p>上传Gif并显示如下【额……这里显示不了~】:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234044.png" alt=""></p>
+<li><p>当用户点击菜单的Exit按钮时，会发出消息WM_CLOSE，这里没对其处理，因此，由函数DefWindowsProc处理，这个函数会调用Destroy函数把窗口擦除，然后发出消息WM_DESTROY，窗口函数收到WM_DESTROY后会调用函数PostQuitMessage，这个函数会发出消息WM_QUIT让while循环结束消息处理，完成程序退出操作。</p>
 </li>
 </ol>
 

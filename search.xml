@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Windows编程基础</title>
+      <link href="/2020/09/19/Windows%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
+      <url>/2020/09/19/Windows%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<p>虽然现在有不少Windows平台的快捷开发语言和工具，如C#、Delphi、MFC等，但是，作为一个C语言出身的我，几年了，还是想偶尔回去看看底层原理，那就从Windows基础编程开始吧。</p><p>Windows编程，有一个很重要的理念就是：事件驱动，即实现以消息驱动为基础的应用程序，这个很重要，使用如上所述的几种语言，其实就是在写回调函数去实现自己的业务系统，以前学过，现在就纯粹记个笔记吧。</p><p>回过头来，一个Windows打开窗口的基本过程，想一下其实也不难，有如下几步：</p><ol><li>创建窗口</li><li>显示窗口</li><li>鼠标、键盘消息处理</li></ol><p>先来看一个基本的程序例子，创建一个win32的项目工程：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200919105510.png" alt=""></p><p>如果不勾选”Empty Project”而选择”Windows Application”，就会生成模板代码，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200919105534.png" alt=""></p><p>main函数如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200919105704.png" alt=""></p><p>TranslateMessage函数是为了将键盘消息转化，DispatchMessage函数会将消息传给窗口函数去处理，注意到，DispatchMessage并没有指定窗口指针，它怎么知道传给哪个窗口？这是因为，消息发生时，操作系统已根据当时状态给这个消息指明了所属窗口，而窗口在创建时指定了回调函数的指针，因此，消息会有消费的地方，这一环节，会依赖于user.lib模块。</p><p>代码可以自己用ide生成，从代码来总结出Windows程序的生命周期如下：</p><ol><li><p>程序初始化过程中调用CreateWindow创建窗口，创建后会发出消息WM_CREATE给窗口函数，可以在响应这个消息的部分进行一些初始化操作；</p></li><li><p>窗口程序打开运行时，在while循环不断处理消息，如果收到消息WM_QUIT，GetMessage会返回0从而结束循环，然后退出程序；</p></li><li><p>当用户点击菜单的Exit按钮时，会发出消息WM_CLOSE，这里没对其处理，因此，由函数DefWindowsProc处理，这个函数会调用Destroy函数把窗口擦除，然后发出消息WM_DESTROY，窗口函数收到WM_DESTROY后会调用函数PostQuitMessage，这个函数会发出消息WM_QUIT让while循环结束消息处理，完成程序退出操作。</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Windows </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>小试基于vux开发跨平台app</title>
       <link href="/2020/09/10/%E5%B0%8F%E8%AF%95%E5%9F%BA%E4%BA%8Evux%E5%BC%80%E5%8F%91%E8%B7%A8%E5%B9%B3%E5%8F%B0app/"/>
       <url>/2020/09/10/%E5%B0%8F%E8%AF%95%E5%9F%BA%E4%BA%8Evux%E5%BC%80%E5%8F%91%E8%B7%A8%E5%B9%B3%E5%8F%B0app/</url>
