@@ -6,37 +6,21 @@
   <meta name="keywords" content="">
   <meta name="description" content="Java序列化使用jackson时首字母变成小写问题解决 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="最近项目需要基于vux开发跨平台的app，从零开始的小白，摸索了一天多，大概知道了流程，现在记录下： 1.新建项目，这里我不使用ESLint. 初始化完成后如下： 2.安装依赖 3.测试运行  4.部署到真机  打开HBuilder，新建移动APP项目: 把上面生成的index.html和static文件夹拷贝到这个项目，覆盖原有文件即可: 运行。可以选择模拟器或真机运行，这里我选择真机： HBu">
+<meta name="description" content="虽然现在有不少Windows平台的快捷开发语言和工具，如C#、Delphi、MFC等，但是，作为一个C语言出身的我，几年了，还是想偶尔回去看看底层原理，那就从Windows基础编程开始吧。 Windows编程，有一个很重要的理念就是：事件驱动，即实现以消息驱动为基础的应用程序，这个很重要，使用如上所述的几种语言，其实就是在写回调函数去实现自己的业务系统，以前学过，现在就纯粹记个笔记吧。 回过头来，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小试基于vux开发跨平台app">
-<meta property="og:url" content="http://yoursite.com/2020/09/10/%E5%B0%8F%E8%AF%95%E5%9F%BA%E4%BA%8Evux%E5%BC%80%E5%8F%91%E8%B7%A8%E5%B9%B3%E5%8F%B0app/index.html">
+<meta property="og:title" content="Windows编程基础">
+<meta property="og:url" content="http://yoursite.com/2020/09/19/Windows%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Jim">
-<meta property="og:description" content="最近项目需要基于vux开发跨平台的app，从零开始的小白，摸索了一天多，大概知道了流程，现在记录下： 1.新建项目，这里我不使用ESLint. 初始化完成后如下： 2.安装依赖 3.测试运行  4.部署到真机  打开HBuilder，新建移动APP项目: 把上面生成的index.html和static文件夹拷贝到这个项目，覆盖原有文件即可: 运行。可以选择模拟器或真机运行，这里我选择真机： HBu">
+<meta property="og:description" content="虽然现在有不少Windows平台的快捷开发语言和工具，如C#、Delphi、MFC等，但是，作为一个C语言出身的我，几年了，还是想偶尔回去看看底层原理，那就从Windows基础编程开始吧。 Windows编程，有一个很重要的理念就是：事件驱动，即实现以消息驱动为基础的应用程序，这个很重要，使用如上所述的几种语言，其实就是在写回调函数去实现自己的业务系统，以前学过，现在就纯粹记个笔记吧。 回过头来，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220012.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220039.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220058.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220118.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220129.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220147.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220157.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220213.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220233.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220247.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220301.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220316.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220328.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220341.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220359.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220417.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220431.png">
-<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220443.png">
-<meta property="article:published_time" content="2020-09-10T13:58:34.000Z">
-<meta property="article:modified_time" content="2020-09-10T14:05:22.388Z">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200919105510.png">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200919105534.png">
+<meta property="og:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200919105704.png">
+<meta property="article:published_time" content="2020-09-19T02:54:06.000Z">
+<meta property="article:modified_time" content="2020-09-19T02:58:57.492Z">
 <meta property="article:author" content="Lin Jingke">
-<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200910220012.png">
+<meta name="twitter:image" content="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200919105510.png">
 
 
 <link rel="icon" href="/img/head.jpg">
