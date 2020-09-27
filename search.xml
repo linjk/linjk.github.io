@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>高性能缓存系统Redis安装与使用</title>
+      <link href="/2020/09/27/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9FRedis%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
+      <url>/2020/09/27/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9FRedis%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p>在互联网后台架构中，需要应付高并发访问数据库，很多时候都会在数据库上层增加一个缓存服务器来保存经常读写的数据以减少数据库压力，可以使用LVS、Memcached或Redis，Memcached和Redis是同样类型产品，但是Redis更好的地方是可以保存数据快照，在机器重启后，可以保存一部分数据，而Memcached会断电丢失数据，Redis还有如下有点：</p><ol><li>丰富的数据类型，如：string, hash, list, set, hyperloglog等</li><li>提供AOF和RDB两种数据持久化方式(持久化需要合理规划内存！！) RDB是Redis默认的持久化方式，默认数据文件是: dump.rdb</li><li>所有操作都是原子性的，支持事务</li></ol><p>下面来安装使用一下：</p><ol><li><p>[下载](wget <a href="http://download.redis.io/releases/redis-3.0.4.tar.gz" target="_blank" rel="noopener">http://download.redis.io/releases/redis-3.0.4.tar.gz</a>)</p></li><li><p>安装</p><blockquote><p>tar zxf redis-6.0.8.tar.gz<br>cd redis-6.0.8<br>yum install tcl - Linux需要执行，Mac不需要<br>make<br>make test<br>sudo make install<br>  <code>如提示pkg-config找不到，需要安装: brew install pkg-config</code></p></blockquote></li><li><p>配置<br> sudo cp redis.conf /etc/<br> sudo vim /etc/redis.conf —&gt; 修改这行为yes: daemonize yes，使Redis可以在后台运行</p></li><li><p>启动<br> <code>redis-server ~/Documents/usr/path-var/redis-6.0.8/conf/redis.conf</code></p></li><li><p>连接测试<br> <code>redis-cli -h 127.0.0.1 -p 6379</code><br> <img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927204426.png" alt=""></p><p> 查看内存使用状况:<br> <img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927204514.png" alt=""></p><ul><li><p>use_memory_human：返回Redis分配的内存总量</p></li><li><p>use_memory_rss: 从操作系统的角度，返回redis已分配的内存总量，与top命令输出结果一致</p></li><li><p>use_memory_peak：内存消耗峰值</p><blockquote><p>使用Python连接Redis:</p><ol><li>pip3 install redis</li><li><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927205027.png" alt=""><br>读到的值，也是刚刚设置的结果</li></ol></blockquote></li></ul></li><li><p>完成<br> Redis数据类型说明：</p><ul><li>string: 存储简单的数据，可以接受任何格式的二进制数据，如JPEG图片或JSON字符串，最多可容纳数据长度为512MB。</li><li>hash: 接近数据库模型，value值是一个hashmap的结构</li><li>list: 按照插入顺序排序的字符串链表，可以被用作消息队列</li><li>set: 无序且不重复的元素集合</li><li>sorted set: 有序且不重复的元素集合，元素插入后就会自动排序，因此很适合开发需要排行榜类的应用　　</li></ul></li><li><p>扩展<br> 集群: 推荐使用Twitter开源的Twemproxy的Redis代理，原理：Redis客户端把请求发送到Twemproxy，Twemproxy根据路由规则发送到正确的Redis实例，最后Twemproxy把结果汇集返回给客户端。缺点：不支持平滑重启Redis实例，可以使用豌豆荚对其的改进软件: Codis。</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> DB </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Windows编程基础</title>
       <link href="/2020/09/19/Windows%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
       <url>/2020/09/19/Windows%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
