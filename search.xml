@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Windows系统下不错的Shell软件Babun</title>
+      <link href="/2020/09/27/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B%E4%B8%8D%E9%94%99%E7%9A%84Shell%E8%BD%AF%E4%BB%B6Babun/"/>
+      <url>/2020/09/27/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B%E4%B8%8D%E9%94%99%E7%9A%84Shell%E8%BD%AF%E4%BB%B6Babun/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://github.com/babun/babun" target="_blank" rel="noopener">Babun</a>在GitHub上可以找到，它让习惯Linux系统的shell的开发人员可以在Windows系统下也有很好的命令行使用体验，虽然后Cygwin，但是，这个，不会让你失望。</p><p>简介：</p><ul><li>一键安装，不需要admin权限</li><li>类似包管理器apt-get/yum，它的包管理器为pact</li><li>集成oh-my-zsh</li><li>……</li></ul><p>下载后放到你需要安装到的目录，执行安装脚本即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927205526.png" alt=""></p><p>等待安装：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927205541.png" alt=""></p><p>安装完成：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927205557.png" alt=""></p><p>可以右键文件夹直接进入：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927205611.png" alt=""></p><p>用过mac系统的，一定很熟悉<code>open .</code>直接打开Finder吧，也可以哦：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927205628.png" alt=""></p><p>接下来，在Windows上体验Linux吧。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Windows </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>高性能缓存系统Redis安装与使用</title>
       <link href="/2020/09/27/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9FRedis%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
       <url>/2020/09/27/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9FRedis%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
