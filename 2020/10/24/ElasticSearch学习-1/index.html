@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Spring Security基本原理(Spring Boot1.x版本适用，2.x部分配置参数会变) | Jim</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Spring Security基本原理(Spring Boot1.x版本适用，2.x部分配置参数会变) | Jim">
+  <title>ElasticSearch学习(1) | Jim</title>
+  <meta name="keywords" content=" Elasticsearch ">
+  <meta name="description" content="ElasticSearch学习(1) | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ElasticSearch是一款基于Lucene的功能强大的开源分布式搜索与数据分析引擎，它具有高性能、易于扩展的优点，不仅可以从海量数据中快速找到相关信息，还被广泛运用于大数据近实时的分析，包括日志分析、指标监控、信息安全等多个领域。  相关链接：ElasticSearch官网Elastic公司技术博客Elastic中文社区  常听的ELK，即ElasticSearch、Logstash、Kib">
 <meta property="og:type" content="article">
@@ -1014,9 +1014,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Spring-Security基本原理-Spring-Boot1-x版本适用，2-x部分配置参数会变" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-ElasticSearch学习-1" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Spring Security基本原理(Spring Boot1.x版本适用，2.x部分配置参数会变)</h1>
+        <h1 class="article-title">ElasticSearch学习(1)</h1>
     
     <div class="article-meta">
         
@@ -1026,20 +1026,27 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Java">Java</a>
+            <a  data-rel="DB">DB</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">Elasticsearch</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-09-09 21:52:54'>2020-09-09 00:09</time>
+            发布时间 : <time class="date" title='最后更新: 2020-10-24 12:19:42'>2020-10-24 12:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.2k</span>
+        <span>字数:1k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1069,7 +1076,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装ElasticSsearch"><span class="toc-text">安装ElasticSsearch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Kibana"><span class="toc-text">安装Kibana</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Logstash"><span class="toc-text">安装Logstash</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1085,31 +1092,57 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在SpringBoot开发时，通常都会对URI资源进行访问保护，就会引入如下starter模块：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211649.png" alt=""></p>
-<p>这里暂时还没在yml文件配置auth服务的参数，因为这个oauth2的pom.xml文件里面也包含了spring security，所以可以直接使用：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211710.png" alt=""></p>
-<p>如果不用Spring cloud，只用Spring boot，也可以直接引用，上面最终也是引用下面的依赖的：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211732.png" alt=""></p>
-<p>spring boot的security-starter模块在引入后，没做任何配置的话，会对所有接口进行保护，因此，在访问的时候，会弹出登录框：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211759.png" alt=""></p>
-<p>在spring启动时在日志中会输出一个默认的用户user的密码：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211822.png" alt=""></p>
-<p>输入Username(默认: user)和Password即可正常登录访问。</p>
-<p>我们可以在application.yml配置自己的用户名和密码:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909211921.png" alt=""></p>
-<p>默认的安全机制肯定不普遍适用，可以继承WebSecurityConfigurerAdapter来配置，然后重写configure方法来自定义验证处理逻辑：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212125.png" alt=""></p>
-<p>前面的跳出登录窗口的处理其实默认的实现就是configure(HttpSecurity)，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212200.png" alt=""></p>
-<p>下面来自定义实现一下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212519.png" alt=""></p>
-<p>这样，在访问”/test”或”/login”接口就不需要验证直接访问，其他就需要登录了。我们还可以指定自己的登录页面，登录成功的处理器或登录失败的处理器等，如继承该类可以实现自己的登录成功处理逻辑<code>AbstractAuthenticationFilterConfigurer.java</code>：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212644.png" alt=""></p>
-<p>如果需要配合自己业务系统的用户的用户进行验证，实现这个接口<code>org.springframework.security.core.userdetails.UserDetailsService</code>即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212734.png" alt=""></p>
-<p>更多函数可以参考源码，进行测试调用即可。</p>
-<p>大致使用了Spring Security后，不难理解，Spring Security其实就是很完善的过滤器链，在spring boot启动时初始化所有过滤器，然后用户的请求的服务的响应都会经过过滤器，类似我们在路由里面实现的ZuulFilter:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909212812.png" alt=""></p>
-<p>每个过滤器按照优先级进行逐级过滤，spring security的过滤器有用户名和密码验证<code>org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.java</code>、第三方登录验证等过滤器，默认是基于用户名和密码的，在过滤器里，当收到用户请求后，就会判断请求是否有过滤器需要的验证信息，有就用对应的过滤器进行验证。所有的过滤器都是继承于抽象基类GenericFilterBean的，可以看到目前有如下几种过滤器的实现：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213042.png" alt=""></p>
-<p>经过层层过滤器的验证后，最后会来到<code>org.springframework.security.web.access.intercept.FilterSecurityInterceptor.java</code>这个过滤器，这个类会检查经过前面验证过滤器的请求是否能访问后面的接口，可以则放行，否则，抛出无权限异常，会被<code>org.springframework.security.web.access.ExceptionTranslationFilter</code>类捕获：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213138.png" alt=""></p>
-<p>整个过滤器链流程如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213206.png" alt=""></p>
-<p>这个过程可以自己在相应类下断点调试看看流程是否真的这样执行。有了前面的几个过滤器，那么，整个认证过程流程，大致涉及如下几个核心类串起来的：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213239.png" alt=""></p>
-<p>应用启动后，不是所有过滤器都会生效的，spring boot会根据我们的配置，如我们前面配置了formLogin()这个过滤器，那么这个过滤器就生效而其他过滤器不生效，但是，在上面过滤器链中，绿色的才是可配置是否生效的，其他颜色的，一定会在过滤器链中。</p>
-<p>前面我们配置了用户名密码登录，在登录界面点击了”登录”按钮后，我们首先会进入这个<code>org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.java</code>过滤器：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213313.png" alt=""></p>
-<p>获取了用户信息后，开始进行校验处理<code>org.springframework.security.authentication.ProviderManager.java</code>：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213353.png" alt=""></p>
-<p>这里用for循环去执行验证器，这里用户名和密码的验证器为如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213412.png" alt=""></p>
-<p>认证成功后，会在<code>org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter</code>类的successfulAuthentication方法把当前登录用户信息写到session里：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213444.png" alt=""></p>
-<p>因为一次请求和响应在一个线程中处理，所以，把当前请求的认证信息放到SecurityContextHolder里，它是ThreadLocal的，因此，所以可以在任何地方获取到当前登录用户的信息。<br>请求进来，会先进入到这个过滤器：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213506.png" alt=""><br>它会进行请求和响应信息的session处理，这样，用户登录后，在进行其他请求时，都能获得登录用户的信息。<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909213529.png" alt=""></p>
-<p>今天踩坑了，不得不好好了解下Spring Security，大致流程就这样，后面有时间再补充缺少的理解吧。</p>
+        <p>ElasticSearch是一款基于Lucene的功能强大的开源分布式搜索与数据分析引擎，它具有高性能、易于扩展的优点，不仅可以从海量数据中快速找到相关信息，还被广泛运用于大数据近实时的分析，包括日志分析、指标监控、信息安全等多个领域。</p>
+<blockquote>
+<p>相关链接：<br><a href="https://www.elastic.co/cn/products/elasticsearch" target="_blank" rel="noopener">ElasticSearch官网</a><br><a href="https://www.elastic.co/cn/blog" target="_blank" rel="noopener">Elastic公司技术博客</a><br><a href="http://www.elasticsearch.cn/" target="_blank" rel="noopener">Elastic中文社区</a></p>
+</blockquote>
+<p>常听的ELK，即ElasticSearch、Logstash、Kibana，可以搭建一个完整的数据采集、存储、可视化的平台，这里来先动手实践，对其流程有一个感官的理解，后面再慢慢去深入了解ElasticSearch的各种高级用法。</p>
+<p>首先，需要下载ELK三件套，注意，这三者的版本必须一致，否则无法正常进行数据采集，我这里采用的是<strong>7.5.0</strong>版本的:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120441.png" alt=""></p>
+<p>另外还需要注意的是，安装之前需要JDK环境的支持，JAVA_HOME的配置这里就不多说了。</p>
+<h2 id="安装ElasticSsearch"><a href="#安装ElasticSsearch" class="headerlink" title="安装ElasticSsearch"></a>安装ElasticSsearch</h2><p>下载ES压缩包，解压后目录结构如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120526.png" alt=""></p>
+<p>目录说明：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120553.png" alt=""></p>
+<p>配置elasticsearch.yml：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120638.png" alt=""></p>
+<p>配置jvm.options：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120656.png" alt=""></p>
+<p>还有一点要注意，上面值得设置不要超过30GB大小。配置完成后，运行bin目录下的脚本文件：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120717.png" alt=""></p>
+<p>检查确认启动成功：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120742.png" alt=""></p>
+<p>注意这里，cluster_name，是ES集群的名称，这里只是单机的一个实例，单一个集群有多个节点时，需要确保集群名称一样，可以通过如下方式在本机启动一个集群的多个节点：</p>
+<blockquote>
+<p>elasticsearch.bat -E node.name=linjk_1 -E cluster.name=linjk -E path.data=xxx -E http.port=3358<br>elasticsearch.bat -E node.name=linjk_2 -E cluster.name=linjk -E path.data=xxx -E http.port=3359<br>elasticsearch.bat -E node.name=linjk_3 -E cluster.name=linjk -E path.data=xxx -E http.port=3360</p>
+</blockquote>
+<p> 然后可通过URL查看当前集群有多少个节点：<br> <img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120841.png" alt=""></p>
+<p> 为了后面方便，这里安装了IK中文分词器:</p>
+<blockquote>
+<p>elasticsearch-plugin.bat install <a href="https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.5.0/elasticsearch-analysis-ik-7.5.0.zip" target="_blank" rel="noopener">https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.5.0/elasticsearch-analysis-ik-7.5.0.zip</a>   </p>
+</blockquote>
+<p> <img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120928.png" alt=""></p>
+<p> 安装完成后，重启ES，查看安装的插件：<br> <img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120944.png" alt=""></p>
+<p> ES配置用户名密码：<br> <img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121001.png" alt=""></p>
+<p> 提示需要配置X-Pack，配置如下：<br> <img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121018.png" alt=""></p>
+<p> 重启ES，重新配置密码：(这里我都用了一个密码<code>ljk121</code>)<br> <img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121040.png" alt=""></p>
+<p> 这是再访问<a href="http://localhost:3358，就会弹出登录对话框了：">http://localhost:3358，就会弹出登录对话框了：</a><br> <img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121100.png" alt=""></p>
+<h2 id="安装Kibana"><a href="#安装Kibana" class="headerlink" title="安装Kibana"></a>安装Kibana</h2><p> 上面是通过浏览器去调用ES提供的一些API，但是只能发GET请求，后面需要发POST请求去查询一些数据就不方便了，这里可以借助Kibana这个工具，启动Kibana很简单，修改其配置文件，然后执行bin目录下的bat或sh脚本即可，注意，ES首先需要启动，在这里ES是服务端，Kibana是客户端。</p>
+<p>修改配置文件kibana.yml：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121150.png" alt=""></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121136.png" alt=""></p>
+<p>启动：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121208.png" alt=""></p>
+<p>验证：【<a href="http://localhost:5601】">http://localhost:5601】</a><br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121230.png" alt=""></p>
+<p>圈住的Dev Tools很有用，如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121249.png" alt=""></p>
+<p>可以很方便运行ES提供的一些API函数。这里暂时就用到Kibana的Dev Tools，其他功能后面再慢慢探索。</p>
+<h2 id="安装Logstash"><a href="#安装Logstash" class="headerlink" title="安装Logstash"></a>安装Logstash</h2><p>有了存储数据的ES和可视化工具Kibana，现在就需要从数据库导入数据到ES了，这里从MySQL导入数据到ES，以借助ES强大的搜索和分析能力去进一步实现后面的业务功能。</p>
+<p>新建一个测试库和测试表：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121329.png" alt=""></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121343.png" alt=""></p>
+<p>新建Logstash导入数据的配置文件:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121516.png" alt=""></p>
+<p>编写后最好测试一下配置文件是否有语法问题：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121540.png" alt=""></p>
+<p>没问题，启动:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121602.png" alt=""></p>
+<p>报错：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121619.png" alt=""></p>
+<p>解决：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121632.png" alt=""></p>
+<p>下载安装插件：</p>
+<p><a href="https://github.com/logstash-plugins/logstash-input-jdbc/releases/tag/v4.3.19" target="_blank" rel="noopener">https://github.com/logstash-plugins/logstash-input-jdbc/releases/tag/v4.3.19</a></p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121657.png" alt=""></p>
+<p>然后安装：(生成gem文件这一步需要先安装Ruby)<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121724.png" alt=""></p>
+<p>再次启动，可以看到，在执行数据同步了：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121744.png" alt=""></p>
+<p>去ES查询验证一下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121805.png" alt=""></p>
+<p>可以看到，在ES可以看到了，接下来，在MySQL修改这条数据，看是否也能同步更新ES的数据，同步的时间最小粒度是1分钟，可以看到，数据也变化了。</p>
+<p>好了，从采集数据到存储到ES的链路走通了，后面学习再记录了。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
