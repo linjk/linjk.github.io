@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Mac系统打开JDGui后闪退问题解决</title>
+      <link href="/2020/10/24/Mac%E7%B3%BB%E7%BB%9F%E6%89%93%E5%BC%80JDGui%E5%90%8E%E9%97%AA%E9%80%80%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/10/24/Mac%E7%B3%BB%E7%BB%9F%E6%89%93%E5%BC%80JDGui%E5%90%8E%E9%97%AA%E9%80%80%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>问题如题，系统版本如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024122315.png" alt=""></p><p>不知是不是同时安装了jdk9和jdk8的原因，打开jd-gui后界面没出现就闪退了，jd-gui在jdk8下面才可以运行，为了保证基于jdk8运行，修改软件的启动脚本：</p><p>1.右键，选择显示包内容<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024122332.png" alt=""></p><p>2.修改启动脚本<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024122409.png" alt=""></p><p>修改部分如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024122427.png" alt=""></p><p>增加这一行即可。</p><p>3.正常启动<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024122451.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ElasticSearch学习(1)</title>
       <link href="/2020/10/24/ElasticSearch%E5%AD%A6%E4%B9%A0-1/"/>
       <url>/2020/10/24/ElasticSearch%E5%AD%A6%E4%B9%A0-1/</url>

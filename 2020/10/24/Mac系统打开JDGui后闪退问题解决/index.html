@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Groovy初见(一) | Jim</title>
-  <meta name="keywords" content=" Groovy ">
-  <meta name="description" content="Groovy初见(一) | Jim">
+  <title>Mac系统打开JDGui后闪退问题解决 | Jim</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Mac系统打开JDGui后闪退问题解决 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="虽然现在有不少Windows平台的快捷开发语言和工具，如C#、Delphi、MFC等，但是，作为一个C语言出身的我，几年了，还是想偶尔回去看看底层原理，那就从Windows基础编程开始吧。 Windows编程，有一个很重要的理念就是：事件驱动，即实现以消息驱动为基础的应用程序，这个很重要，使用如上所述的几种语言，其实就是在写回调函数去实现自己的业务系统，以前学过，现在就纯粹记个笔记吧。 回过头来，">
 <meta property="og:type" content="article">
@@ -994,9 +994,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Groovy初见(一)" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Mac系统打开JDGui后闪退问题解决" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Groovy初见(一)</h1>
+        <h1 class="article-title">Mac系统打开JDGui后闪退问题解决</h1>
     
     <div class="article-meta">
         
@@ -1006,29 +1006,20 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Java">Java</a> > 
-            
-            <a  data-rel="Java&lt;---&gt;Groovy">Groovy</a>
+            <a  data-rel="Misc">Misc</a>
             
         </span>
         
         
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color2">Groovy</a>
-            
-        </span>
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-10-24 12:25:38'>2020-10-24 12:22</time>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-08-05 21:27:08'>2020-08-05 20:34</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:95</span>
+        <span>字数:102</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1058,7 +1049,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#groovysh"><span class="toc-text">groovysh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#groovyConsole"><span class="toc-text">groovyConsole</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sublime-Text构建"><span class="toc-text">Sublime Text构建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新建groovy构建方式"><span class="toc-text">新建groovy构建方式</span></a></li></ol></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -1074,15 +1065,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Steps:</p>
-<ol>
-<li><a href="https://groovy.apache.org/download.html#distro" target="_blank" rel="noopener">Download Groovy</a></li>
-<li>Configure Enviroment【GROOVY_HOME】<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200805210704.png" alt=""></li>
-</ol>
-<h3 id="groovysh"><a href="#groovysh" class="headerlink" title="groovysh"></a>groovysh</h3><p>类似node.js交互式功能界面，执行<code>groovysh</code>进入：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200805211036.png" alt=""><br>输入<code>?</code>可以查看帮助。</p>
-<h3 id="groovyConsole"><a href="#groovyConsole" class="headerlink" title="groovyConsole"></a>groovyConsole</h3><p>命令行工具<code>groovy</code>:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200805211358.png" alt=""></p>
-<h3 id="Sublime-Text构建"><a href="#Sublime-Text构建" class="headerlink" title="Sublime Text构建"></a>Sublime Text构建</h3><h4 id="新建groovy构建方式"><a href="#新建groovy构建方式" class="headerlink" title="新建groovy构建方式"></a>新建groovy构建方式</h4><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200805212143.png" alt=""><br>输入如下命令并保存：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200805212236.png" alt=""><br>然后”Tool”-“Build System”就有groovy构建方式了，写一个测试groovy文件，然后按command+B，进行构建，输出如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200805212406.png" alt=""></p>
-<p>###命令构建<br><code>groovy ${file}</code></p>
+        <p>问题如题，系统版本如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024122315.png" alt=""></p>
+<p>不知是不是同时安装了jdk9和jdk8的原因，打开jd-gui后界面没出现就闪退了，jd-gui在jdk8下面才可以运行，为了保证基于jdk8运行，修改软件的启动脚本：</p>
+<p>1.右键，选择显示包内容<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024122332.png" alt=""></p>
+<p>2.修改启动脚本<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024122409.png" alt=""></p>
+<p>修改部分如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024122427.png" alt=""></p>
+<p>增加这一行即可。</p>
+<p>3.正常启动<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024122451.png" alt=""></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
