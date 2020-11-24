@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>GTest初探</title>
+      <link href="/2020/11/24/GTest%E5%88%9D%E6%8E%A2/"/>
+      <url>/2020/11/24/GTest%E5%88%9D%E6%8E%A2/</url>
+      
+        <content type="html"><![CDATA[<p>最近写些C++代码，发现在Java习惯了单元测试后，觉得还是有必要引入，GitHub搜了下，<a href="https://github.com/google/googletest/releases/tag/release-1.10.0" target="_blank" rel="noopener">找到</a>了，用下试试。</p><p>这里下载的1.10.0版本，下载解压后，使用cmake生成makefile文件，然后<code>make &amp;&amp; make install</code>搞定，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124234115.png" alt=""></p><p>操刀试试吧~</p><ol><li>引入依赖<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124234322.png" alt=""></li><li>编写类的测试代码<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201125003305.png" alt=""></li><li>运行<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201125003414.png" alt=""></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+          <category> GTest </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GTest </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Boost入门</title>
       <link href="/2020/11/24/Boost%E5%85%A5%E9%97%A8/"/>
       <url>/2020/11/24/Boost%E5%85%A5%E9%97%A8/</url>
       
-        <content type="html"><![CDATA[<p><a href="https://www.boost.org/" target="_blank" rel="noopener">Boost</a>是一个功能强大、构造精巧、跨平台、开源并且完全免费的C++程序库，现在有C++“准标准”库之称，使用C++而不用标准库，避免不了重复造轮子，但是，程序员不应该只满足于调用，也应该拥有造轮子的能力。因为编译MySQL5.7.19需要依赖boost1.59.0，所以，这里采用这个版本，可以到这里选择合适的版本<a href="https://www.boost.org/users/history/" target="_blank" rel="noopener">下载</a>，后面值得好好看一下boost的代码，里面很多设计值得参考借鉴。</p><p>下载后，解压到自己指定的目录即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124221115.png" alt=""></p><p>目录说明：</p><ul><li>boost: 源码</li><li>doc: 文档</li><li>libs: 所有组件的示例/测试/编译代码</li><li>more: 库作者相关的文档</li><li>status: 可用于测试的Boost库的各个组件</li><li>tools: b2等工具</li></ul><p>Boost库的使用很简单，各个解压后即可，后面的项目需要用到的话，直接在代码包含boost子目录下面对应模块的hpp代码即可，有些库如chrono、date_time等需要编译成静态库或动态库链接后才能使用，这个用到再说。</p><p>编译安装<code>默认安装到/usr/local/bin和/usr/local/include目录下</code>，这里使用完全编译，将包含所有调试版、发行版的静态库和动态库：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124221638.png" alt=""></p><p>接下来，来测试使用下Boost:</p><ol><li>添加库头文件依赖<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124222410.png" alt=""></li><li>简单测试<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124222610.png" alt=""></li></ol>]]></content>
+        <content type="html"><![CDATA[<p><a href="https://www.boost.org/" target="_blank" rel="noopener">Boost</a>是一个功能强大、构造精巧、跨平台、开源并且完全免费的C++程序库，现在有C++“准标准”库之称，使用C++而不用标准库，避免不了重复造轮子，但是，程序员不应该只满足于调用，也应该拥有造轮子的能力。因为编译MySQL5.7.19需要依赖boost1.59.0，所以，这里采用这个版本，可以到这里选择合适的版本<a href="https://www.boost.org/users/history/" target="_blank" rel="noopener">下载</a>，后面值得好好看一下boost的代码，里面很多设计值得参考借鉴。</p><p>下载后，解压到自己指定的目录即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124221115.png" alt=""></p><p>目录说明：</p><ul><li>boost: 源码</li><li>doc: 文档</li><li>libs: 所有组件的示例/测试/编译代码</li><li>more: 库作者相关的文档</li><li>status: 可用于测试的Boost库的各个组件</li><li>tools: b2等工具</li></ul><p>Boost库的使用很简单，各个解压后即可，后面的项目需要用到的话，直接在代码包含boost子目录下面对应模块的hpp代码即可，有些库如chrono、date_time等需要编译成静态库或动态库链接后才能使用，这个用到再说。</p><blockquote><p>Mac系统需要注解的参数<code>compiler.balcklist clang --with-toolset=clang</code>:</p><ol><li>./bootstrap.sh  –with-libraries=all compiler.balcklist clang –with-toolset=clang</li><li>./b2 –buildtype=complete install</li></ol></blockquote><p>编译安装<code>默认安装到/usr/local/bin和/usr/local/include目录下</code>，这里使用完全编译，将包含所有调试版、发行版的静态库和动态库：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124221638.png" alt=""></p><p>接下来，来测试使用下Boost:</p><ol><li>添加库头文件依赖<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124222410.png" alt=""></li><li>简单测试<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124222610.png" alt=""></li></ol>]]></content>
       
       
       <categories>
