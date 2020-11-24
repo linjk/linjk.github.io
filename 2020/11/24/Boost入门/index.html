@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Linux下的网络监视工具-bmon | Jim</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Linux下的网络监视工具-bmon | Jim">
+  <title>Boost入门 | Jim</title>
+  <meta name="keywords" content=" Boost ">
+  <meta name="description" content="Boost入门 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="问题如题，系统版本如下： 不知是不是同时安装了jdk9和jdk8的原因，打开jd-gui后界面没出现就闪退了，jd-gui在jdk8下面才可以运行，为了保证基于jdk8运行，修改软件的启动脚本： 1.右键，选择显示包内容 2.修改启动脚本 修改部分如下： 增加这一行即可。 3.正常启动">
 <meta property="og:type" content="article">
@@ -1024,9 +1024,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Linux下的网络监视工具-bmon" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Boost入门" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Linux下的网络监视工具-bmon</h1>
+        <h1 class="article-title">Boost入门</h1>
     
     <div class="article-meta">
         
@@ -1036,20 +1036,29 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Linux">Linux</a>
+            <a  data-rel="C++">C++</a> > 
+            
+            <a  data-rel="C++&lt;---&gt;Boost">Boost</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">Boost</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-09-05 11:27:58'>2020-09-05 11:25</time>
+            发布时间 : <time class="date" title='最后更新: 2020-11-24 22:26:27'>2020-11-24 21:57</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:172</span>
+        <span>字数:358</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1095,16 +1104,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>bmon是一个Linux平台下不错的网络带宽监视工具，现在在Ubuntu上安装使用它，这里使用源码编译安装的方式。</p>
-<p>首先安装依赖库：</p>
-<blockquote>
-<p>sudo apt-get install -y build-essential make libconfuse-dev libnl-3-dev libnl-route-3-dev libncurses-dev pkg-config dh-autoreconf</p>
-</blockquote>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112648.png" alt=""></p>
-<p>接着，获取bmon的源码：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112705.png" alt=""></p>
-<p>下载完成后，进入bmon根目录，按如下操作:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112725.png" alt=""></p>
-<p>安装完成后，执行命令”bmon”即可进入bmon界面：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200905112739.png" alt=""></p>
-<p>上面列处理两个网卡的网络信息”lo”与”eth0”，可以上下箭头查看信息，输入问号”?”可以显示相关按键帮助信息。bmon的相关帮助加入”–help”参数即可查看”bmon –help”。</p>
+        <p><a href="https://www.boost.org/" target="_blank" rel="noopener">Boost</a>是一个功能强大、构造精巧、跨平台、开源并且完全免费的C++程序库，现在有C++“准标准”库之称，使用C++而不用标准库，避免不了重复造轮子，但是，程序员不应该只满足于调用，也应该拥有造轮子的能力。因为编译MySQL5.7.19需要依赖boost1.59.0，所以，这里采用这个版本，可以到这里选择合适的版本<a href="https://www.boost.org/users/history/" target="_blank" rel="noopener">下载</a>，后面值得好好看一下boost的代码，里面很多设计值得参考借鉴。</p>
+<p>下载后，解压到自己指定的目录即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124221115.png" alt=""></p>
+<p>目录说明：</p>
+<ul>
+<li>boost: 源码</li>
+<li>doc: 文档</li>
+<li>libs: 所有组件的示例/测试/编译代码</li>
+<li>more: 库作者相关的文档</li>
+<li>status: 可用于测试的Boost库的各个组件</li>
+<li>tools: b2等工具</li>
+</ul>
+<p>Boost库的使用很简单，各个解压后即可，后面的项目需要用到的话，直接在代码包含boost子目录下面对应模块的hpp代码即可，有些库如chrono、date_time等需要编译成静态库或动态库链接后才能使用，这个用到再说。</p>
+<p>编译安装<code>默认安装到/usr/local/bin和/usr/local/include目录下</code>，这里使用完全编译，将包含所有调试版、发行版的静态库和动态库：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124221638.png" alt=""></p>
+<p>接下来，来测试使用下Boost:</p>
+<ol>
+<li>添加库头文件依赖<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124222410.png" alt=""></li>
+<li>简单测试<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201124222610.png" alt=""></li>
+</ol>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
