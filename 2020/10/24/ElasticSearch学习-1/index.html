@@ -106,7 +106,7 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(57)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(58)</small></div></li>
     
         
             
@@ -190,11 +190,15 @@
     
         
             
-            <li><div data-rel="Java"><i class="fold iconfont icon-right"></i>Java<small>(11)</small></div>
+            <li><div data-rel="Java"><i class="fold iconfont icon-right"></i>Java<small>(12)</small></div>
                 
                     <ul class="sub hide">
                         
                         <li><div data-rel="Java<--->Groovy">Groovy<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Java<--->JVM">JVM<small>(1)</small></div>
                             
                         </li>
                             
@@ -416,6 +420,10 @@
             
         
     
+        
+            
+        
+    
 </ul>
 <div class="left-bottom">
     <div class="menus">
@@ -426,8 +434,8 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/2020/07/05/AboutMe/">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="57">
-<input type="hidden" id="yelog_site_word_count" value="16.3k">
+<input type="hidden" id="yelog_site_posts_number" value="58">
+<input type="hidden" id="yelog_site_word_count" value="16.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -521,6 +529,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>JVM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>MariaDB</a>
             </li>
         
@@ -570,6 +582,14 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        <a  class="全部文章 Java JVM "
+           href="/2020/11/27/JVM%E5%85%A5%E9%97%A8/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="JVM入门">JVM入门</span>
+            <span class="post-date" title="2020-11-27 23:09:35">2020/11/27</span>
+        </a>
         
         <a  class="全部文章 C++ GTest "
            href="/2020/11/24/GTest%E5%88%9D%E6%8E%A2/"
@@ -1071,7 +1091,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-10-24 12:19:42'>2020-10-24 12:00</time>
+            发布时间 : <time class="date" title='最后更新: 2020-12-09 00:14:39'>2020-10-24 12:00</time>
         
     </div>
     <div class="article-meta">
@@ -1106,7 +1126,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装ElasticSsearch"><span class="toc-text">安装ElasticSsearch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Kibana"><span class="toc-text">安装Kibana</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Logstash"><span class="toc-text">安装Logstash</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装ElasticSsearch"><span class="toc-text">安装ElasticSsearch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置elasticsearch-yml"><span class="toc-text">配置elasticsearch.yml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置jvm-options"><span class="toc-text">配置jvm.options</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Kibana"><span class="toc-text">安装Kibana</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Logstash"><span class="toc-text">安装Logstash</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1127,12 +1147,12 @@
 <p>相关链接：<br><a href="https://www.elastic.co/cn/products/elasticsearch" target="_blank" rel="noopener">ElasticSearch官网</a><br><a href="https://www.elastic.co/cn/blog" target="_blank" rel="noopener">Elastic公司技术博客</a><br><a href="http://www.elasticsearch.cn/" target="_blank" rel="noopener">Elastic中文社区</a></p>
 </blockquote>
 <p>常听的ELK，即ElasticSearch、Logstash、Kibana，可以搭建一个完整的数据采集、存储、可视化的平台，这里来先动手实践，对其流程有一个感官的理解，后面再慢慢去深入了解ElasticSearch的各种高级用法。</p>
-<p>首先，需要下载ELK三件套，注意，这三者的版本必须一致，否则无法正常进行数据采集，我这里采用的是<strong>7.5.0</strong>版本的:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120441.png" alt=""></p>
-<p>另外还需要注意的是，安装之前需要JDK环境的支持，JAVA_HOME的配置这里就不多说了。</p>
-<h2 id="安装ElasticSsearch"><a href="#安装ElasticSsearch" class="headerlink" title="安装ElasticSsearch"></a>安装ElasticSsearch</h2><p>下载ES压缩包，解压后目录结构如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120526.png" alt=""></p>
+<p>首先，需要下载ELK三件套，注意，这三者的版本必须一致，否则无法正常进行数据采集，我这里采用的是<strong>7.8.0</strong>版本的:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201209000918.png" alt=""></p>
+<p>另外还需要注意的是，安装之前需要JDK环境的支持，JAVA_HOME的配置很简单,这里就不多说了。</p>
+<h2 id="安装ElasticSsearch"><a href="#安装ElasticSsearch" class="headerlink" title="安装ElasticSsearch"></a>安装ElasticSsearch</h2><p>下载ES压缩包，解压后目录结构如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201209001024.png" alt=""></p>
 <p>目录说明：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120553.png" alt=""></p>
-<p>配置elasticsearch.yml：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120638.png" alt=""></p>
-<p>配置jvm.options：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120656.png" alt=""></p>
+<h3 id="配置elasticsearch-yml"><a href="#配置elasticsearch-yml" class="headerlink" title="配置elasticsearch.yml"></a>配置elasticsearch.yml</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120638.png" alt=""></p>
+<h3 id="配置jvm-options"><a href="#配置jvm-options" class="headerlink" title="配置jvm.options"></a>配置jvm.options</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120656.png" alt=""></p>
 <p>还有一点要注意，上面值得设置不要超过30GB大小。配置完成后，运行bin目录下的脚本文件：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120717.png" alt=""></p>
 <p>检查确认启动成功：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024120742.png" alt=""></p>
 <p>注意这里，cluster_name，是ES集群的名称，这里只是单机的一个实例，单一个集群有多个节点时，需要确保集群名称一样，可以通过如下方式在本机启动一个集群的多个节点：</p>

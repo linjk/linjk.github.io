@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Docker镜像导出与导入 | Jim</title>
-  <meta name="keywords" content=" Docker ">
-  <meta name="description" content="Docker镜像导出与导入 | Jim">
+  <title>JVM入门 | Jim</title>
+  <meta name="keywords" content=" JVM ">
+  <meta name="description" content="JVM入门 | Jim">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面。下载Flutter SDK后，解压到自定义的目录下并配置bin子目录到环境变量：  增加环境变量: 配置完成后，检测开发环境flutter doctor: 环境配置好后，这里使用Android Studio创建一个开发项目，创建时选择创建Flutter项目一步步操作即可，完成后目录结构如下： 后面连接A">
 <meta property="og:type" content="article">
@@ -1064,9 +1064,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Docker镜像导出与导入" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-JVM入门" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Docker镜像导出与导入</h1>
+        <h1 class="article-title">JVM入门</h1>
     
     <div class="article-meta">
         
@@ -1076,9 +1076,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Linux">Linux</a> > 
+            <a  data-rel="Java">Java</a> > 
             
-            <a  data-rel="Linux&lt;---&gt;Docker">Docker</a>
+            <a  data-rel="Java&lt;---&gt;JVM">JVM</a>
             
         </span>
         
@@ -1086,19 +1086,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color2">Docker</a>
+            <a class="color4">JVM</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-07-21 00:06:53'>2020-07-21 00:05</time>
+            发布时间 : <time class="date" title='最后更新: 2020-11-27 22:00:35'>2020-11-27 23:09</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:74</span>
+        <span>字数:167</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1128,7 +1128,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java语言规范"><span class="toc-text">Java语言规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM规范"><span class="toc-text">JVM规范</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1144,12 +1144,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在拉取Docker镜像时，有时会很慢，这时，可以在其它电脑已下载好的导出，然后复制过来导入即可。</p>
-<p>导出镜像：</p>
-<p><code>docker save -o &lt;image_name&gt;.tar &lt;image_name&gt;:&lt;tag&gt;</code></p>
-<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721000619.png" alt=""></p>
-<p>导入镜像：</p>
-<p><code>docker load --input &lt;image_name&gt;.tar    或    docker load &lt; &lt;docker_name&gt;.tar</code></p>
+        <p>JVM是Java Virtual Machine的简称，即Java虚拟机，它使用软件模拟Java字节码的指令集，而类似VMWare的虚拟机是使用软件模拟物理CPU的指令集。</p>
+<h3 id="Java语言规范"><a href="#Java语言规范" class="headerlink" title="Java语言规范"></a>Java语言规范</h3><ul>
+<li><p>语法、词法</p>
+<ul>
+<li>If Then 语句格式</li>
+<li>ArgumentList 参数列表</li>
+<li>行终结符、空白符、注释、标识符、关键字</li>
+</ul>
+</li>
+<li><p>变量</p>
+<ul>
+<li>初始值规则</li>
+<li>泛型</li>
+<li>基础类型</li>
+</ul>
+</li>
+<li><p>类型</p>
+</li>
+<li><p>文法</p>
+</li>
+<li><p>内存模型</p>
+</li>
+<li><p>类加载链接过程</p>
+</li>
+<li><p>异常</p>
+</li>
+<li><p>……</p>
+</li>
+</ul>
+<h3 id="JVM规范"><a href="#JVM规范" class="headerlink" title="JVM规范"></a>JVM规范</h3><p>主要定义二进制class文件和JVM指令集等。</p>
+<ul>
+<li>Class文件类型</li>
+<li>运行时数据</li>
+<li>栈帧、堆、方法区、PC</li>
+<li>虚拟机的启动</li>
+<li>虚拟机的指令集</li>
+<li>JVM反汇编的格式</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 linjk121@163.com. </span>
