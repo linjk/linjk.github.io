@@ -435,7 +435,7 @@
     <div><a class="about  hasFriend  site_url"  href="/2020/07/05/AboutMe/">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="58">
-<input type="hidden" id="yelog_site_word_count" value="16.6k">
+<input type="hidden" id="yelog_site_word_count" value="16.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1091,12 +1091,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-12-12 02:37:47'>2020-10-24 12:00</time>
+            发布时间 : <time class="date" title='最后更新: 2020-12-16 00:03:28'>2020-10-24 12:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.1k</span>
+        <span>字数:1.3k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1189,6 +1189,7 @@
 <p>新建一个测试库和测试表：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121329.png" alt=""></p>
 <p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121343.png" alt=""></p>
 <p>新建Logstash导入数据的配置文件:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121516.png" alt=""></p>
+<p>如ES开启了密码，hosts配置需要修改为：<a href="http://elastic:xxx@localhost:9200" target="_blank" rel="noopener">http://elastic:xxx@localhost:9200</a></p>
 <p>编写后最好测试一下配置文件是否有语法问题：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121540.png" alt=""></p>
 <p>没问题，启动:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121602.png" alt=""></p>
 <p>报错：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121619.png" alt=""></p>
@@ -1200,6 +1201,8 @@
 <p>再次启动，可以看到，在执行数据同步了：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121744.png" alt=""></p>
 <p>去ES查询验证一下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201024121805.png" alt=""></p>
 <p>可以看到，在ES可以看到了，接下来，在MySQL修改这条数据，看是否也能同步更新ES的数据，同步的时间最小粒度是1分钟，可以看到，数据也变化了。</p>
+<p>这里使用一张表的数据，对应于一个索引的数据，数据库的每一条数据对应于索引的一个文档。Elasticsearch是面向文档的，文档是所有可搜索数据的最小单位，文档会被序列化成JSON格式存储，每个文档都有其UUID。</p>
+<p>索引体现了逻辑空间的概念，每个索引一般都会有分片，而分片，体现的就是物理空间的概念，索引的mapping定义文档字段的类型，setting定义不同的数据分布。</p>
 <p>好了，从采集数据到存储到ES的链路走通了，后面学习再慢慢研究使用ES了。</p>
 
       
