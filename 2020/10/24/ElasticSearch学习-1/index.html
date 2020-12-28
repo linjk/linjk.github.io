@@ -1091,7 +1091,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-12-16 00:03:28'>2020-10-24 12:00</time>
+            发布时间 : <time class="date" title='最后更新: 2020-12-28 21:00:07'>2020-10-24 12:00</time>
         
     </div>
     <div class="article-meta">
@@ -1156,10 +1156,11 @@
 <p>还有一点要注意，上面的值设置不要超过30GB大小。</p>
 <h3 id="启动elasticsearch"><a href="#启动elasticsearch" class="headerlink" title="启动elasticsearch"></a>启动elasticsearch</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201212012729.png" alt=""></p>
 <p>检查确认启动成功：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201212012938.png" alt=""></p>
-<p>注意这里，cluster_name，是ES集群的名称，这里只是单机的一个实例，单一个集群有多个节点时，需要确保集群名称一样，可以通过如下方式在本机启动一个集群的多个节点：</p>
+<p>注意这里，cluster_name，是ES集群的名称，默认名字为<code>elasticsearch</code>，这里只是单机的一个实例，单一个集群有多个节点时，需要确保集群名称一样，可以通过如下方式在本机启动一个集群的多个节点：</p>
 <blockquote>
 <p>./elasticsearch -E node.name=linjk_1 -E cluster.name=linjk-framework-test -E path.data=xxx -E http.port=9202 -d<br>./elasticsearch -E node.name=linjk_2 -E cluster.name=linjk-framework-test -E path.data=xxx -E http.port=9204 -d<br>./elasticsearch -E node.name=linjk_3 -E cluster.name=linjk-framework-test -E path.data=xxx -E http.port=9206 -d</p>
 </blockquote>
+<p>节点是一个Elasticsearch实例，本质是一个Java进程，每个节点启动后，会分配一个UID，保存在data目录下。</p>
 <p> 然后可通过URL查看当前集群有多少个节点：<br> <img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201212013149.png" alt=""></p>
 <p> 为了后面方便，这里安装了IK中文分词器:</p>
 <blockquote>
