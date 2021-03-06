@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>JMeter简单使用</title>
+      <link href="/2021/03/06/JMeter%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+      <url>/2021/03/06/JMeter%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p>JMeter是一个强大的接口性能测试工具，这里记录下它的函数助手功能的使用。在测试接口的时候，有时接口的参数需要不一样的，这是，可以借助其函数化的参数功能。<br>比如，如下接口：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210306224139.png" alt=""></p><p>现在需要name是不一样的，在桌面新建一个name的列表文件，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210306224316.png" alt=""></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210306224346.png" alt=""></p><p>然后打开JMeter的函数功能助手【Tools-Function Helper Dialog】：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210306224516.png" alt=""></p><p>因为name文件的第一列是名称，所以填0。然后点击【Generate &amp; Copy to clipboard】，把值复制到线程组的请求路径那里：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210306224708.png" alt=""></p><p>修改下线程组的配置：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210306224750.png" alt=""></p><p>因为这里有5个用户，所以第一个填5。<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210306225252.png" alt=""></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210306225329.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+          <category> JMeter </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JMeter </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JVM入门</title>
       <link href="/2020/11/27/JVM%E5%85%A5%E9%97%A8/"/>
       <url>/2020/11/27/JVM%E5%85%A5%E9%97%A8/</url>
