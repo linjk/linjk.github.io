@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>R语言-从数据源获取数据-三</title>
+      <link href="/2021/03/17/R%E8%AF%AD%E8%A8%80-%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%BA%90%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE-%E4%B8%89/"/>
+      <url>/2021/03/17/R%E8%AF%AD%E8%A8%80-%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%BA%90%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE-%E4%B8%89/</url>
+      
+        <content type="html"><![CDATA[<p>R语言有很多种获取从数据源(有手动输入、CSV、Excel、JSON、XML、NetCDF、HDF5、SPSS、SAS、Stata这些数据源等)获取数据的方式，下面介绍常用的几种：</p><p>#手动录入#</p><p>#导入Excel数据#</p><p>#从网络获取数据#</p><p>#从数据库获取数据#</p><p>#从本地TXT文件获取数据#</p><p>后面还可以从XML或其他数据源获取数据，因为目前我不常用，也就不测试了，用到再弄了，而且实际对数据的处理是很灵活的，根据数据分析要求，从数据源获取，然后按需处理数据即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> R </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>R语言的数据类型-二</title>
+      <link href="/2021/03/17/R%E8%AF%AD%E8%A8%80%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E4%BA%8C/"/>
+      <url>/2021/03/17/R%E8%AF%AD%E8%A8%80%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E4%BA%8C/</url>
+      
+        <content type="html"><![CDATA[<p>#向量#<br>用于存储数值型、字符型或逻辑型数据的<strong>一维数组</strong>，注意，单个向量中的数据必须是<strong>同一个类型</strong>，不能混合。用函数c()可创建向量:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210317000653.png" alt=""><br>如上，对于有规律的，如b，可以采用更简单的写法。</p><p>向量可以使用下标法索引(<strong>索引从1开始</strong>，不是从0开始)：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210317000804.png" alt=""></p><p>最简单的向量只有一个元素，称为标量(注意：实际上没有标量这个类型，只是类比，本质是单元素向量): a &lt;- 0，通常用于表示常量。</p><p>#矩阵#<br>一个二维数组，维数大于2建议直接使用数组，每个元素都有相同的类型。用函数matrix()可创建矩阵：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210317001122.png" alt=""><br>上面两个区别在于初始化时是否设置行列的名字。 </p><p>#数组#<br>与矩阵类似，数组里每个元素类型也必须一样，区别在于维数可以大于2。用函数array()可以创建数组：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210317001326.png" alt=""><br>初始化2 * 3 * 4维数组中，c(2,3,4)说明每个维度下标的最大值，上面首先给出第3维，然后每一维用矩阵列出，因此，索引数据也很方便，这里取[2,2,3]，很容易得出16。</p><p>#数据框#<br>矩阵和数组的列的元素类型必须一致，而数据框的列的元素类型不必一致，<strong>类似数据库的表</strong>，每一列的类型通常都不一样，这种数据类型在实际建模时更常用。用函数data.frame()可以创建数据框:</p><p>考虑如下学生成绩表格:</p><table><thead><tr><th>Name</th><th>Chinese</th><th>Math</th><th>English</th></tr></thead><tbody><tr><td>Jim</td><td>90</td><td>91</td><td>92</td></tr><tr><td>Lin</td><td>87</td><td>88</td><td>89</td></tr></tbody></table><p>用数据框来表示如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210317001806.png" alt=""><br>现在想要获取chinese成绩栏一列，可如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210317001924.png" alt=""></p><p>第二种有点特殊，使用了记号”$”。<br>可以看到，输入列名字很长，可以使用如下方法简化，这里用到了with()：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210317002036.png" alt=""></p><p>这样就相当于在scroe这个名称空间下进行操作，因此，输入chinese会自动被搜索到。 </p><p>另外，在这个数据框中，名字可以标识一条数据，因此，在新建数据框时，增加一个标识符会更好，这样带打印输出或图形显示中会更直观:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210317002200.png" alt=""></p><p>可以看到，打印输出地数据框不使用1和2表示每一行，而是使用name来标识。</p><p>#因子#<br>R语言中，变量有三种类型:</p><ul><li><p>名义型<br>Sexual(Man, Woman), 属于哪一类都可以，两个变量存放是顺序无关的。</p></li><li><p>有序型<br>Score(Low, Middle, High)，成绩高低，这里是一个范围，并没有指出高多少，但是，从低到高是有一个顺序的。</p></li><li><p>连续型<br>如年龄、身高等，值都是连续变化的。</p></li></ul><p>R语言中，类别(名义型)和有序类别(有序型)又称为因子，它决定了数据的分析方式以及如何进行视觉呈现。</p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210317002533.png" alt=""></p><p>可以看到，factor默认无序，输入”Woman”, “Man”, “Man”, “Man”后，默认按字母排序为Man、Woman，因此序号为1，2，后面查看sexual_f时对应输出就是2,1,1,1。</p><p>有时候，应用字母排序不符合实际需求，因此，需要增加参数说明按输入的顺序排序：</p><p>这里需要同时增加两个限定条件:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210317002746.png" alt=""></p><p>#列表#<br>列表与向量不一样，列表里的元素可以不一致，可以为向量、矩阵、数据框等的组合。用函数list()可以创建列表，列表的元素需要使用双重括号来获取，也可以给每一个元素起名字：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210317003013.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> R </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JMeter简单使用</title>
       <link href="/2021/03/06/JMeter%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
       <url>/2021/03/06/JMeter%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
