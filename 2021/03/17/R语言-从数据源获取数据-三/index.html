@@ -450,7 +450,7 @@
     <div><a class="about  hasFriend  site_url"  href="/2020/07/05/AboutMe/">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="61">
-<input type="hidden" id="yelog_site_word_count" value="18.2k">
+<input type="hidden" id="yelog_site_word_count" value="19k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1127,12 +1127,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-03-17 00:36:24'>2021-03-17 00:33</time>
+            发布时间 : <time class="date" title='最后更新: 2021-03-18 22:43:34'>2021-03-17 00:33</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:158</span>
+        <span>字数:952</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1179,11 +1179,49 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>R语言有很多种获取从数据源(有手动输入、CSV、Excel、JSON、XML、NetCDF、HDF5、SPSS、SAS、Stata这些数据源等)获取数据的方式，下面介绍常用的几种：</p>
-<p>#手动录入#</p>
-<p>#导入Excel数据#</p>
-<p>#从网络获取数据#</p>
-<p>#从数据库获取数据#</p>
-<p>#从本地TXT文件获取数据#</p>
+<p>#手动录入#<br>数据量少，可以采用这种方式：</p>
+<p>1.1 先创建对象，然后调用&lt;对象名&gt; &lt;- edit(&lt;对象名&gt;)或fix(&lt;对象名&gt;)来进行增加数据：</p>
+<p>输入数据:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318221427.png" alt=""><br>数据结果:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318221505.png" alt=""></p>
+<p>1.2 直接创建变量并同时初始化，然后调用read.table()读取：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318221541.png" alt=""><br>这种方式对于初学者可能会多用一些，实际很少用的。</p>
+<p>#导入Excel数据#<br>读取Excel需要安装xlsx、xlsxjars、rJava包，因为涉及Java，因此需要Java环境也配置好了，另外还有个包openxlsx，它不需要依赖rJava，就用它了吧：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318221911.png" alt=""></p>
+<p>测试Excel文档的内容:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318221931.png" alt=""></p>
+<p>导入数据:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318221952.png" alt=""></p>
+<p>更多使用查help就行了。</p>
+<p>#从网络获取数据#<br>这里使用现在广泛使用的JSON数据：</p>
+<p>这里使用一个接口获取的json数据如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318222040.png" alt=""></p>
+<p>可以看到，其结构如下，我们准备获取result对应的list:</p>
+<p>{“result”: [</p>
+<p>{“type”: “—-“, “name”: “—“}</p>
+<p>…</p>
+<p> ]}</p>
+<p>安装”rjson”包:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318222117.png" alt=""></p>
+<p>测试获取数据:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318222142.png" alt=""></p>
+<p>返回的是一个列表数据。为了方便处理，可以转为数据框:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318222236.png" alt=""></p>
+<p>数据还是可以优化的，上面看到typeX和nameX一直重复，现在把所有name提取出来，其他的type都一样：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318222311.png" alt=""></p>
+<p>数据挖掘流程一开始都这样，从数据源获取数据到数据仓库，然后进行数据预处理为便于分析的数据(刚刚做的就是数据预处理)，然后进行下一步的建模分析了。</p>
+<p>#从数据库获取数据#<br>可以通过原生的数据库驱动或ODBC/JDBC来从数据库获取数据，一般通过ODBC或JDBC连接是最常用的，因为不用针对每种数据库都写不一样的语句。</p>
+<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318222842.png" alt=""></p>
+<p>安装后，可以执行命令<code>help(package=&quot;RMySQL&quot;)</code>查看帮助文档。</p>
+<ul>
+<li>创建数据库连接：<code>con &lt;- dbConnect(MySQL(), host=&quot;localhost&quot;, dbname=&quot;jarvis&quot;, user=&quot;root&quot;, password=&quot;xxx&quot;)</code></li>
+<li>获取连接信息：<code>summary(con)</code>或<code>dbGetInfo(con)</code></li>
+<li>查看所有表: <code>dbListTables(con)</code></li>
+<li>删除指定表：<code>dbRemoveTable(con, &quot;xxx{表名}&quot;)</code></li>
+<li>查询信息：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318223449.png" alt=""></li>
+</ul>
+<p>—- 如下为连接数据库WINDOWS版本操作<br>安装RODBC包之前，需要先针对使用的系统和数据库类型安装和配置合适的ODBC驱动<a href="http://www.odbcmanager.net" target="_blank" rel="noopener">这里</a>下载， 现在下载安装mysql的<a href="https://dev.mysql.com/downloads/connector/odbc/" target="_blank" rel="noopener">ODBC驱动</a>，安装后目录如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318223916.png" alt=""></p>
+<p>配置好后，接下来就是安装RODBC:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318223930.png" alt=""></p>
+<p>然后配置数据源：（控制面板 —- 管理工具 —- 出现如下窗口）<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318223944.png" alt=""></p>
+<p>选择”ODBC数据源(64位)”, 显示如下窗口：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318224000.png" alt=""></p>
+<p>选择”系统DSN”,点击”添加”，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318224018.png" alt=""></p>
+<p>出现两种数据库的驱动，这里用MySQL(SQL Server类似)，选择ANSI的，确定后弹出如下界面：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318224031.png" alt=""></p>
+<p>输入相关信息，点击”Test”测试一下，连接成功：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318224047.png" alt=""></p>
+<p>配置完成后，现在R加载ODBC库来连接数据库查看下数据:<br>通过MySQL WorkBench查看iHouse数据库数据如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318224105.png" alt=""></p>
+<p>测试:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318224126.png" alt=""></p>
+<p>使用sqlTables可以看数据库里有什么表，然后使用sqlFetch可以获取表的所有数据，使用sqlQuery可以输入有效地SQL语句进行指定查询。更多使用参考RODBC的文档即可。</p>
+<p>最后，不使用，记得使用close()函数管理连接： close(my_con)。</p>
+<p>#从本地TXT文件获取数据#<br>假设现在有这个数据文件:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318222624.png" alt=""></p>
+<p>可如下读取:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20210318222651.png" alt=""></p>
 <p>后面还可以从XML或其他数据源获取数据，因为目前我不常用，也就不测试了，用到再弄了，而且实际对数据的处理是很灵活的，根据数据分析要求，从数据源获取，然后按需处理数据即可。</p>
 
       
