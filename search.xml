@@ -221,25 +221,6 @@
     
     
     <entry>
-      <title>Windows系统下不错的Shell软件Babun</title>
-      <link href="/2020/09/27/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B%E4%B8%8D%E9%94%99%E7%9A%84Shell%E8%BD%AF%E4%BB%B6Babun/"/>
-      <url>/2020/09/27/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B%E4%B8%8D%E9%94%99%E7%9A%84Shell%E8%BD%AF%E4%BB%B6Babun/</url>
-      
-        <content type="html"><![CDATA[<p><a href="https://github.com/babun/babun" target="_blank" rel="noopener">Babun</a>在GitHub上可以找到，它让习惯Linux系统的shell的开发人员可以在Windows系统下也有很好的命令行使用体验，虽然后Cygwin，但是，这个，不会让你失望。</p><p>简介：</p><ul><li>一键安装，不需要admin权限</li><li>类似包管理器apt-get/yum，它的包管理器为pact</li><li>集成oh-my-zsh</li><li>……</li></ul><p>下载后放到你需要安装到的目录，执行安装脚本即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927205526.png" alt=""></p><p>等待安装：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927205541.png" alt=""></p><p>安装完成：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927205557.png" alt=""></p><p>可以右键文件夹直接进入：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927205611.png" alt=""></p><p>用过mac系统的，一定很熟悉<code>open .</code>直接打开Finder吧，也可以哦：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200927205628.png" alt=""></p><p>接下来，在Windows上体验Linux吧。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>高性能缓存系统Redis安装与使用</title>
       <link href="/2020/09/27/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9FRedis%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
       <url>/2020/09/27/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9FRedis%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
@@ -414,25 +395,6 @@
       <categories>
           
           <category> Java </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>WindowsServer2008打开IIS页面报错“错误号：3706 错误描述：未找到提供程序。该程序可能未正确安装”解决</title>
-      <link href="/2020/09/08/WindowsServer2008%E6%89%93%E5%BC%80IIS%E9%A1%B5%E9%9D%A2%E6%8A%A5%E9%94%99%E2%80%9C%E9%94%99%E8%AF%AF%E5%8F%B7%EF%BC%9A3706-%E9%94%99%E8%AF%AF%E6%8F%8F%E8%BF%B0%EF%BC%9A%E6%9C%AA%E6%89%BE%E5%88%B0%E6%8F%90%E4%BE%9B%E7%A8%8B%E5%BA%8F%E3%80%82%E8%AF%A5%E7%A8%8B%E5%BA%8F%E5%8F%AF%E8%83%BD%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85%E2%80%9D%E8%A7%A3%E5%86%B3/"/>
-      <url>/2020/09/08/WindowsServer2008%E6%89%93%E5%BC%80IIS%E9%A1%B5%E9%9D%A2%E6%8A%A5%E9%94%99%E2%80%9C%E9%94%99%E8%AF%AF%E5%8F%B7%EF%BC%9A3706-%E9%94%99%E8%AF%AF%E6%8F%8F%E8%BF%B0%EF%BC%9A%E6%9C%AA%E6%89%BE%E5%88%B0%E6%8F%90%E4%BE%9B%E7%A8%8B%E5%BA%8F%E3%80%82%E8%AF%A5%E7%A8%8B%E5%BA%8F%E5%8F%AF%E8%83%BD%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85%E2%80%9D%E8%A7%A3%E5%86%B3/</url>
-      
-        <content type="html"><![CDATA[<p>在windows server 2008部署asp网站后打开页面时报如下错误：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908232937.png" alt=""></p><p>这是因为在64位系统中，iis7的应用程序池默认没有启用32位程序。因此，修改默认应用程序池的配置，启用32位应用程序重启网站即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908232956.png" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
           
       </categories>
       
@@ -867,33 +829,6 @@
     
     
     <entry>
-      <title>SpringBoot切换内置Web容器</title>
-      <link href="/2020/07/28/SpringBoot%E5%88%87%E6%8D%A2%E5%86%85%E7%BD%AEWeb%E5%AE%B9%E5%99%A8/"/>
-      <url>/2020/07/28/SpringBoot%E5%88%87%E6%8D%A2%E5%86%85%E7%BD%AEWeb%E5%AE%B9%E5%99%A8/</url>
-      
-        <content type="html"><![CDATA[<p>Spring Boot默认的web容器为Tomcat，通过starter-web引入的，下面介绍如何替换默认的web容器：</p><ol><li><p>修改start-web排除tomcat的引入<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234733.png" alt=""></p></li><li><p>引入Jetty<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234744.png" alt=""></p></li></ol><p>正常启动如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234808.png" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-          <category> Springboot </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Springboot </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Mac平台下python引用cv2错误处理</title>
       <link href="/2020/07/28/Mac%E5%B9%B3%E5%8F%B0%E4%B8%8Bpython%E5%BC%95%E7%94%A8cv2%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/"/>
       <url>/2020/07/28/Mac%E5%B9%B3%E5%8F%B0%E4%B8%8Bpython%E5%BC%95%E7%94%A8cv2%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</url>
@@ -1034,33 +969,6 @@
       <url>/2020/07/20/TMS%E5%BC%80%E5%8F%91%E7%BB%84%E4%BB%B6%E5%8C%85-TAdvStringGrid%E8%A1%A8%E6%A0%BC%E6%8E%A7%E4%BB%B6/</url>
       
         <content type="html"><![CDATA[<p>最近项目涉及一些复杂表格显示的实现，尝试使用Dev Express的cxGrid控件多次还是没法实现想要的效果，后来发现，<a href="https://www.tmssoftware.com/site/products.asp?t=vclp" target="_blank" rel="noopener">TMS</a>开发组件包的TAdvStringGrid可以实现效果。这里举例来说明一下，例如，需要实现如下效果:</p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232036.png" alt=""></p><p>  如上所示是一个3行4列的表格，其中，第一行的1、2列合并，第2行的2、3列合并，下面使用TAdvStringGrid来实现，步骤如下：</p><ul><li><p>新建一个VCL窗口项目，布局界面</p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232123.png" alt=""></p><p>添加TAdvStringGrid控件，默认它是一个5列10行的空白表格，这里需要自定义数据，这里修改它的ColCount和RowCount属性为0，但是，默认还是一个1列1行的空白表格，这里可以不用理会。</p><p>按钮”显示数据”点击后，就显示如上效果的表格。</p></li><li><p>实现如上Excel表格展示效果</p><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm1</span>.<span class="title">btn1Click</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">        count: Integer;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  AdvStringGrid1.ColCount := <span class="number">0</span>;</span><br><span class="line">  AdvStringGrid1.RowCount := <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 初始化行列 (3行4列)</span></span><br><span class="line">  <span class="keyword">for</span> count := <span class="number">0</span> <span class="keyword">to</span> <span class="number">1</span> <span class="keyword">do</span>              <span class="comment">// 因为第一行是表格头，因此就2行，从0开始数，所以为2-1=1，行与列一样的道理。</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">      AdvStringGrid1.AddRow;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line">  <span class="keyword">for</span> count := <span class="number">0</span> <span class="keyword">to</span> <span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">      AdvStringGrid1.AddColumn;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.MergeCells(<span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">0</span>] := <span class="string">'1'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">2</span>, <span class="number">0</span>] := <span class="string">'2'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">0</span>] := <span class="string">'3'</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.MergeCells(<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">1</span>] := <span class="string">'4'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">1</span>, <span class="number">1</span>] := <span class="string">'5'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">1</span>] := <span class="string">'6'</span>;</span><br><span class="line"> </span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">0</span>, <span class="number">2</span>] := <span class="string">'7'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">1</span>, <span class="number">2</span>] := <span class="string">'8'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">2</span>, <span class="number">2</span>] := <span class="string">'9'</span>;</span><br><span class="line">  AdvStringGrid1.Cells[<span class="number">3</span>, <span class="number">2</span>] := <span class="string">'10'</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure><p>运行如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720232345.png" alt=""></p><p>效果实现，其他的TMS组件可以自己再尝试使用即可。</p></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> Delphi </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Delphi </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>TcxCurrencyEdit无法输入小数问题解决</title>
-      <link href="/2020/07/20/TcxCurrencyEdit%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E5%B0%8F%E6%95%B0%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-      <url>/2020/07/20/TcxCurrencyEdit%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E5%B0%8F%E6%95%B0%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
-      
-        <content type="html"><![CDATA[<p>最近在使用TcxCurrencyEdit控件时，发现配置了指定输入小数位数，却无法输入小数的问题：</p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720231412.png" alt=""></p><p><strong>解决方法</strong>：</p><blockquote><p>“控制面板” - “时间和区域” - “区域” - “更改日期、时间或数字格式”<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720231506.png" alt=""><br>修改货币tab栏的小数位数为2或其他实际需要的位数即可:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200720231526.png" alt=""></p></blockquote>]]></content>
       
       
       <categories>
