@@ -632,25 +632,6 @@
     
     
     <entry>
-      <title>Java序列化使用jackson时首字母变成小写问题解决</title>
-      <link href="/2020/08/23/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%BD%BF%E7%94%A8jackson%E6%97%B6%E9%A6%96%E5%AD%97%E6%AF%8D%E5%8F%98%E6%88%90%E5%B0%8F%E5%86%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-      <url>/2020/08/23/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%BD%BF%E7%94%A8jackson%E6%97%B6%E9%A6%96%E5%AD%97%E6%AF%8D%E5%8F%98%E6%88%90%E5%B0%8F%E5%86%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
-      
-        <content type="html"><![CDATA[<p>在使用jackson反序列化json字符串到对象时，发现，属性的首字母会变成小写，从而造成找不到属性的异常：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200823001737.png" alt=""></p><p>可以在属性加如下注解解决：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200823001756.png" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Vue+ElementUI重置表单数据至初始值</title>
       <link href="/2020/08/20/Vue-ElementUI%E9%87%8D%E7%BD%AE%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%E8%87%B3%E5%88%9D%E5%A7%8B%E5%80%BC/"/>
       <url>/2020/08/20/Vue-ElementUI%E9%87%8D%E7%BD%AE%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%E8%87%B3%E5%88%9D%E5%A7%8B%E5%80%BC/</url>
@@ -670,33 +651,6 @@
         <tags>
             
             <tag> Vue </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Linux下截屏软件SnapShot</title>
-      <link href="/2020/08/20/Linux%E4%B8%8B%E6%88%AA%E5%B1%8F%E8%BD%AF%E4%BB%B6SnapShot/"/>
-      <url>/2020/08/20/Linux%E4%B8%8B%E6%88%AA%E5%B1%8F%E8%BD%AF%E4%BB%B6SnapShot/</url>
-      
-        <content type="html"><![CDATA[<p>Linux下一款不错的截屏软件： Snap Shot</p><p>执行<code>sudo yum install snapshot</code>进行安装，下载完成后可以在应用程序里打开。 </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-          <category> tools </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> tools </tag>
             
         </tags>
       
@@ -764,44 +718,6 @@
       <url>/2020/08/06/CentOS7%E6%AD%A3%E7%A1%AE%E9%85%8D%E7%BD%AE%E4%BA%86samba%E6%9C%8D%E5%8A%A1%EF%BC%8CWindows%E8%83%BD%E7%99%BB%E9%99%86%E5%BD%93%E6%8F%90%E7%A4%BA%E6%B2%A1%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
       
         <content type="html"><![CDATA[<p>关闭SELinux即可。</p><h3 id="临时关闭"><a href="#临时关闭" class="headerlink" title="临时关闭"></a>临时关闭</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806233231.png" alt=""></p><h3 id="永久关闭"><a href="#永久关闭" class="headerlink" title="永久关闭"></a>永久关闭</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806233244.png" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CENTOS7读取NTFS格式的移动硬盘和exFAT格式的U盘</title>
-      <link href="/2020/08/06/CENTOS7%E8%AF%BB%E5%8F%96NTFS%E6%A0%BC%E5%BC%8F%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E5%92%8CexFAT%E6%A0%BC%E5%BC%8F%E7%9A%84U%E7%9B%98/"/>
-      <url>/2020/08/06/CENTOS7%E8%AF%BB%E5%8F%96NTFS%E6%A0%BC%E5%BC%8F%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E5%92%8CexFAT%E6%A0%BC%E5%BC%8F%E7%9A%84U%E7%9B%98/</url>
-      
-        <content type="html"><![CDATA[<h2 id="NTFS"><a href="#NTFS" class="headerlink" title="NTFS"></a>NTFS</h2><h3 id="更新阿里的yum源"><a href="#更新阿里的yum源" class="headerlink" title="更新阿里的yum源"></a>更新阿里的yum源</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232909.png" alt=""></p><h3 id="下载ntfs依赖"><a href="#下载ntfs依赖" class="headerlink" title="下载ntfs依赖"></a>下载ntfs依赖</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232923.png" alt=""></p><h2 id="exFat"><a href="#exFat" class="headerlink" title="exFat"></a>exFat</h2><h3 id="安装nux仓库"><a href="#安装nux仓库" class="headerlink" title="安装nux仓库"></a>安装nux仓库</h3><p><code>sudo yum install -y http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm</code></p><h3 id="安装exfat依赖"><a href="#安装exfat依赖" class="headerlink" title="安装exfat依赖"></a>安装exfat依赖</h3><p><code>sudo yum install exfat-utils fuse-exfat</code></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CENTOS7转文本文件为UTF-8格式</title>
-      <link href="/2020/08/06/CENTOS7%E8%BD%AC%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E4%B8%BAUTF-8%E6%A0%BC%E5%BC%8F/"/>
-      <url>/2020/08/06/CENTOS7%E8%BD%AC%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E4%B8%BAUTF-8%E6%A0%BC%E5%BC%8F/</url>
-      
-        <content type="html"><![CDATA[<p>windows平台下的文本文件拷贝到centos7下打开乱码，可以通过enca工具修改为utf-8格式</p><ol><li><p>下载enca<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232358.png" alt=""></p></li><li><p>转换即可<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806232419.png" alt=""></p></li></ol>]]></content>
       
       
       <categories>
@@ -1005,33 +921,6 @@
     
     
     <entry>
-      <title>Mac下一个不错的Gif图片生成软件--GIPHY</title>
-      <link href="/2020/07/28/Mac%E4%B8%8B%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%94%99%E7%9A%84Gif%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E8%BD%AF%E4%BB%B6-GIPHY/"/>
-      <url>/2020/07/28/Mac%E4%B8%8B%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%94%99%E7%9A%84Gif%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E8%BD%AF%E4%BB%B6-GIPHY/</url>
-      
-        <content type="html"><![CDATA[<ol><li><p>APP Store搜索下载：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728233904.png" alt=""></p></li><li><p>下载完安装后打开界面如下，它会显示一个取景框，我们可以把它移动到需要生成Gif区域并调整大小匹配区域，然后点击底部的红色即可开始录制：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728233936.png" alt=""></p></li><li><p>这里录制一个片段后，程序界面如下，左下角就是录制的片段：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234002.png" alt=""></p></li><li><p>点击录制好的片段，弹出如下窗口:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234022.png" alt=""></p></li><li><p>点击”SAVE AS…”，格式选择”Gif”，然后自定义名字和选择保存路径即可</p></li><li><p>上传Gif并显示如下【额……这里显示不了~】:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200728234044.png" alt=""></p></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> Mac </category>
-          
-          <category> Tools </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Tools </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>OpenJDK12源码编译</title>
       <link href="/2020/07/23/OpenJDK12%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/"/>
       <url>/2020/07/23/OpenJDK12%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/</url>
@@ -1213,33 +1102,6 @@
         <tags>
             
             <tag> Spring </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>C++编译OpenCV生成动态库问题解决</title>
-      <link href="/2020/07/18/C++%E7%BC%96%E8%AF%91OpenCV%E7%94%9F%E6%88%90%E5%8A%A8%E6%80%81%E5%BA%93%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-      <url>/2020/07/18/C++%E7%BC%96%E8%AF%91OpenCV%E7%94%9F%E6%88%90%E5%8A%A8%E6%80%81%E5%BA%93%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
-      
-        <content type="html"><![CDATA[<p>1.包含&lt;opencv2/objdectect/objdetect.hpp&gt;, 声明了CascadeClassifier变量后，工程如下:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002411.png" alt=""></p><p>执行make命令后发生如下错误：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002435.png" alt=""></p><p>解决，增加Lib链接，如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002503.png" alt=""><br>再次make，可以了。</p><p>2.增加imread函数调用后，发生如下错误:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002555.png" alt=""></p><p>makefile需要增加如下链接(-lopencv_imgcodes):<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002640.png" alt=""></p><p>python调用人脸检测后，成功识别出两个人脸:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002703.png" alt=""></p><p>3.上面是在mac上运行的，把so库拿到centos上运行时，报如下错误:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002746.png" alt=""></p><p>在用户加目录的.bashrc增加如下这行(永久生效)或直接命令行执行(临时生效)，即可:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721002805.png" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> C++ </category>
-          
-          <category> OpenCV </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
