@@ -347,44 +347,6 @@
     
     
     <entry>
-      <title>XAMPP启动提示43端口被占用问题解决</title>
-      <link href="/2020/09/09/XAMPP%E5%90%AF%E5%8A%A8%E6%8F%90%E7%A4%BA43%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-      <url>/2020/09/09/XAMPP%E5%90%AF%E5%8A%A8%E6%8F%90%E7%A4%BA43%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
-      
-        <content type="html"><![CDATA[<p>使用XAMPP部署服务启动Apache时提示443端口被占用，看看啥原因：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221950.png" alt=""></p><p>看看6656是哪个进程：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222008.png" alt=""></p><p>原来是装了VMWare，其实也可以修改httpd-ssl.conf配置文件使用其他SSL端口，但是不想这样改，这个进程VMWare Workstation Server（vmware-hostd.exe）主要与远程管理VMWare有关，一般很少用到，那就停用它吧，这里把启动方式改为手动吧：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909222030.png" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Linux安装oh-my-zsh</title>
-      <link href="/2020/09/09/Linux%E5%AE%89%E8%A3%85oh-my-zsh/"/>
-      <url>/2020/09/09/Linux%E5%AE%89%E8%A3%85oh-my-zsh/</url>
-      
-        <content type="html"><![CDATA[<p>Linux下默认的shell是bash，之前在Mac系统习惯了oh-my-zsh，功能更加强大，现在在centos7服务器安装下：</p><ol><li><p>查看当前系统已安装的shell:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221547.png" alt=""></p></li><li><p>没有安装到zsh，现在来进行安装：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221607.png" alt=""></p></li><li><p>切换当前默认shell为zsh:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221631.png" alt=""><br>切换后需要重新登录。</p></li><li><p>重新登录会提示配置一下zsh，按提示做即可：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221655.png" alt=""></p></li><li><p>通过git安装oh-my-zsh</p><blockquote><p>wget <a href="https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh" target="_blank" rel="noopener">https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh</a> -O - | sh</p></blockquote></li></ol><p>如下所示：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221727.png" alt=""></p><p>6.安装成功：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200909221747.png" alt=""></p><p>后面进行自己的自定义配置即可。 </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Spring Security基本原理(Spring Boot1.x版本适用，2.x部分配置参数会变)</title>
       <link href="/2020/09/09/Spring-Security%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-Spring-Boot1-x%E7%89%88%E6%9C%AC%E9%80%82%E7%94%A8%EF%BC%8C2-x%E9%83%A8%E5%88%86%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E4%BC%9A%E5%8F%98/"/>
       <url>/2020/09/09/Spring-Security%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-Spring-Boot1-x%E7%89%88%E6%9C%AC%E9%80%82%E7%94%A8%EF%BC%8C2-x%E9%83%A8%E5%88%86%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E4%BC%9A%E5%8F%98/</url>
@@ -395,25 +357,6 @@
       <categories>
           
           <category> Java </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>WindowsServer2008打开IIS子页面提示不能使用&#39;..&#39;作为父目录问题解决</title>
-      <link href="/2020/09/08/WindowsServer2008%E6%89%93%E5%BC%80IIS%E5%AD%90%E9%A1%B5%E9%9D%A2%E6%8F%90%E7%A4%BA%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8-%E4%BD%9C%E4%B8%BA%E7%88%B6%E7%9B%AE%E5%BD%95%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-      <url>/2020/09/08/WindowsServer2008%E6%89%93%E5%BC%80IIS%E5%AD%90%E9%A1%B5%E9%9D%A2%E6%8F%90%E7%A4%BA%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8-%E4%BD%9C%E4%B8%BA%E7%88%B6%E7%9B%AE%E5%BD%95%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
-      
-        <content type="html"><![CDATA[<p>在iis7上打开子目录的主页时提示如下错误：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908232815.png" alt=""></p><p>需要在网站启用父目录：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200908232830.png" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
           
       </categories>
       
@@ -669,25 +612,6 @@
             <tag> CUDA </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CentOS7正确配置了samba服务，Windows能登陆当提示没权限问题解决</title>
-      <link href="/2020/08/06/CentOS7%E6%AD%A3%E7%A1%AE%E9%85%8D%E7%BD%AE%E4%BA%86samba%E6%9C%8D%E5%8A%A1%EF%BC%8CWindows%E8%83%BD%E7%99%BB%E9%99%86%E5%BD%93%E6%8F%90%E7%A4%BA%E6%B2%A1%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-      <url>/2020/08/06/CentOS7%E6%AD%A3%E7%A1%AE%E9%85%8D%E7%BD%AE%E4%BA%86samba%E6%9C%8D%E5%8A%A1%EF%BC%8CWindows%E8%83%BD%E7%99%BB%E9%99%86%E5%BD%93%E6%8F%90%E7%A4%BA%E6%B2%A1%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
-      
-        <content type="html"><![CDATA[<p>关闭SELinux即可。</p><h3 id="临时关闭"><a href="#临时关闭" class="headerlink" title="临时关闭"></a>临时关闭</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806233231.png" alt=""></p><h3 id="永久关闭"><a href="#永久关闭" class="headerlink" title="永久关闭"></a>永久关闭</h3><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200806233244.png" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-      </categories>
-      
       
     </entry>
     
