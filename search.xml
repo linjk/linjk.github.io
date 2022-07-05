@@ -815,33 +815,6 @@
     
     
     <entry>
-      <title>Docker镜像导出与导入</title>
-      <link href="/2020/07/21/Docker%E9%95%9C%E5%83%8F%E5%AF%BC%E5%87%BA%E4%B8%8E%E5%AF%BC%E5%85%A5/"/>
-      <url>/2020/07/21/Docker%E9%95%9C%E5%83%8F%E5%AF%BC%E5%87%BA%E4%B8%8E%E5%AF%BC%E5%85%A5/</url>
-      
-        <content type="html"><![CDATA[<p>在拉取Docker镜像时，有时会很慢，这时，可以在其它电脑已下载好的导出，然后复制过来导入即可。</p><p>导出镜像：</p><p><code>docker save -o &lt;image_name&gt;.tar &lt;image_name&gt;:&lt;tag&gt;</code></p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200721000619.png" alt=""></p><p>导入镜像：</p><p><code>docker load --input &lt;image_name&gt;.tar    或    docker load &lt; &lt;docker_name&gt;.tar</code></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-          <category> Docker </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Docker </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>TMS开发组件包-TAdvStringGrid表格控件</title>
       <link href="/2020/07/20/TMS%E5%BC%80%E5%8F%91%E7%BB%84%E4%BB%B6%E5%8C%85-TAdvStringGrid%E8%A1%A8%E6%A0%BC%E6%8E%A7%E4%BB%B6/"/>
       <url>/2020/07/20/TMS%E5%BC%80%E5%8F%91%E7%BB%84%E4%BB%B6%E5%8C%85-TAdvStringGrid%E8%A1%A8%E6%A0%BC%E6%8E%A7%E4%BB%B6/</url>
