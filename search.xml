@@ -69,33 +69,6 @@
     
     
     <entry>
-      <title>JVM入门</title>
-      <link href="/2020/11/27/JVM%E5%85%A5%E9%97%A8/"/>
-      <url>/2020/11/27/JVM%E5%85%A5%E9%97%A8/</url>
-      
-        <content type="html"><![CDATA[<p>JVM是Java Virtual Machine的简称，即Java虚拟机，它使用软件模拟Java字节码的指令集，而类似VMWare的虚拟机是使用软件模拟物理CPU的指令集。</p><h3 id="Java语言规范"><a href="#Java语言规范" class="headerlink" title="Java语言规范"></a>Java语言规范</h3><ul><li><p>语法、词法</p><ul><li>If Then 语句格式</li><li>ArgumentList 参数列表</li><li>行终结符、空白符、注释、标识符、关键字</li></ul></li><li><p>变量</p><ul><li>初始值规则</li><li>泛型</li><li>基础类型</li></ul></li><li><p>类型</p></li><li><p>文法</p></li><li><p>内存模型</p></li><li><p>类加载链接过程</p></li><li><p>异常</p></li><li><p>……</p></li></ul><h3 id="JVM规范"><a href="#JVM规范" class="headerlink" title="JVM规范"></a>JVM规范</h3><p>主要定义二进制class文件和JVM指令集等。</p><ul><li>Class文件类型</li><li>运行时数据</li><li>栈帧、堆、方法区、PC</li><li>虚拟机的启动</li><li>虚拟机的指令集</li><li>JVM反汇编的格式</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-          <category> JVM </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> JVM </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>GTest初探</title>
       <link href="/2020/11/24/GTest%E5%88%9D%E6%8E%A2/"/>
       <url>/2020/11/24/GTest%E5%88%9D%E6%8E%A2/</url>
@@ -142,33 +115,6 @@
         <tags>
             
             <tag> Boost </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Flutter初探</title>
-      <link href="/2020/11/22/Flutter%E5%88%9D%E6%8E%A2/"/>
-      <url>/2020/11/22/Flutter%E5%88%9D%E6%8E%A2/</url>
-      
-        <content type="html"><![CDATA[<p><a href="https://flutter.dev/docs/get-started/install/macos" target="_blank" rel="noopener">Flutter</a>是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面。下载Flutter SDK后，解压到自定义的目录下并配置bin子目录到环境变量：</p><p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201122215321.png" alt=""></p><p>增加环境变量:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201122215439.png" alt=""></p><p>配置完成后，检测开发环境<code>flutter doctor</code>:<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201122220213.png" alt=""></p><p>环境配置好后，这里使用Android Studio创建一个开发项目，创建时选择创建Flutter项目一步步操作即可，完成后目录结构如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20201122220401.png" alt=""></p><p>后面连接Android设备打开开发者模式就可以进行调试了。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Frontend </category>
-          
-          <category> Flutter </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Flutter </tag>
             
         </tags>
       
@@ -512,33 +458,6 @@
           
       </categories>
       
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Vue+ElementUI重置表单数据至初始值</title>
-      <link href="/2020/08/20/Vue-ElementUI%E9%87%8D%E7%BD%AE%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%E8%87%B3%E5%88%9D%E5%A7%8B%E5%80%BC/"/>
-      <url>/2020/08/20/Vue-ElementUI%E9%87%8D%E7%BD%AE%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%E8%87%B3%E5%88%9D%E5%A7%8B%E5%80%BC/</url>
-      
-        <content type="html"><![CDATA[<p>在基于Vue+ElementUI开发页面时，表单数据重置时，之前是写一个函数去一个个参数恢复初始值，后来发现有个更快速的方式，如下所示：</p><ol><li><p>el-form标签加一个ref参数<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820215634.png" alt=""><br>model的params参数值如下：<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820215705.png" alt=""></p></li><li><p>(这里只有一个参数，多个参数类似)表单的多个数据el-form-item加一个prop参数<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820215716.png" alt=""></p></li><li><p>重置函数传入el-form的ref参数值<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820215743.png" alt=""></p></li><li><p>实现reset(..)函数即可<br><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/20200820215755.png" alt=""></p></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> Frontend </category>
-          
-          <category> Vue </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Vue </tag>
-            
-        </tags>
       
     </entry>
     
@@ -915,31 +834,6 @@
         <tags>
             
             <tag> OpenResty </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>AboutMe</title>
-      <link href="/2020/07/05/AboutMe/"/>
-      <url>/2020/07/05/AboutMe/</url>
-      
-        <content type="html"><![CDATA[<p><img src="https://gitee.com/linjk/linjkImgs/raw/master/imgs/wechat.jpg" alt="微信公众号【时光记旅】"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Misc </tag>
             
         </tags>
       
